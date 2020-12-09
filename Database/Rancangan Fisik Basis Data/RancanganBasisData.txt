@@ -1,6 +1,9 @@
 Perancangan table
 
+//deceased---
 Patient(patient_id(PK),sex,age,country_id(FK),province_id(FK),city_id(FK),infected_by(FK),confirmed_date,release_date,deceased_date)
+//
+
 
 Cases(case_id(PK),province_id(FK),city_id(FK))
 
@@ -10,3 +13,4 @@ Province(province_id(PK), nama)
 
 City(city_id(PK),province_id(FK), nama, latitude, longitude,elementary_school, kindergarten_count, university_count, academy_ratio, elderly_population)
 
+Time(date, time, negative, confirmed , released , deceased)
