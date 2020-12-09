@@ -1,0 +1,14 @@
+/* CSS utama untuk semua page */
+
+
+/* Contoh cara mengimport font*/
+
+@font-face {
+    font-family: contohFont;
+    src: url("../font/Roboto-Italic.ttf");
+    font-style: italic;
+}
+
+html {
+    font-family: contohFont;
+}
