@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set("Asia/Bangkok");
 $url = $_SERVER['REDIRECT_URL'];
-$baseURL = '/corea';
+$baseURL = '/South-Korea-Covid19-IS';
 
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
