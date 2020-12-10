@@ -1,0 +1,43 @@
+ANALISIS KEBUTUHAN WEBSITE COREA
+
+Data yang dibutuhkan:
+- Time (utk di halaman Home)
+- TimeProvince (utk di halaman Data)
+
+Halaman-halaman utk Visitor:
+- Home page:
+	- Konten bagian atas (semacam reminder)
+	- Info-info berhubungan dengan covid (tips, dll)
+	- Statistik berdasarkan tabel Time
+	  (berapa yg dites, negatif, positif, released, meninggal)
+
+- Data page:
+	Ditampilkan 1 buah grafik (bar) dan 1 buah tabel
+	- Overall: menampilkan data keseluruhan dari tabel TimeProvince
+	- Regional: menampilkan data per provinsi dari tabel TimeProvince
+
+- About Us page:
+	Berisi informasi mengenai website Corea dan juga contact yang dapat dihubungi.
+
+FITUR HALAMAN DATA:
+- Filter berdasarkan provinsi-provinsinya
+- Filter berdasarkan jangka waktu (tanggal sekian s/d tanggal sekian)
+- Fitur untuk menampilkan total positif, total sembuh, total meninggal
+  (bisa secara keseluruhan, bisa per provinsi)
+
+FITUR TABEL:
+- Search
+- Filter
+- Sort
+
+Halaman-halaman utk Admin (hanya dapat diakses lewat URL):
+- Login page:
+	Login menggunakan username dan password
+
+- Home page:
+	Ditampilkan 1 buah tabel
+	- Overall: menampilkan data keseluruhan dari tabel TimeProvince
+	- Regional: menampilkan data per provinsi dari tabel TimeProvince
+
+- Add Data page:
+	Untuk menambahkan data baru, disediakan form.
