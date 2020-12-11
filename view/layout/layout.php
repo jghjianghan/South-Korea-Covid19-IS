@@ -23,23 +23,29 @@
 </head>
 
 <body>
+	<header>
+		<div class="nav-logo">COREA</div>
+		<!-- <nav>
+			<ul>
+				<li>
+					<a class="current-nav" href="">Home</a>
+				</li>
+				<li>
+					<a class="" href="">Data</a>
+				</li>
+				<li>
+					<a class="" href="">About Us</a>
+				</li>
+			</ul>
+		</nav> -->
+	</header>
 	<div id='header-bar'>
-		<h1>Header</h1>
-
 		<!-- contoh link -->
 		<a href=<?php echo $upPrefix."index"?>>home</a>
 		
 		<?php
 			echo "<span><a href='" . $upPrefix . "index/login'>Login</a></span>";
 		?>
-	</div>
-	<div id='wrapper'>
-		<?php echo $content; ?>
-	</div>
-	<footer>
-		<hr>
-		Footer
-	</footer>
 </body>
 
 </html>
