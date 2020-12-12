@@ -16,6 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new MainController();
 			echo $ctrl->viewLogin();
 			break;
+		case $baseURL . '/about':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->viewAbout();
+			break;
 		default:
 			echo '404 Not Found';
 			break;

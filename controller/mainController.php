@@ -22,4 +22,13 @@
                 "message" => $message
             ]);
         }
+        public function viewAbout($message = "")
+        {
+            return View::createView("about.php",[
+                'title' => "about",
+                'styleSrcList' => ["mainStyle.css"],
+                'uplevel' => 1,
+                "message" => $message
+            ]);
+        }
     }
