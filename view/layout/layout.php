@@ -46,6 +46,11 @@
 		<?php
 			echo "<span><a href='" . $upPrefix . "index/login'>Login</a></span>";
 		?>
+	</div>
+
+	<div id="wrapper">
+		<?php echo $content;?>
+	</div>
 </body>
 
 </html>
