@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="./js/navbar.js" defer></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/7ff575fbe7.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./css/mainStyle.css">
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <header class="navbar">
+            <div class="nav-logo">COREA</div>
+            <nav>
+                <ul>
+                    <li>
+                        <a class="nav-link " href="">Home</a>
+                    </li>
+                    <li>
+                        <a class="nav-link current-nav" href="">Data</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="">About Us</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        
+
+        <div class="page-content">
+
+            <div class="mx-auto">
+                <div class="sub-title">Covid-19 Cases</div>
+                <div class="my-3">
+                    <div class="d-inline-block category-title current-category">
+                        Overall
+                    </div>
+                    <div class="d-inline-block category-title">
+                        Regional
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span class="mx-3">From</span>
+                <input type="date">
+                <span class="mx-3">To</span>
+                <input type="date">
+            </div>
+            
+            <div class="row">
+                <div class="col stat-content">
+                    <div class="stat-title">CONFIRMED</div>
+                    <div class="stat-value">608514</div>
+                </div>
+                <div class="col stat-content">
+                    <div class="stat-title">RELEASED</div>
+                    <div class="stat-value">588559</div>
+                </div>
+                <div class="col stat-content">
+                    <div class="stat-title">DECEASED</div>
+                    <div class="stat-value">8854</div>
+                </div>
+            </div>
+
+            <div class="my-5">
+                <div class="float-right">
+                    <button type="button" class="btn btn-outline-secondary btn-hover-darkgrey">
+                        Sort
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
