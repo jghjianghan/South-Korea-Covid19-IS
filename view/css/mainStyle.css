@@ -110,18 +110,29 @@ nav li{
 }
 
 /* VISITOR DATA */
-
 .category-title {
     font-size: 17px;
+    padding: 0 6px;
+    margin: 0 10px;
     font-weight: bold;
 }
 
 .current-category {
-    padding: 0 6px;
-    margin: 0 10px;
     border-bottom : 3px solid #0275D8;
 }
 
 .btn-hover-darkgrey:hover {
     background-color: #303030;
+}
+
+.data-head-wrapper{
+    text-align: center;
+}
+
+/* VISITOR ABOUT */
+.contact-support{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0 0 1% 3%;
 }
