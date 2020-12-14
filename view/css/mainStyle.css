@@ -127,6 +127,11 @@ nav li{
     border-bottom : 3px solid #0275D8;
 }
 
+.btn-hover-darkgrey{
+    color: #303030;
+    border: 1px solid #303030;
+}
+
 .btn-hover-darkgrey:hover {
     background-color: #303030;
 }
