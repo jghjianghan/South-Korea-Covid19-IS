@@ -46,7 +46,7 @@
 		<a href=<?php echo $upPrefix."index"?>>home</a>
 		
 		<?php
-			echo "<span><a href='" . $upPrefix . "index/login'>Login</a></span>";
+			echo "<span><a href='" . $upPrefix . "admin/login'>Login</a></span>";
 		?>
 	</div>
 	

@@ -4,7 +4,7 @@
             <div class="card" style="height: 550px;">
                 <h2 class="text-center mt-5">Input Data</h2>
                 <div class="card-body mx-5 p-5">
-                    <form action="">
+                    <form method="GET" action="<?php echo $upPrefix; ?>admin/data">
                         <div class="form-group row my-3 d-flex justify-content-between">
                             <label class="col-sm-5 col-form-label">Date</label>
                             <div class="col-sm-5">

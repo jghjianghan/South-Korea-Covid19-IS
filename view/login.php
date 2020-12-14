@@ -6,7 +6,7 @@
             <div class="card m-5">
                 <div class="card-body">
                     <h2>Log In</h2>
-                    <form action="">
+                    <form method="GET" action="<?php echo $upPrefix; ?>admin/data">
                         <div class="form-group m-5">
                             <input type="text" name="" class="justify-content-center form-control rounded-0" placeholder="Username">
                         </div>

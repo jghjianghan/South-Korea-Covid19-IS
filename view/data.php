@@ -28,7 +28,9 @@
                 </div>
             </div>
             <div>
-                <input type="submit" name="" value="ADD DATA" class="btn btn-md bg-dark text-white">
+                <form method="GET" action="<?php echo $upPrefix; ?>admin/data/add">
+                    <input type="submit" name="" value="ADD DATA" class="btn btn-md bg-dark text-white">
+                </form>
             </div>
         </div>
         <div class="mt-3">
@@ -68,7 +70,7 @@
                 </div>
             </div>
             <div>
-                <form action="">
+                <form method="GET" action="<?php echo $upPrefix; ?>admin/data/add">
                     <input type="submit" name="" value="ADD DATA" class="btn btn-md bg-dark text-white">
                 </form>
             </div>
