@@ -5,7 +5,7 @@
 	<title><?php echo $title; ?> - Corea</title>
 	<link rel='stylesheet' type='text/css' href='<?php echo $upPrefix; ?>view/css/mainStyle.css'>
 	<!-- taro link library di sini -->
-
+	<script src='<?php echo $upPrefix; ?>js/navbar.js' defer></script>
 	<?php
 	//link ke css berdasarkan list yang diset dari controller
 	if (isset($styleSrcList)) {
