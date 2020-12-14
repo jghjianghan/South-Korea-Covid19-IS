@@ -20,16 +20,18 @@
     <div class="d-flex flex-column">
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-row ">
-                <div class="btn-group px-3">
-                    <button class="btn btn-outline-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Filter <i class="fas fa-filter"></i></button>
-                </div>
-                <div class="btn-group px-3">
-                    <button class="btn btn-outline-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Short <i class="fas fa-sort-amount-down"></i></button>
+                <div class="dropdown px-3">
+                    <button class="btn btn-outline-secondary" type="button" id="SortOverall" data-bs-toggle="dropdown">Sort <i class="fas fa-sort-amount-down"></i></button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
                 </div>
             </div>
             <div>
                 <form method="GET" action="<?php echo $upPrefix; ?>admin/data/add">
-                    <input type="submit" name="" value="ADD DATA" class="btn btn-md bg-dark text-white">
+                    <input type="submit" name="" value="Add Data" class="btn btn-md bg-dark text-white">
                 </form>
             </div>
         </div>
@@ -38,7 +40,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Date</th>
-                        <th scope="col">Comfirmed</th>
+                        <th scope="col">Confirmed</th>
                         <th scope="col">Released</th>
                         <th scope="col">Deceased</th>
                     </tr>
@@ -55,23 +57,25 @@
 <div class="container mt-3 tabs" id="regional" style="display: none;">
     <div class="d-flex flex-column">
         <div class="d-flex flex-column align-self-center col-sm-2 mb-5">
-            <p class="d-flex justify-content-center">Choose a province</p>
-            <select class="col-sm-5 custom-select form-control">
+            <p class="d-flex justify-content-center">Choose a Province</p>
+            <select class="col-sm-5 form-select">
                 <option selected>Seoul</option>
             </select>
         </div>
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-row ">
-                <div class="btn-group px-3">
-                    <button class="btn btn-outline-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Filter <i class="fas fa-filter"></i></button>
-                </div>
-                <div class="btn-group px-3">
-                    <button class="btn btn-outline-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Short <i class="fas fa-sort-amount-down"></i></button>
+                <div class="dropdown px-3">
+                    <button class="btn btn-outline-secondary" type="button" id="SortRegional" data-bs-toggle="dropdown">Sort <i class="fas fa-sort-amount-down"></i></button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
                 </div>
             </div>
             <div>
                 <form method="GET" action="<?php echo $upPrefix; ?>admin/data/add">
-                    <input type="submit" name="" value="ADD DATA" class="btn btn-md bg-dark text-white">
+                    <input type="submit" name="" value="Add Data" class="btn btn-md bg-dark text-white">
                 </form>
             </div>
         </div>
@@ -81,7 +85,7 @@
                     <tr>
                         <th scope="col">Date</th>
                         <th scope="col">province</th>
-                        <th scope="col">Comfirmed</th>
+                        <th scope="col">Confirmed</th>
                         <th scope="col">Released</th>
                         <th scope="col">Deceased</th>
                     </tr>

@@ -1,1 +1,23 @@
 /* CSS untuk halaman login */
+
+.container {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.background {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    height: 50%;
+    background-color: #303030;
+    z-index: -1;
+}
+
+.tablink {
+    text-decoration: none;
+    color: black;
+}
+
+.tablink:hover {
+    cursor: pointer;
+}

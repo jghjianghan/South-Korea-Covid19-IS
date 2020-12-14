@@ -1,20 +1,22 @@
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-7 text-center">
+<div class="container position-absolute top-50 start-50 translate-middle">
+    <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
             <h1><strong>Welcome!</strong></h1>
             <p>Please login to access your account.</p>
             <div class="card m-5">
                 <div class="card-body">
                     <h2>Log In</h2>
-                    <form method="GET" action="<?php echo $upPrefix; ?>admin/data">
-                        <div class="form-group m-5">
-                            <input type="text" name="" class="justify-content-center form-control rounded-0" placeholder="Username">
+                    <form class="px-5" method="GET" action="<?php echo $upPrefix; ?>admin/data">
+                        <div class="form-floating mx-2 mt-5 mb-2">
+                            <input type="text" class="form-control" id="Username" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="Username">
+                            <label for="floatingInput">Username</label>
                         </div>
-                        <div class="form-group m-5">
-                            <input type="password" name="" class="form-control" placeholder="Password">
+                        <div class="form-floating mx-2 mb-5">
+                            <input type="password" class="form-control" id="Password" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
                         </div>
-                        <div class="form-group">
-                            <input type="submit" name="" value="LOGIN" class="btn btn-lg bg-dark text-white">
+                        <div class="form-group mb-3">
+                            <input type="submit" value="LOGIN" class="btn btn-lg bg-dark text-white">
                         </div>
                     </form>
                 </div>
@@ -22,4 +24,6 @@
         </div>
     </div>
 </div>
-<p class="text-center">Stay Safe, Stay Healthy</p>
+<p class="position-absolute bottom-0 start-50 translate-middle-x text-white">Stay Safe, Stay Healthy</p>
+
+<div class="background"></div>
