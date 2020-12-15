@@ -9,6 +9,7 @@
         {
             return View::createView("home.php",[
                 'title' => "Corea",
+                'page' => "home",
             ]);
         }
 
@@ -16,6 +17,7 @@
         {
             return View::createView("dataOverall.php",[
                 'title' => "Corea - Overall Data",
+                'page' => "data",
             ]);
         }
 
@@ -23,6 +25,7 @@
         {
             return View::createView("dataRegional.php",[
                 'title' => "Corea - Regional Data",
+                'page' => "data",
             ]);
         }
 
@@ -30,6 +33,7 @@
         {
             return View::createView("about.php",[
                 'title' => "Corea - About",
+                'page' => "about",
             ]);
         }
     }
