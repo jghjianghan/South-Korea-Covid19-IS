@@ -8,27 +8,28 @@
         public function viewHome()
         {
             return View::createView("home.php",[
-                'title' => "Welcome",
-                'styleSrcList' => ['homeStyle.css'],
-                'scriptSrcList' => ['contoh.js']
+                'title' => "Corea",
             ]);
         }
-        public function viewLogin($message = "")
+
+        public function viewDataOverall()
         {
-            return View::createView("login.php",[
-                'title' => "Login",
-                'styleSrcList' => ["loginStyle.css"],
-                'uplevel' => 1,
-                "message" => $message
+            return View::createView("dataOverall.php",[
+                'title' => "Corea - Overall Data",
             ]);
         }
-        public function viewAbout($message = "")
+
+        public function viewDataRegional()
+        {
+            return View::createView("dataRegional.php",[
+                'title' => "Corea - Regional Data",
+            ]);
+        }
+
+        public function viewAbout()
         {
             return View::createView("about.php",[
-                'title' => "about",
-                'styleSrcList' => ["mainStyle.css"],
-                'uplevel' => 1,
-                "message" => $message
+                'title' => "Corea - About",
             ]);
         }
     }
