@@ -30,9 +30,7 @@
 
 <body>
 	<header class="navbar">
-		<div class="nav-logo">
-			COREA
-		</div>
+		<a class="nav-logo">COREA</a>
 		<nav>
 			<ul>
 				<li>
