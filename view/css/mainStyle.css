@@ -33,6 +33,7 @@
     cursor: pointer;
     font-size: 28px;
     letter-spacing: 6px;
+    color: black;
 }
 
 .nav-logo:link {
@@ -60,17 +61,17 @@
 }
 
 .nav-logo.scrolled:link {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
 .nav-logo.scrolled:visited {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
 .nav-logo.scrolled:hover {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
