@@ -30,7 +30,7 @@
 
 <body>
 	<header class="navbar">
-		<a class="nav-logo">COREA</a>
+		<a class="nav-logo" href="<?php echo $upPrefix; ?>index">COREA</a>
 		<nav>
 			<ul>
 				<li>
