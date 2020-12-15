@@ -3,6 +3,7 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script src="./js/navbar.js" defer></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://kit.fontawesome.com/7ff575fbe7.js" crossorigin="anonymous"></script>
@@ -49,6 +50,10 @@
                 <span class="mx-3">To</span>
                 <input type="date">
             </div>
+
+            <div class="table">
+                <canvas id="bar-chart" width="800" height="200"></canvas>
+            </div>
             
             <div class="row">
                 <div class="col stat-content">
@@ -92,4 +97,21 @@
         </div>
         
     </body>
+
+    <script>
+        new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+            labels: ["1/1/20","2/1/20","3/1/20","4/1/20","5/1/20","6/1/20","7/1/20","8/1/20","9/1/20","10/1/20",
+            "11/1/20","12/1/20","13/1/20","14/1/20","15/1/20",,"16/1/20","17/1/20","18/1/20","19/1/20","20/1/20"],
+        datasets: [
+            {
+            label: "Number of Cases",
+            backgroundColor: "#0275D8",
+            data: [2478,5267,734,784,433,2478,5267,734,784,433,2478,5267,734,784,433, 2478,5267,734,784,433, 500]
+                }
+            ]
+        }
+        });
+    </script>
 </html>

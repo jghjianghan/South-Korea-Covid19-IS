@@ -74,6 +74,11 @@ nav li{
     font-weight: bold;
 }
 
+.table{
+    margin-top: 2%;
+    bottom: 2%;
+}
+
 /* VISITOR HOME */
 .home-carousel-content{
     border-radius: 8px;
