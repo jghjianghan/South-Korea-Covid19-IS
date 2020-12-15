@@ -34,13 +34,13 @@
 		<nav>
 			<ul>
 				<li>
-					<a class="nav-link current-nav" href="<?php echo $upPrefix; ?>index">Home</a>
+					<a class="nav-link <?php if($page === 'home') echo "current-nav";?>" href="<?php echo $upPrefix; ?>index">Home</a>
 				</li>
 				<li>
-					<a class="nav-link" href="<?php echo $upPrefix; ?>dataOverall">Data</a>
+					<a class="nav-link <?php if($page === 'data') echo "current-nav";?>" href="<?php echo $upPrefix; ?>dataOverall">Data</a>
 				</li>
 				<li>
-					<a class="nav-link" href="<?php echo $upPrefix; ?>about">About Us</a>
+					<a class="nav-link <?php if($page === 'about') echo "current-nav";?>" href="<?php echo $upPrefix; ?>about">About Us</a>
 				</li>
 			</ul>
 		</nav>
