@@ -17,5 +17,5 @@ CREATE TABLE TimeProvince(
 	province_name varchar(20),
 	confirmed int,
 	released int,
-	deceased int,
+	deceased int
 );
