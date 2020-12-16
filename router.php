@@ -11,21 +11,43 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new MainController();
 			echo $ctrl->viewHome();
 			break;
+
 		case $baseURL . '/admin/login':
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
 			echo $ctrl->viewLogin();
 			break;
+
 		case $baseURL . '/admin/data':
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
 			echo $ctrl->viewData();
 			break;
+			
 		case $baseURL . '/admin/data/add':
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
 			echo $ctrl->viewAddData();
 			break;
+
+		case $baseURL . '/dataOverall':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->viewDataOverall();
+			break;
+
+		case $baseURL . '/dataRegional':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->viewDataRegional();
+			break;
+
+		case $baseURL . '/about':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo $ctrl->viewAbout();
+			break;
+
 		default:
 			echo '404 Not Found';
 			break;

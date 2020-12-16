@@ -5,4 +5,4 @@ A web-based information system for Covid-19 cases in South Korea. This project i
 TBD
 
 # UI Design
-https://www.figma.com/file/2IKbodWRolPT90QKODvsJo/Tubes-Manpro?node-id=0%3A1
+https://www.figma.com/file/2IKbodWRolPT90QKODvsJo/Tubes-Manpro

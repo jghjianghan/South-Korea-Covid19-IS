@@ -58,7 +58,7 @@
     <div class="d-flex flex-column">
         <div class="d-flex flex-column align-self-center col-sm-2 mb-5">
             <p class="d-flex justify-content-center">Choose a Province</p>
-            <select class="col-sm-5 form-select">
+            <select class="col-sm-12 form-select">
                 <option selected>Seoul</option>
             </select>
         </div>

@@ -1,0 +1,7 @@
+Perancangan table
+
+Time(date, time, negative, confirmed , released , deceased)
+
+TimeProvince(date, province_name,  confirmed , released , deceased)
+
+Admin(idAdmin(PK),username, password)

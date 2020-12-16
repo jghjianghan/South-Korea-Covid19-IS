@@ -1,6 +1,6 @@
 <div class="container position-absolute top-50 start-50 translate-middle">
     <div class="row justify-content-center">
-        <div class="col-md-5 text-center">
+        <div class="col-md-6 text-center">
             <h1><strong>Welcome!</strong></h1>
             <p>Please login to access your account.</p>
             <div class="card m-5">
