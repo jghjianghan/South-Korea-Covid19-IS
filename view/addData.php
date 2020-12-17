@@ -21,19 +21,19 @@
                     <div class="form-group row  d-flex justify-content-between">
                         <label class="col-sm-5 col-form-label fs-5">Number of Confirmed Case </label>
                         <div class="col-sm-3">
-                            <input type="number" value="1" min="1" class="form-control text-center" id="ConfirmCases">
+                            <input type="number" value="0" min="0" class="form-control text-center" id="ConfirmCases">
                         </div>
                     </div>
                     <div class="form-group row  d-flex justify-content-between">
                         <label class="col-sm-5 col-form-label fs-5">Number of Released Case </label>
                         <div class="col-sm-3">
-                            <input type="number" value="1" min="1" class="form-control text-center" id="ReleasedCases">
+                            <input type="number" value="0" min="0" class="form-control text-center" id="ReleasedCases">
                         </div>
                     </div>
                     <div class="form-group row  d-flex justify-content-between">
                         <label class="col-sm-5 col-form-label fs-5">Number of Deceased Case </label>
                         <div class="col-sm-3">
-                            <input type="number" value="1" min="1" class="form-control text-center" id="DeceasedCases">
+                            <input type="number" value="0" min="0" class="form-control text-center" id="DeceasedCases">
                         </div>
                     </div>
                     <div class="form-group text-center my-3">

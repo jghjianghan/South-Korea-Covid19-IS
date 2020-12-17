@@ -4,10 +4,10 @@
             <h2><strong>Covid-19 Cases</strong></h2>
         </div>
         <div class="d-flex flex-row justify-content-center">
-            <div class="m-3">
+            <div class="m-3 d-inline-block category-title">
                 <a class="tablink border-bottom border-primary border-5" onclick="openContent(this, 'overall')"><strong>Overall</strong></a>
             </div>
-            <div class="m-3">
+            <div class="m-3 d-inline-block category-title">
                 <a class="tablink" onclick="openContent(this, 'regional')"><strong>Regional</strong></a>
             </div>
         </div>
@@ -35,8 +35,8 @@
                 </form>
             </div>
         </div>
-        <div class="mt-3">
-            <table class="table table-striped">
+        <div class="my-3">
+            <table class="table table-striped text-center table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Date</th>
@@ -79,8 +79,8 @@
                 </form>
             </div>
         </div>
-        <div class="mt-3">
-            <table class="table table-striped">
+        <div class="my-3">
+            <table class="table table-striped text-center table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Date</th>
@@ -91,7 +91,7 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                    
                 </tbody>
             </table>
         </div>
