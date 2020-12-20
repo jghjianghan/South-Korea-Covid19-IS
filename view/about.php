@@ -21,7 +21,7 @@
                 </p>
             </div>
 
-            <img id="about-us-image" src="<?php echo $upPrefix; ?>view/img/call.png" alt="">
+            <img src="<?php echo $upPrefix; ?>view/img/call.png" alt="">
         </div>
     </div>
 
