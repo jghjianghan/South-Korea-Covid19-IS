@@ -1,8 +1,8 @@
 <div class="container position-absolute top-50 start-50 translate-middle">
     <div class="row justify-content-center">
-        <div class="card col-md-7" >
-            <h2 class="text-center mt-5">Input Data</h2>
-            <div class="card-body mx-5 p-5">
+        <div class="card col-md-7 mt-5" >
+            <h2 class="text-center mt-2">Input Data</h2>
+            <div class="card-body mx-5 px-5">
                 <form method="GET" action="<?php echo $upPrefix; ?>admin/data">
                     <div class="form-group row my-3 d-flex justify-content-between">
                         <label for="example-date-input" class="col-5 col-form-label fs-5">Date</label>
@@ -36,7 +36,7 @@
                             <input type="number" value="0" min="0" class="form-control text-center" id="DeceasedCases">
                         </div>
                     </div>
-                    <div class="form-group text-center my-3">
+                    <div class="form-group text-center">
                         <input type="submit" value="ADD DATA" class="btn btn-lg bg-dark text-white">
                     </div>
                 </form>
