@@ -30,6 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			echo $ctrl->viewAddData();
 			break;
 
+		case $baseURL . '/admin/addAccount':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->viewAddAccount();
+			break;
+
+		case $baseURL . '/admin/changePassword':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->viewChangePassword();
+			break;	
+
 		case $baseURL . '/dataOverall':
 			require_once "controller/mainController.php";
 			$ctrl = new MainController();
