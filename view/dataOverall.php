@@ -50,7 +50,7 @@
 
     <br><br>
 
-    <table class="table table-striped text-center">
+    <table class="table table-striped text-center" id="case-table">
         <thead>
             <tr>
                 <th scope="col">Date</th>

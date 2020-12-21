@@ -18,6 +18,7 @@
             return View::createView("dataOverall.php",[
                 'title' => "Corea - Overall Data",
                 'page' => "data",
+                'scriptSrcList' => ['tableEntry.js', 'caseTable.js']
             ]);
         }
 
