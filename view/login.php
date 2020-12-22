@@ -1,5 +1,5 @@
-<div class="container row position-absolute top-50 start-50 translate-middle justify-content-center" style="z-index: 2;">
-    <div class="col-md-5 text-center">
+<div class="container row position-absolute start-50 translate-middle justify-content-center">
+    <div class="col-md-5 text-center mt-5 position-absolute">
         <h1><strong>Welcome!</strong></h1>
         <p>Please login to access your account.</p>
         <div class="card p-3">

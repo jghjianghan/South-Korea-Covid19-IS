@@ -1,5 +1,5 @@
-<div class="container row position-absolute top-50 start-50 translate-middle justify-content-center" style="z-index: 2;">
-    <div class="col-md-5 text-center">
+<div class="container row position-absolute start-50 translate-middle justify-content-center">
+    <div class="col-md-5 text-center position-absolute" style="margin-top: 10%">
         <div class="card p-3">
             <h2>Change Password</h2>
             <form class="px-5" method="GET" action="<?php echo $upPrefix; ?>admin/data">
