@@ -40,6 +40,7 @@
     </div>
 
     <div class="my-5">
+    <div class="float-left">
         <div class="dropdown">
             <button class="btn btn-outline-secondary btn-hover-darkgrey dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                 Sort
@@ -88,10 +89,8 @@
 
             </ul>
         </div>
-
+        </div>
      </div>
-
-    
     
 
     <br><br>
