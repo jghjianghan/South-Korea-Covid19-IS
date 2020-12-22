@@ -5,7 +5,7 @@ INTO TABLE Time
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
-(@date,confirmed,released,deceased)
+(@date,test,negative,confirmed,released,deceased)
 SET date = STR_TO_DATE(@date, '%Y-%m-%d');
 
 
