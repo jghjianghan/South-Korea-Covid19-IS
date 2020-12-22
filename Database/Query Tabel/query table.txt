@@ -26,3 +26,7 @@ SELECT date,confirmed,released,deceased
 FROM time
 ORDER BY date ASC //x = date||confirmed||released||deceased
 
+//data overall x descending
+SELECT date,confirmed,released,deceased 
+FROM time
+ORDER BY date DESC //x = date||confirmed||released||deceased
