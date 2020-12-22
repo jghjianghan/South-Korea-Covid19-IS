@@ -1,0 +1,1 @@
+SELECT MAX(confirmed) as 'Confirmed' FROM time
