@@ -7,6 +7,8 @@ CREATE TABLE Admin(
 
 CREATE TABLE Time(
 	date DATE,
+	test int,
+	negative int,
 	confirmed int,
 	released int,
 	deceased int
