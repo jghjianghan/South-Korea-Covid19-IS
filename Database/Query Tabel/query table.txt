@@ -20,13 +20,3 @@ WHERE province_name='Seoul' AND date > '2020-01-20' AND date <= '2020-02-01' //-
 //ngambil data nama seluruh province yang tercatat sistem
 SELECT DISTINCT province_name 
 FROM timeprovince
-
-//data overall x ascending
-SELECT date,confirmed,released,deceased 
-FROM time
-ORDER BY date ASC //x = date||confirmed||released||deceased
-
-//data overall x descending
-SELECT date,confirmed,released,deceased 
-FROM time
-ORDER BY date DESC //x = date||confirmed||released||deceased
