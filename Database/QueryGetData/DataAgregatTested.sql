@@ -1,0 +1,1 @@
+SELECT MAX(test) as 'Tested' FROM time
