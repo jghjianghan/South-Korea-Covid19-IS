@@ -1,0 +1,22 @@
+//data overall awal-akhir
+SELECT date,confirmed,released,deceased 
+FROM time
+
+//data overall rentang x - y
+SELECT date,confirmed,released,deceased 
+FROM time 
+WHERE date > '2020-01-20' AND date <= '2020-02-01' //date > x AND date <= y
+
+//data regoin awal - akhir
+SELECT date, confirmed, released, deceased 
+FROM timeprovince 
+WHERE province_name='Seoul' //--> tinggal ganti2 nama provincenamenya
+
+//data region rentang x - y
+SELECT date, confirmed, released, deceased 
+FROM timeprovince 
+WHERE province_name='Seoul' AND date > '2020-01-20' AND date <= '2020-02-01' //--> tinggal ganti2 nama provincenamenya;date > x AND date <= y
+
+//ngambil data nama seluruh province yang tercatat sistem
+SELECT DISTINCT province_name 
+FROM timeprovince
