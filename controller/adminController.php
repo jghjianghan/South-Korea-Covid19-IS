@@ -73,7 +73,7 @@
                     if ($password == $this->db->executeSelectQuery("SELECT password FROM admin WHERE idAdmin = $idUser")[0]['password']){
                         $_SESSION['idAdmin'] = $idUser;
                         $_SESSION['username'] = $result[0]['username'];
-                        log("berhasil login");
+                        header("location: data");
                         return;
                     } else {
                         return $this->viewLogin("Wrong password");
@@ -89,6 +89,6 @@
         {
             session_unset();
             session_destroy();
-            header("location: admin/login");
+            header("location: login");
         }
     }

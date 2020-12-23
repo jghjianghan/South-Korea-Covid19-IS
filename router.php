@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 		case $baseURL . '/admin/login':
 			if (isset($_SESSION['username'])) {
-				header('location: admin/data');
+				header('location: data');
 			} else {
 				require_once "controller/adminController.php";
 				$ctrl = new AdminController();
@@ -22,6 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 
+		case $baseURL . '/admin/logout':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->logout();
+			break;
+			
 		case $baseURL . '/admin/data':
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
