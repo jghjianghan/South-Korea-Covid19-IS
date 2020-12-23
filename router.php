@@ -13,9 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			break;
 
 		case $baseURL . '/admin/login':
-			require_once "controller/adminController.php";
-			$ctrl = new AdminController();
-			echo $ctrl->viewLogin();
+			if (isset($_SESSION['username'])) {
+				header('location: admin/data');
+			} else {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewLogin();
+			}
 			break;
 
 		case $baseURL . '/admin/data':
@@ -23,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new AdminController();
 			echo $ctrl->viewData();
 			break;
-			
+
 		case $baseURL . '/admin/data/add':
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
@@ -40,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
 			echo $ctrl->viewChangePassword();
-			break;	
+			break;
 
 		case $baseURL . '/dataOverall':
 			require_once "controller/mainController.php";
@@ -66,10 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	}
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	switch ($url) {
-		case $baseURL . '/login':
-			require_once "controller/mainController.php";
-			$ctrl = new MainController();
-			// do something
+		case $baseURL . '/admin/login':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->validateLogin();
 			break;
 		default:
 			echo '404 Not Found';
