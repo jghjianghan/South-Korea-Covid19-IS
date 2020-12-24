@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 		case $baseURL . '/admin/login':
 			if (isset($_SESSION['username'])) {
-				header('location: data');
+				header('location: dataOverall');
 			} else {
 				require_once "controller/adminController.php";
 				$ctrl = new AdminController();
@@ -28,10 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			echo $ctrl->logout();
 			break;
 			
-		case $baseURL . '/admin/data':
+		case $baseURL . '/admin/dataOverall':
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
-			echo $ctrl->viewData();
+			echo $ctrl->viewDataOverall($ctrl->getDataOverall());
+			break;
+
+		case $baseURL . '/admin/dataRegional':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->viewDataRegional($ctrl->getDataRegional("Seoul"));
 			break;
 
 		case $baseURL . '/admin/data/add':
@@ -81,6 +87,19 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new AdminController();
 			echo $ctrl->validateLogin();
 			break;
+
+		case $baseURL . '/admin/addAccount':
+            require_once "controller/adminController.php";
+            $ctrl = new AdminController();
+            echo $ctrl->addAccount();
+			break;
+			
+		case $baseURL . '/admin/changePassword':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->changePassword();
+			break;
+
 		default:
 			echo '404 Not Found';
 			break;
