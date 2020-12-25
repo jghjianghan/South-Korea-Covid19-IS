@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="form-group text-center">
-                    <button type="button" class="btn btn-lg bg-dark text-white">CANCEL</button>
+                    <button type="button" onclick="window.location.href='<?php echo $upPrefix; ?>admin/dataOverall'" class="btn btn-lg bg-dark text-white">CANCEL</button>
                     <button type="submit" class="btn btn-lg bg-dark text-white">ADD DATA</button>
                 </div>
             </form>

@@ -16,7 +16,7 @@
                     <label for="floatingPassword">Confirm Password</label>
                 </div>
                 <div class="form-group mb-3">
-                    <button type="button" class="btn btn-lg bg-dark text-white">CANCEL</button> 
+                    <button type="button" onclick="window.location.href='<?php echo $upPrefix; ?>admin/dataOverall'" class="btn btn-lg bg-dark text-white">CANCEL</button> 
                     <button type="submit" class="btn btn-lg bg-dark text-white">SUBMIT</button>
                 </div>
             </form>
