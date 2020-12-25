@@ -48,5 +48,25 @@
             }
             return $result;
         }
+        /**
+         * Method untuk mengambil data nama province
+         * @return array data nama provincce
+         */
+        public function getAllProvince()
+        {
+            $query = "
+                SELECT DISTINCT province_name 
+                FROM timeprovince
+            ";
+            $query_result = $this->db->executeSelectQuery($query);
+
+            $result = [];
+
+            foreach ($query_result as $key => $value) {
+                $result [] = $value['province_name'];
+            }
+            return $result;
+        }
+        
     }
 ?>
