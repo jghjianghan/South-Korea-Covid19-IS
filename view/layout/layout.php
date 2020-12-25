@@ -3,7 +3,7 @@
 
 <head>
 	<title><?php echo $title; ?></title>
-	
+
 	<!-- taro link library di sini -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -35,21 +35,30 @@
 		<a class="nav-logo" href="<?php echo $upPrefix; ?>index">COREA</a>
 		<nav>
 			<ul>
-				<li>
-					<a class="nav-link <?php if($page === 'home') echo "current-nav";?>" href="<?php echo $upPrefix; ?>index">Home</a>
+				<!-- <li>
+					<a class="nav-link <?php if ($page === 'home') echo "current-nav"; ?>" href="<?php echo $upPrefix; ?>index">Home</a>
 				</li>
 				<li>
-					<a class="nav-link <?php if($page === 'data') echo "current-nav";?>" href="<?php echo $upPrefix; ?>dataOverall">Data</a>
+					<a class="nav-link <?php if ($page === 'data') echo "current-nav"; ?>" href="<?php echo $upPrefix; ?>dataOverall">Data</a>
 				</li>
 				<li>
-					<a class="nav-link <?php if($page === 'about') echo "current-nav";?>" href="<?php echo $upPrefix; ?>about">About Us</a>
+					<a class="nav-link <?php if ($page === 'about') echo "current-nav"; ?>" href="<?php echo $upPrefix; ?>about">About Us</a>
+				</li> -->
+				<li class="dropdown ">
+					<a class="nav-link dropdown-toggle" id="navbarAdminDropdown" role="button" data-toggle="dropdown" ><i class="fas fa-user-circle"></i> Admin</a>
+					<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/addAccount">Add Account</a>
+						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/changePassword">Change Password</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Log Out <i class="fas fa-sign-out-alt"></i></a>
+					</div>
 				</li>
 			</ul>
 		</nav>
 	</header>
 
 	<div id="wrapper">
-		<?php echo $content;?>
+		<?php echo $content; ?>
 	</div>
 </body>
 
