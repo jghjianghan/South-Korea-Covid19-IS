@@ -67,6 +67,33 @@
             }
             return $result;
         }
-        
+        /**
+         * Method untuk mengambil data overall dengan rentang x - y
+         * @param string $from
+         * @param string $to
+         * @return array data overall dengan rentang waktu
+         */
+        public function getDataOverallRange($from, $to)
+        {
+            $currentCase = 0;
+            $f1 = str_replace('/','-',$from);
+            $t1 = str_replace('/','-',$to);
+            $newFrom = date("Y-m-d",strtotime($f1));
+            $newTo = date("Y-m-d",strtotime($t1));
+            $query = "
+                SELECT date,confirmed,released,deceased 
+                FROM time 
+                WHERE date > '$newFrom' AND date <= '$newTo' 
+            ";
+            $query_result = $this->db->executeSelectQuery($query);
+
+            $result = [];
+
+            foreach($query_result as $key => $value){
+                $result [] = new Tabel($value['date'],$value['confirmed']-$currentCase,$value['confirmed'],$value['released'],$value['deceased']);
+                $currentCase = $value['confirmed'];
+            }
+            return $result;
+        }
     }
 ?>
