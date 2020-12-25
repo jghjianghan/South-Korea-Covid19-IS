@@ -50,7 +50,7 @@
 						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/addAccount">Add Account</a>
 						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/changePassword">Change Password</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Log Out <i class="fas fa-sign-out-alt"></i></a>
+						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/logout">Log Out <i class="fas fa-sign-out-alt"></i></a>
 					</div>
 				</li>
 			</ul>

@@ -19,25 +19,27 @@
     <div class="d-flex flex-column">
         <div class="d-flex flex-column align-self-center col-sm-2 mb-5">
             <p class="d-flex justify-content-center">Choose a Province</p>
-            <select class="col-sm-12 form-select">
-                <option>Busan</option>
-                <option>Chungcheongbuk-do</option>
-                <option>Chungcheongnam-do</option>
-                <option>Daegu</option>
-                <option>Daejeon</option>
-                <option>Gangwon-do</option>
-                <option>Gwangju</option>
-                <option>Gyeonggi-do</option>
-                <option>Gyeongsangbuk-do</option>
-                <option>Gyeongsangnam-do</option>
-                <option>Incheon</option>
-                <option>Jeju-do</option>
-                <option>Jeollabuk-do</option>
-                <option>Jeollanam-do</option>
-                <option>Sejong</option>
-                <option selected>Seoul</option>
-                <option>Ulsan</option>
-            </select>
+            <form method="POST" action="<?php echo $upPrefix; ?>admin/dataRegional">
+                <select class="col-sm-12 form-select" id="region" name="region" onchange='this.form.submit()'>
+                    <option value="Busan" <?php if(isset($_POST['region']) && $_POST['region'] == 'Busan'){ echo "selected"; } ?> >Busan</option>
+                    <option value="Chungcheongbuk-do" <?php if(isset($_POST['region']) && $_POST['region'] == 'Chungcheongbuk-do'){ echo "selected"; } ?> >Chungcheongbuk-do</option>
+                    <option value="Chungcheongnam-do" <?php if(isset($_POST['region']) && $_POST['region'] == 'Chungcheongnam-do'){ echo "selected"; } ?> >Chungcheongnam-do</option>
+                    <option value="Daegu" <?php if(isset($_POST['region']) && $_POST['region'] == 'Daegu'){ echo "selected"; } ?> >Daegu</option>
+                    <option value="Daejeon" <?php if(isset($_POST['region']) && $_POST['region'] == 'Daejeon'){ echo "selected"; } ?> >Daejeon</option>
+                    <option value="Gangwon-do" <?php if(isset($_POST['region']) && $_POST['region'] == 'Gangwon-do'){ echo "selected"; } ?> >Gangwon-do</option>
+                    <option value="Gwangju" <?php if(isset($_POST['region']) && $_POST['region'] == 'Gwangju'){ echo "selected"; } ?> >Gwangju</option>
+                    <option value="Gyeonggi-do" <?php if(isset($_POST['region']) && $_POST['region'] == 'Gyeonggi-do'){ echo "selected"; } ?> >Gyeonggi-do</option>
+                    <option value="Gyeongsangbuk-do" <?php if(isset($_POST['region']) && $_POST['region'] == 'Gyeongsangbuk-do'){ echo "selected"; } ?> >Gyeongsangbuk-do</option>
+                    <option value="Gyeongsangnam-do" <?php if(isset($_POST['region']) && $_POST['region'] == 'Gyeongsangnam-do'){ echo "selected"; } ?> >Gyeongsangnam-do</option>
+                    <option value="Incheon" <?php if(isset($_POST['region']) && $_POST['region'] == 'Incheon'){ echo "selected"; } ?> >Incheon</option>
+                    <option value="Jeju-do" <?php if(isset($_POST['region']) && $_POST['region'] == 'Jeju-do'){ echo "selected"; } ?> >Jeju-do</option>
+                    <option value="Jeollabuk-do" <?php if(isset($_POST['region']) && $_POST['region'] == 'Jeollabuk-do'){ echo "selected"; } ?> >Jeollabuk-do</option>
+                    <option value="Jeollanam-do" <?php if(isset($_POST['region']) && $_POST['region'] == 'Jeollanam-do'){ echo "selected"; } ?> >Jeollanam-do</option>
+                    <option value="Sejong" <?php if(isset($_POST['region']) && $_POST['region'] == 'Sejong'){ echo "selected"; } ?> >Sejong</option>
+                    <option value="Seoul" <?php if(isset($_POST['region']) && $_POST['region'] == 'Seoul'){ echo "selected"; } ?> >Seoul</option>
+                    <option value="Ulsan" <?php if(isset($_POST['region']) && $_POST['region'] == 'Ulsan'){ echo "selected"; } ?> >Ulsan</option>
+                </select>
+            </form>
         </div>
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-row ">

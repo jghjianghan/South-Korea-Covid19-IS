@@ -117,8 +117,13 @@
             return $result;
         }
         
-        public function getDataRegional($region)
+        public function getDataRegional()
         {
+            if (isset($_POST['region']) && $_POST['region']!="") {
+                $region = $_POST['region'];
+            } else {
+                $region = "Busan";
+            }
             $currentCase = 0;
 
             $query = "
@@ -147,7 +152,7 @@
                 header("location: dataOverall");
                 return;
             } else {
-                return $this->viewLogin("Please fill both username and password");
+                return $this->viewAddAccount("Please fill both username and password");
             }
         }
 
@@ -174,13 +179,30 @@
                         header("location: dataOverall");
                         return;
                     } else {
-                        return $this->viewLogin("New Password and Confirm Password are not identic");
+                        return $this->viewChangePassword("New Password and Confirm Password are not identic");
                     }
                 } else {
-                    return $this->viewLogin("Incorrect Old Password");
+                    return $this->viewChangePassword("Incorrect Old Password");
                 }
             } else {
-                return $this->viewLogin("Please fill all field");
+                return $this->viewChangePassword("Please fill all field");
+            }
+        }
+
+        public function addCases() 
+        {
+            if (isset($_POST['date']) && $_POST['date']!="" && isset($_POST['region']) && $_POST['region']!="" && isset($_POST['confirmedCases']) && $_POST['confirmedCases']!="" && isset($_POST['releasedCases']) && $_POST['releasedCases']!="" && isset($_POST['deceasedCases']) && $_POST['deceasedCases']!=""){
+                $date = $_POST['date'];
+                $region = $_POST['region'];
+                $confirmedCases = $_POST['confirmedCases'];
+                $releasedCases = $_POST['releasedCases'];
+                $deceasedCases = $_POST['deceasedCases'];
+
+                $this->db->executeSelectQuery("INSERT INTO timeprovince(date, province_name, confirmed, released, deceased) VALUES ('$date', '$region', '$confirmedCases', '$releasedCases', '$deceasedCases')");
+                header("location: ../dataOverall");
+                return;
+            } else {
+                return $this->viewAddData("Please fill all field");
             }
         }
     }
