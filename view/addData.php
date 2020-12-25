@@ -52,7 +52,8 @@
                     </div>
                 </div>
                 <div class="form-group text-center">
-                    <input type="submit" value="ADD DATA" class="btn btn-lg bg-dark text-white">
+                    <button type="button" class="btn btn-lg bg-dark text-white">CANCEL</button>
+                    <button type="submit" class="btn btn-lg bg-dark text-white">ADD DATA</button>
                 </div>
             </form>
         </div>

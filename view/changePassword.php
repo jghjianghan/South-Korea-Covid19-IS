@@ -16,7 +16,8 @@
                     <label for="floatingPassword">Confirm Password</label>
                 </div>
                 <div class="form-group mb-3">
-                    <input type="submit" value="SUBMIT" class="btn btn-lg bg-dark text-white">
+                    <button type="button" class="btn btn-lg bg-dark text-white">CANCEL</button> 
+                    <button type="submit" class="btn btn-lg bg-dark text-white">SUBMIT</button>
                 </div>
             </form>
         </div>
