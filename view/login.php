@@ -1,5 +1,5 @@
 <div class="container row position-absolute start-50 translate-middle justify-content-center">
-    <div class="col-md-5 text-center mt-5 position-absolute">
+    <div style="margin-top: 12%;" class="col-md-5 text-center position-absolute">
         <h1><strong>Welcome!</strong></h1>
         <p>Please login to access your account.</p>
         <div class="card p-3">
@@ -20,6 +20,6 @@
         </div>
     </div>
 </div>
-<p class="position-absolute bottom-0 start-50 translate-middle-x text-white">Stay Safe, Stay Healthy</p>
+<p class="position-absolute bottom-0 start-50 translate-middle-x text-white">Stay Safe, Stay Healthy.</p>
 
 <div class="background"></div>
