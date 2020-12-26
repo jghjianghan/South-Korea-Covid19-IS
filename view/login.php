@@ -1,5 +1,5 @@
 <div class="container row position-absolute start-50 translate-middle justify-content-center">
-    <div style="margin-top: 10%;" class="col-md-5 text-center position-absolute">
+    <div style="margin-top: 12%;" class="col-md-5 text-center position-absolute">
         <h1><strong>Welcome!</strong></h1>
         <p>Please login to access your account.</p>
         <div class="card p-3">
