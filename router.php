@@ -29,39 +29,53 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			break;
 			
 		case $baseURL . '/admin/dataOverall':
-			require_once "controller/adminController.php";
-			$ctrl = new AdminController();
-			echo $ctrl->viewDataOverall($ctrl->getDataOverall());
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewDataOverall($ctrl->getDataOverall());
+			} else {
+				header('location: login');
+			}
 			break;
 
 		case $baseURL . '/admin/dataRegional':
-			require_once "controller/adminController.php";
-			$ctrl = new AdminController();
-			echo $ctrl->viewDataRegional($ctrl->getDataRegional());
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewDataRegional($ctrl->getDataRegional());
+			} else {
+				header('location: login');
+			}
 			break;
 
 		case $baseURL . '/admin/data/add':
-			require_once "controller/adminController.php";
-			$ctrl = new AdminController();
-			echo $ctrl->viewAddData();
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewAddData();
+			} else {
+				header('location: ../login');
+			}
 			break;
 
 		case $baseURL . '/admin/addAccount':
-			require_once "controller/adminController.php";
-			$ctrl = new AdminController();
-			echo $ctrl->viewAddAccount();
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewAddAccount();
+			} else {
+				header('location: login');
+			}
 			break;
 
 		case $baseURL . '/admin/changePassword':
-			require_once "controller/adminController.php";
-			$ctrl = new AdminController();
-			echo $ctrl->viewChangePassword();
-			break;
-
-		case $baseURL . '/admin/logout':
-			require_once "controller/adminController.php";
-			$ctrl = new AdminController();
-			echo $ctrl->logout();
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewChangePassword();
+			} else {
+				header('location: login');
+			}
 			break;
 
 		case $baseURL . '/dataOverall':

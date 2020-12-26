@@ -34,6 +34,18 @@
                     </div>
                 </div>
                 <div class="form-group row  d-flex justify-content-between">
+                    <label class="col-sm-5 col-form-label fs-5">Number of Tested Case </label>
+                    <div class="col-sm-3">
+                        <input type="number" value="0" min="0" class="form-control text-center" id="testedCases" name="testedCases">
+                    </div>
+                </div>
+                <div class="form-group row  d-flex justify-content-between">
+                    <label class="col-sm-5 col-form-label fs-5">Number of Negative Case </label>
+                    <div class="col-sm-3">
+                        <input type="number" value="0" min="0" class="form-control text-center" id="negativeCases" name="negativeCases">
+                    </div>
+                </div>
+                <div class="form-group row  d-flex justify-content-between">
                     <label class="col-sm-5 col-form-label fs-5">Number of Confirmed Case </label>
                     <div class="col-sm-3">
                         <input type="number" value="0" min="0" class="form-control text-center" id="confirmedCases" name="confirmedCases">

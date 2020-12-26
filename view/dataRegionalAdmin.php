@@ -8,7 +8,7 @@
                 <a href="<?php echo $upPrefix; ?>admin/dataOverall" class="tablink"><strong>Overall</strong></a>
             </div>
             <div class="m-3 d-inline-block category-title">
-                <a class="tablink border-bottom border-primary border-5"><strong>Regional</strong></a>
+                <a href="<?php echo $upPrefix; ?>admin/dataRegional" class="tablink border-bottom border-primary border-5"><strong>Regional</strong></a>
             </div>
         </div>
 
@@ -45,10 +45,48 @@
             <div class="d-flex flex-row ">
                 <div class="dropdown px-3">
                     <button class="btn btn-outline-secondary" type="button" id="SortRegional" data-bs-toggle="dropdown">Sort <i class="fas fa-sort-amount-down"></i></button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <ul class="dropdown-menu multi-level">
+
+                        <li class="dropdown-submenu">
+                        <a  class="dropdown-item" tabindex="-1" href="#">Date</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                                <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                        </li>
+
+                        <li class="dropdown-submenu">
+                        <a  class="dropdown-item" tabindex="-1" href="#">New Cases</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                                <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                        </li>
+
+                        <li class="dropdown-submenu">
+                        <a  class="dropdown-item" tabindex="-1" href="#">Confirmed</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                                <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                        </li>
+
+                        <li class="dropdown-submenu">
+                        <a  class="dropdown-item" tabindex="-1" href="#">Released</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                                <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                        </li>
+
+                        <li class="dropdown-submenu">
+                        <a  class="dropdown-item" tabindex="-1" href="#">Deceased</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                                <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                        </li>
+
                     </ul>
                 </div>
             </div>

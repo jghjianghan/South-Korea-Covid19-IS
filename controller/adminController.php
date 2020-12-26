@@ -194,11 +194,39 @@
             if (isset($_POST['date']) && $_POST['date']!="" && isset($_POST['region']) && $_POST['region']!="" && isset($_POST['confirmedCases']) && $_POST['confirmedCases']!="" && isset($_POST['releasedCases']) && $_POST['releasedCases']!="" && isset($_POST['deceasedCases']) && $_POST['deceasedCases']!=""){
                 $date = $_POST['date'];
                 $region = $_POST['region'];
+                $testedCases = $_POST['testedCases'];
+                $negativeCases = $_POST['negativeCases'];
                 $confirmedCases = $_POST['confirmedCases'];
                 $releasedCases = $_POST['releasedCases'];
                 $deceasedCases = $_POST['deceasedCases'];
 
                 $this->db->executeSelectQuery("INSERT INTO timeprovince(date, province_name, confirmed, released, deceased) VALUES ('$date', '$region', '$confirmedCases', '$releasedCases', '$deceasedCases')");
+                
+                $temp = "
+                    SELECT COUNT(1)
+                    FROM time
+                    WHERE date = '$date';
+                ";
+                $temp_res = $this->db->executeNonSelectQuery($temp);
+                $row = mysqli_fetch_row($temp_res);
+                $count = $row[0];
+
+                if ($count == 0){
+                    $this->db->executeSelectQuery("INSERT INTO time(date, test, negative, confirmed, released, deceased) VALUES ('$date', '$testedCases', '$negativeCases', '$confirmedCases', '$releasedCases', '$deceasedCases')");
+                } else {
+                    $query = "
+                        UPDATE time
+                        SET 
+                            test = test + $testedCases,
+                            negative = negative + $negativeCases,
+                            confirmed = confirmed + $confirmedCases,
+                            released = released + $releasedCases,
+                            deceased = deceased + $deceasedCases
+                        WHERE date = '$date'
+                    ";
+                    $this->db->executeSelectQuery($query);
+                }
+                
                 header("location: ../dataOverall");
                 return;
             } else {
