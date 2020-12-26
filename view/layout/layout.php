@@ -45,7 +45,7 @@
 					<a class="nav-link <?php if ($page === 'about') echo "current-nav"; ?>" href="<?php echo $upPrefix; ?>about">About Us</a>
 				</li> -->
 				<li class="dropdown ">
-					<a class="nav-link dropdown-toggle" id="navbarAdminDropdown" role="button" data-toggle="dropdown" ><i class="fas fa-user-circle"></i> Admin</a>
+					<a class="nav-link dropdown-toggle" id="navbarAdminDropdown" role="button" data-toggle="dropdown" ><i class="fas fa-user-circle fa-lg mr-1"></i> Admin</a>
 					<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/addAccount">Add Account</a>
 						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/changePassword">Change Password</a>
