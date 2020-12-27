@@ -50,40 +50,40 @@
                 <li class="dropdown-submenu">
                   <p  class="dropdown-item" tabindex="-1">Date</p>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-item">Ascending<i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        <li class="dropdown-item" id="dateA">Ascending<i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item" id="dateD">Descending <i class="fas fa-arrow-down"></i></li>
                   </ul>
                 </li>
 
                 <li class="dropdown-submenu">
                   <p  class="dropdown-item" tabindex="-1">New Cases</p>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        <li class="dropdown-item" id="newA">Ascending <i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item" id="newD">Descending <i class="fas fa-arrow-down"></i></li>
                   </ul>
                 </li>
 
                 <li class="dropdown-submenu">
                   <p  class="dropdown-item" tabindex="-1">Confirmed</p>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        <li class="dropdown-item" id="conA">Ascending <i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item" id="conD">Descending <i class="fas fa-arrow-down"></i></li>
                   </ul>
                 </li>
 
                 <li class="dropdown-submenu">
                   <p  class="dropdown-item" tabindex="-1">Released</p>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        <li class="dropdown-item" id="relA">Ascending <i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item" id="relD">Descending <i class="fas fa-arrow-down"></i></li>
                   </ul>
                 </li>
 
                 <li class="dropdown-submenu">
                   <p  class="dropdown-item" tabindex="-1">Deceased</p>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                        <li class="dropdown-item" id="decA">Ascending <i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item" id="decD">Descending <i class="fas fa-arrow-down"></i></li>
                   </ul>
                 </li>
 
