@@ -48,7 +48,15 @@
             <ul class="dropdown-menu multi-level">
 
                 <li class="dropdown-submenu">
-                  <a  class="dropdown-item" tabindex="-1" href="#">Date</a>
+                  <p  class="dropdown-item" tabindex="-1">Date</p>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">Ascending<i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                  <p  class="dropdown-item" tabindex="-1">New Cases</p>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
                         <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
@@ -56,7 +64,7 @@
                 </li>
 
                 <li class="dropdown-submenu">
-                  <a  class="dropdown-item" tabindex="-1" href="#">New Cases</a>
+                  <p  class="dropdown-item" tabindex="-1">Confirmed</p>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
                         <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
@@ -64,7 +72,7 @@
                 </li>
 
                 <li class="dropdown-submenu">
-                  <a  class="dropdown-item" tabindex="-1" href="#">Confirmed</a>
+                  <p  class="dropdown-item" tabindex="-1">Released</p>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
                         <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
@@ -72,15 +80,7 @@
                 </li>
 
                 <li class="dropdown-submenu">
-                  <a  class="dropdown-item" tabindex="-1" href="#">Released</a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
-                  </ul>
-                </li>
-
-                <li class="dropdown-submenu">
-                  <a  class="dropdown-item" tabindex="-1" href="#">Deceased</a>
+                  <p  class="dropdown-item" tabindex="-1">Deceased</p>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
                         <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>

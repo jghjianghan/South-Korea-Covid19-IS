@@ -38,15 +38,39 @@ class CaseTable {
             deceased: "4",
         };
         let data2 = {
-            date: "datf",
-            newCase: "2",
-            confirmed: "1",
-            released: "4",
+            date: "datf0",
+            newCase: "5",
+            confirmed: "25",
+            released: "2",
+            deceased: "4",
+        };
+        let data3 = {
+            date: "datf1",
+            newCase: "4",
+            confirmed: "10",
+            released: "7",
+            deceased: "9",
+        };
+        let data4 = {
+            date: "datf2",
+            newCase: "6",
+            confirmed: "9",
+            released: "5",
+            deceased: "4",
+        };
+        let data5 = {
+            date: "datf3",
+            newCase: "8",
+            confirmed: "22",
+            released: "9",
             deceased: "3",
         };
         let entry = new TableEntry(data);
         this.tableBody.appendChild(entry.renderRow());
         this.tableBody.appendChild((new TableEntry(data2)).renderRow());
+        this.tableBody.appendChild((new TableEntry(data3)).renderRow());
+        this.tableBody.appendChild((new TableEntry(data4)).renderRow());
+        this.tableBody.appendChild((new TableEntry(data5)).renderRow());
     }
 
     /**

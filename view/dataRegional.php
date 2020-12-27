@@ -49,13 +49,57 @@
     </div>
 
     <div class="my-5">
-        <div class="float-right">
-            <button type="button" class="btn btn-outline-secondary btn-hover-darkgrey">
+    <div class="float-left">
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary btn-hover-darkgrey dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                 Sort
-                <i class="fa fa-caret-down"></i>
             </button>
+            <ul class="dropdown-menu multi-level">
+
+                <li class="dropdown-submenu">
+                  <p  class="dropdown-item" tabindex="-1">Date</p>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                  <p  class="dropdown-item" tabindex="-1">New Cases</p>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                  <p  class="dropdown-item" tabindex="-1">Confirmed</p>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                  <p  class="dropdown-item" tabindex="-1">Released</p>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                  </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                  <p  class="dropdown-item" tabindex="-1">Deceased</p>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">Ascending <i class="fas fa-arrow-up"></i></li>
+                        <li class="dropdown-item">Descending <i class="fas fa-arrow-down"></i></li>
+                  </ul>
+                </li>
+
+            </ul>
         </div>
-    </div>
+        </div>
+     </div>
 
     <br><br>
 
