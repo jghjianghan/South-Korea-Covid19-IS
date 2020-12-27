@@ -63,6 +63,9 @@
                         <input type="number" value="0" min="0" class="form-control text-center" id="deceasedCases" name="deceasedCases">
                     </div>
                 </div>
+                <div class="form-group text-center text-danger">
+                    <?php echo $message; ?>
+                </div>
                 <div class="form-group text-center">
                     <button type="button" onclick="window.location.href='<?php echo $upPrefix; ?>admin/dataOverall'" class="btn btn-lg bg-dark text-white">CANCEL</button>
                     <button type="submit" class="btn btn-lg bg-dark text-white">ADD DATA</button>

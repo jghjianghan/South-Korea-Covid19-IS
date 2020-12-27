@@ -35,6 +35,7 @@
 
 .dropdown-submenu:hover>.dropdown-menu {
     display: block;
+    cursor: pointer;
 }
 
 .dropdown-submenu>a:after {

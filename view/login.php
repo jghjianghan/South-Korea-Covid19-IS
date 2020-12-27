@@ -1,5 +1,5 @@
 <div class="container row position-absolute start-50 translate-middle justify-content-center">
-    <div style="margin-top: 12%;" class="col-md-5 text-center position-absolute">
+    <div class="col-md-5 text-center mt-5 position-absolute">
         <h1><strong>Welcome!</strong></h1>
         <p>Please login to access your account.</p>
         <div class="card p-3">
@@ -12,6 +12,9 @@
                 <div class="form-floating mx-2 mb-5">
                     <input type="password" class="form-control" name="password" id="password" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="Password">
                     <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-group mb-3 text-danger">
+                    <?php echo $message; ?>
                 </div>
                 <div class="form-group mb-3">
                     <input type="submit" value="LOGIN" class="btn btn-lg bg-dark text-white">

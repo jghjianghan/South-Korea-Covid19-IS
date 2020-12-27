@@ -148,9 +148,22 @@
                 $username = $this->db->escapeString($_POST['username']);
                 $password = $_POST['password'];
 
-                $this->db->executeSelectQuery("INSERT INTO admin(username, password) VALUES ('$username', '$password')");
-                header("location: dataOverall");
-                return;
+                $temp = "
+                    SELECT COUNT(1)
+                    FROM admin
+                    WHERE username = '$username';
+                ";
+                $temp_res = $this->db->executeNonSelectQuery($temp);
+                $row = mysqli_fetch_row($temp_res);
+                $count = $row[0];
+
+                if($count == 0) {
+                    $this->db->executeSelectQuery("INSERT INTO admin(username, password) VALUES ('$username', '$password')");
+                    header("location: dataOverall");
+                    return;
+                } else {
+                    return $this->viewAddAccount("Username already taken");
+                }
             } else {
                 return $this->viewAddAccount("Please fill both username and password");
             }
@@ -179,7 +192,7 @@
                         header("location: dataOverall");
                         return;
                     } else {
-                        return $this->viewChangePassword("New Password and Confirm Password are not identic");
+                        return $this->viewChangePassword("New Password and Confirm Password are not identical");
                     }
                 } else {
                     return $this->viewChangePassword("Incorrect Old Password");
