@@ -8,6 +8,6 @@
         public function __construct()
         {
             //instansiasi database di sini
-            // $this->db = new MySQLDB("localhost","root","", "teatime");
+             $this->db = new MySQLDB("localhost","root","", "covid19");
         }
     }
