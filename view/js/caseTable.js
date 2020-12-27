@@ -4,12 +4,11 @@ class CaseTable {
         this.tableHead = this.table.querySelector("thead");
         this.tableBody = this.table.querySelector("tbody");
 
+        console.log(this.table);
         //add event listener to all dropdown option
         let links = document.querySelectorAll("li.dropdown-item");
         for (let i of links) {
-            let sortType = i.id;
             i.addEventListener("click", this.sortEntry);
-            console.log(sortType);
         }
         this.entries = [];
 
@@ -34,21 +33,21 @@ class CaseTable {
         //data dummy
         let data = {
             date: "date",
-            newCase: "1",
+            newCase: "20",
             confirmed: "2",
             released: "3",
             deceased: "4",
         };
         let data2 = {
             date: "datf0",
-            newCase: "5",
+            newCase: "35",
             confirmed: "25",
             released: "2",
             deceased: "4",
         };
         let data3 = {
             date: "datf1",
-            newCase: "4",
+            newCase: "14",
             confirmed: "10",
             released: "7",
             deceased: "9",
@@ -80,99 +79,7 @@ class CaseTable {
      * @param {Event} event
      */
     sortEntry(event) {
-        let table = document.getElementById("case-table");
-        let rows = table.rows;
-        let sortId = event.target.id;
-        let sortType = "";
-        let sortCol;
-
-        switch(sortId) {
-            case "dateA":
-              sortType = "A";
-              sortCol = 0;
-              break;
-            case "dateD":
-                sortType = "D";
-                sortCol = 0;
-                break;
-            case "newA":
-                sortType = "A";
-                sortCol = 1;
-                break;
-            case "newD":
-                sortType = "D";
-                sortCol = 1;
-                break;
-            case "conA":
-                sortType = "A";
-                sortCol = 2;
-                break;
-            case "conD":
-                sortType = "D";
-                sortCol = 2;
-                break;
-            case "relA":
-                sortType = "A";
-                sortCol = 3;
-                break;
-            case "relD":
-                sortType = "D";
-                sortCol = 3;
-                break;
-            case "decA":
-                sortType = "A";
-                sortCol = 4;
-                break;
-            case "decD":
-                sortType = "D";
-                sortCol = 4;
-                break;
-            default:
-                sortType = "A";
-                sortCol = 0;
-          }
-
-          let j, shouldSwitch, x, y;
-          let switching = true;
-          if(sortType==="D"){
-            while (switching) {
-              switching = false;
-            
-              for (j = 1; j < (rows.length - 1); j++) {
-                shouldSwitch = false;
-                x = rows[j].getElementsByTagName("TD")[sortCol];
-                y = rows[j + 1].getElementsByTagName("TD")[sortCol];
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                  shouldSwitch = true;
-                  break;
-                }
-              }
-              if (shouldSwitch) {
-                rows[j].parentNode.insertBefore(rows[j + 1], rows[j]);
-                switching = true;
-              }
-            }
-          }else{
-            while (switching) {
-              switching = false;
-            
-              for (j = 1; j < (rows.length - 1); j++) {
-                shouldSwitch = false;
-                x = rows[j].getElementsByTagName("TD")[sortCol];
-                y = rows[j + 1].getElementsByTagName("TD")[sortCol];
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                  shouldSwitch = true;
-                  break;
-                }
-              }
-              if (shouldSwitch) {
-                rows[j].parentNode.insertBefore(rows[j + 1], rows[j]);
-                switching = true;
-              }
-            }
-          }
-
-        console.log(sortCol); //contoh
+        console.log(this.table);
     }
 
     /**
