@@ -4,34 +4,36 @@ class CaseTable {
         this.tableHead = this.table.querySelector("thead");
         this.tableBody = this.table.querySelector("tbody");
 
+        //method binding
+        this.initializeTable = this.initializeTable.bind(this);
+        this.clearTable = this.clearTable.bind(this);
+        this.sortEntry = this.sortEntry.bind(this);
+        this.populateTable = this.populateTable.bind(this);
+
         //add event listener to all dropdown option
         let links = document.querySelectorAll("li.dropdown-item");
         for (let i of links) {
             i.addEventListener("click", this.sortEntry);
-            console.log(i.id);
+            // console.log(i.id);
         }
         this.entries = [];
 
-        //method binding
-        this.showAllEntry = this.showAllEntry.bind(this);
-        this.clearTable = this.clearTable.bind(this);
-
-        this.showAllEntry();
+        this.initializeTable();
     }
 
     /**
      * Method untuk fetch data dari server, lalu menampilkan semua data dalam tabel
      */
-    showAllEntry() {
+    initializeTable() {
         //fetch data
         fetch('data/overall').then(response => response.text()) //contoh
             .then(text => {
-                this.entries.push(text);
+                // this.entries.push(text);
                 console.log(this.entries);
             });
 
         //data dummy
-        let data = {
+        let data1 = {
             date: "date",
             newCase: "20",
             confirmed: "2",
@@ -66,12 +68,21 @@ class CaseTable {
             released: "9",
             deceased: "3",
         };
-        let entry = new TableEntry(data);
-        this.tableBody.appendChild(entry.renderRow());
-        this.tableBody.appendChild((new TableEntry(data2)).renderRow());
-        this.tableBody.appendChild((new TableEntry(data3)).renderRow());
-        this.tableBody.appendChild((new TableEntry(data4)).renderRow());
-        this.tableBody.appendChild((new TableEntry(data5)).renderRow());
+        // let entry = new TableEntry(data);
+        this.entries.push(new TableEntry(data1));
+        this.entries.push(new TableEntry(data2));
+        this.entries.push(new TableEntry(data3));
+        this.entries.push(new TableEntry(data4));
+        this.entries.push(new TableEntry(data5));
+
+        this.populateTable();
+    }
+
+    populateTable() {
+        for (let i of this.entries) {
+            // console.log(i);
+            this.tableBody.appendChild(i.renderRow());
+        }
     }
 
     /**
@@ -79,115 +90,75 @@ class CaseTable {
      * @param {Event} event
      */
     sortEntry(event) {
-        this.table = document.getElementById("case-table");
-        this.tableBody = this.table.querySelector("tbody");
-
-         //data dummy
-         let sortArray = [
-             {
-            date: "date",
-            newCase: "20",
-            confirmed: "2",
-            released: "3",
-            deceased: "4",
-        },
- {
-            date: "datf0",
-            newCase: "35",
-            confirmed: "25",
-            released: "2",
-            deceased: "4",
-        },
-   {
-            date: "datf1",
-            newCase: "14",
-            confirmed: "10",
-            released: "7",
-            deceased: "9",
-        },
-   {
-            date: "datf2",
-            newCase: "6",
-            confirmed: "9",
-            released: "5",
-            deceased: "4",
-        },
-        {
-            date: "datf3",
-            newCase: "8",
-            confirmed: "22",
-            released: "9",
-            deceased: "3",
-        }];
-
-
 
         //Sorting
         let sortId = event.target.id;
 
-        switch(sortId) {
+        console.log(this);
+
+        switch (sortId) {
             case "dateA":
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return a.date - b.date;
                 });
-              break;
+                break;
             case "dateD":
-                sortArray.sort((a, b) => {
-                return b.date - a.date;
+                this.entries.sort((a, b) => {
+                    return b.date - a.date;
                 });
                 break;
             case "newA":
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return a.newCase - b.newCase;
                 });
                 break;
             case "newD":
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return b.newCase - a.newCase;
-                    });
+                });
                 break;
             case "conA":
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return a.confirmed - b.confirmed;
                 });
                 break;
             case "conD":
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return b.confirmed - a.confirmed;
-                    });
+                });
                 break;
             case "relA":
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return a.released - b.released;
                 });
                 break;
             case "relD":
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return b.released - a.released;
-                    });
+                });
                 break;
             case "decA":
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return a.deceased - b.deceased;
                 });
                 break;
             case "decD":
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return b.deceased - a.deceased;
                 });
                 break;
             default:
-                sortArray.sort((a, b) => {
+                this.entries.sort((a, b) => {
                     return a.date - b.date;
                 });
-          }
-         
-          //show entries on table
-          //cleartable?
-          for(let i=0;i<sortArray.length;i++){
-            let data = new TableEntry(sortArray[i]);
-            this.tableBody.appendChild(data.renderRow());
-          }
+        }
+
+
+        //show entries on table
+        //cleartable?
+        this.clearTable();
+
+        this.populateTable();
     }
 
     /**
