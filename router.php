@@ -56,11 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		case $baseURL . '/data/regional':
 			echo (isset($_GET["province"])?$_GET["province"]:"regional");
 			break;
-		case $baseURL . '/test':
-			require_once "controller/tabelController.php";
-			$ctrl = new tabelController();
-			echo json_encode($ctrl->getDataRegionRange('Seoul','21/01/2020','11/02/2020'));
-			break;
 		default:
 			echo '404 Not Found';
 			break;
