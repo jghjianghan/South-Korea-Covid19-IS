@@ -75,11 +75,11 @@
          */
         public function getDataOverallRange($from, $to)
         {
-            $currentCase = $this->getPrefCurrentCaseOverall($from);
             $f1 = str_replace('/','-',$from);
             $t1 = str_replace('/','-',$to);
             $newFrom = date("Y-m-d",strtotime($f1));
             $newTo = date("Y-m-d",strtotime($t1));
+            $currentCase = $this->getPrefCurrentCaseOverall($newFrom);
             $query = "
                 SELECT date,confirmed,released,deceased 
                 FROM time 
@@ -104,11 +104,11 @@
          */
         public function getDataRegionRange($region,$from,$to)
         {
-            $currentCase = 0;
             $f1 = str_replace('/','-',$from);
             $t1 = str_replace('/','-',$to);
             $newFrom = date("Y-m-d",strtotime($f1));
             $newTo = date("Y-m-d",strtotime($t1));
+            $currentCase = $this->getPrefCurrentCaseRegion($region,$newFrom);
 
             $query = "
                 SELECT date, confirmed, released, deceased 
@@ -138,6 +138,28 @@
 
             foreach ($query_result as $key => $value) {
                 $result [] = $value['confirmed'];
+            }
+            if(empty($result)){
+                return 0;
+            }
+            return $result[0];
+        }
+        public function getPrefCurrentCaseRegion($region,$from)
+        {
+            $yesterday = date('Y-m-d',strtotime($from."-1 days"));
+            $query = "
+                SELECT confirmed 
+                FROM timeprovince
+                WHERE province_name='$region' AND date = '$yesterday'
+            ";
+            $query_result = $this->db->executeSelectQuery($query);
+            $result = [];
+
+            foreach ($query_result as $key => $value) {
+                $result [] = $value['confirmed'];
+            }
+            if(empty($result)){
+                return 0;
             }
             return $result[0];
         }
