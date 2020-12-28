@@ -56,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		case $baseURL . '/data/regional':
 			echo (isset($_GET["province"])?$_GET["province"]:"regional");
 			break;
-
 		default:
 			echo '404 Not Found';
 			break;
