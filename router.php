@@ -53,7 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		case $baseURL . '/data/overall':
 			require_once "controller/tabelController.php";
 			$ctrl = new TabelController();
-			echo json_encode($ctrl->getDataOverall());
+			if (isset($_GET['start']) && isset($_GET['end'])){
+				echo json_encode($ctrl->getDataOverallRange($_GET['start'], $_GET['end']));
+			} else {
+				echo json_encode($ctrl->getDataOverall());
+			}
 			break;
 		case $baseURL . '/data/regional':
 			echo (isset($_GET["province"])?$_GET["province"]:"regional");

@@ -3,22 +3,35 @@ class CaseTable {
         this.table = document.getElementById("case-table");
         this.tableHead = this.table.querySelector("thead");
         this.tableBody = this.table.querySelector("tbody");
+        let datePicker = document.querySelectorAll("input[type=date]");
+        if (datePicker.length > 0) {
+            this.startDate = datePicker[0];
+            this.endDate = datePicker[1];
+        }
+        this.chosenColumn = "date";
+        this.chosenOrder = "desc";
 
         //method binding
         this.initializeTable = this.initializeTable.bind(this);
         this.clearTable = this.clearTable.bind(this);
-        this.sortEntry = this.sortEntry.bind(this);
+        this.sortEvent = this.sortEvent.bind(this);
         this.populateTable = this.populateTable.bind(this);
+        this.sortEntry = this.sortEntry.bind(this);
+        this.filterTable = this.filterTable.bind(this);
 
         //add event listener to all dropdown option
         let links = document.querySelectorAll(".sortLink");
         for (let i of links) {
-            i.addEventListener("click", this.sortEntry);
+            i.addEventListener("click", this.sortEvent);
         }
         //disable event on submenu
         let submenus = document.querySelectorAll("p.dropdown-item");
         for (let i of submenus) {
             i.addEventListener("click", (event) => event.stopPropagation());
+        }
+        if (datePicker.length > 0) {
+            this.startDate.addEventListener("change", this.filterTable);
+            this.endDate.addEventListener("change", this.filterTable);
         }
 
         //Array to store the table data
@@ -34,6 +47,7 @@ class CaseTable {
         //fetch data
         fetch('data/overall').then(response => response.json())
             .then(json => {
+                this.entries = [];
                 for (let i of json) {
                     this.entries.push(new TableEntry(i.date, i.newCase, i.confirmed, i.released, i.deceased));
                 }
@@ -48,74 +62,99 @@ class CaseTable {
         }
     }
 
+    filterTable() {
+        if (this.startDate.value !== "" && this.endDate.value !== "") {
+            let ds = new Date(this.startDate.value);
+            let de = new Date(this.endDate.value);
+            if (ds > de) {
+                //input error handling
+                console.log("start date must not be later than end date");
+                return;
+            }
+        }
+
+        fetch('data/overall?start=' + this.startDate.value + '&end=' + this.endDate.value).then(response => response.json())
+            .then(json => {
+                this.entries = [];
+
+                for (let i of json) {
+                    this.entries.push(new TableEntry(i.date, i.newCase, i.confirmed, i.released, i.deceased));
+                }
+
+                this.clearTable();
+                this.sortEntry();
+                this.populateTable();
+            });
+    }
+
     /**
      * Click event listener untuk mengurutkan data dan menampilkan kembali data yang sudah terurut
      * @param {Event} event
      */
-    sortEntry(event) {
+    sortEvent(event) {
         //Sorting
-        let column = event.target.dataset.column;
-        let order = event.target.dataset.order;
-        console.log(event.target);
-        console.log(column)
-        console.log(order)
-        let sortFunc;
+        this.column = event.target.dataset.column;
+        this.order = event.target.dataset.order;
+        this.sortEntry();
 
-        switch (column) {
+        //show entries on table
+        this.clearTable();
+        this.populateTable();
+    }
+
+    sortEntry() {
+        let sortFunc;
+        switch (this.column) {
             case "date":
-                console.log('tanggal');
-                console.log(order);
-                if (order === "asc") {
-                    console.log('naik');
+                if (this.order === "asc") {
                     sortFunc = (a, b) => {
                         return a.date - b.date;
                     };
-                } else if (order === "desc") {
-                    console.log('turun');
+                } else if (this.order === "desc") {
                     sortFunc = (a, b) => {
                         return b.date - a.date;
                     };
                 }
                 break;
             case "newCase":
-                if (order === "asc") {
+                if (this.order === "asc") {
                     sortFunc = (a, b) => {
                         return a.newCase - b.newCase;
                     };
-                } else if (order === "desc") {
+                } else if (this.order === "desc") {
                     sortFunc = (a, b) => {
                         return b.newCase - a.newCase;
                     };
                 }
                 break;
             case "confirmed":
-                if (order === "asc") {
+                if (this.order === "asc") {
                     sortFunc = (a, b) => {
                         return a.confirmed - b.confirmed;
                     };
-                } else if (order === "desc") {
+                } else if (this.order === "desc") {
                     sortFunc = (a, b) => {
                         return b.confirmed - a.confirmed;
                     };
                 }
                 break;
             case "released":
-                if (order === "asc") {
+                if (this.order === "asc") {
                     sortFunc = (a, b) => {
                         return a.released - b.released;
                     };
-                } else if (order === "desc") {
+                } else if (this.order === "desc") {
                     sortFunc = (a, b) => {
                         return b.released - a.released;
                     };
                 }
                 break;
             case "deceased":
-                if (order === "asc") {
+                if (this.order === "asc") {
                     sortFunc = (a, b) => {
                         return a.deceased - b.deceased;
                     };
-                } else if (order === "desc") {
+                } else if (this.order === "desc") {
                     sortFunc = (a, b) => {
                         return b.deceased - a.deceased;
                     };
@@ -123,10 +162,6 @@ class CaseTable {
                 break;
         }
         this.entries.sort(sortFunc);
-
-        //show entries on table
-        this.clearTable();
-        this.populateTable();
     }
 
     /**

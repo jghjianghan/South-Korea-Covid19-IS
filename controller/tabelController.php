@@ -75,16 +75,34 @@
          */
         public function getDataOverallRange($from, $to)
         {
-            $f1 = str_replace('/','-',$from);
-            $t1 = str_replace('/','-',$to);
-            $newFrom = date("Y-m-d",strtotime($f1));
-            $newTo = date("Y-m-d",strtotime($t1));
-            $currentCase = $this->getPrefCurrentCaseOverall($newFrom);
-            $query = "
-                SELECT date,confirmed,released,deceased 
-                FROM time 
-                WHERE date >= '$newFrom' AND date <= '$newTo' 
-            ";
+            // $f1 = str_replace('/','-',$from);
+            // $t1 = str_replace('/','-',$to);
+            $newFrom = ($from!=="")?date("Y-m-d",strtotime($from)):"";
+            $newTo = ($to!=="")?date("Y-m-d",strtotime($to)):"";
+            $currentCase = ($newFrom!=="")?$this->getPrefCurrentCaseOverall($newFrom):0;
+            
+            $query = "";
+            if ($newFrom === "" && $newTo === ""){
+                return $this->getDataOverall();
+            } else if ($newFrom === ""){
+                $query = "
+                    SELECT date,confirmed,released,deceased 
+                    FROM time 
+                    WHERE date <= '$newTo' 
+                ";
+            } else if ($newTo === ""){
+                $query = "
+                    SELECT date,confirmed,released,deceased 
+                    FROM time 
+                    WHERE date >= '$newFrom' 
+                ";
+            } else { //lengkap
+                $query = "
+                    SELECT date,confirmed,released,deceased 
+                    FROM time 
+                    WHERE date >= '$newFrom' AND date <= '$newTo' 
+                ";
+            }
             $query_result = $this->db->executeSelectQuery($query);
 
             $result = [];
@@ -104,17 +122,34 @@
          */
         public function getDataRegionRange($region,$from,$to)
         {
-            $f1 = str_replace('/','-',$from);
-            $t1 = str_replace('/','-',$to);
-            $newFrom = date("Y-m-d",strtotime($f1));
-            $newTo = date("Y-m-d",strtotime($t1));
-            $currentCase = $this->getPrefCurrentCaseRegion($region,$newFrom);
+            // $f1 = str_replace('/','-',$from);
+            // $t1 = str_replace('/','-',$to);
+            $newFrom = ($from!=="")?date("Y-m-d",strtotime($from)):"";
+            $newTo = ($to!=="")?date("Y-m-d",strtotime($to)):"";            
+            $currentCase = ($newFrom!=="")?$this->getPrefCurrentCaseRegion($region,$newFrom):0;
 
-            $query = "
-                SELECT date, confirmed, released, deceased 
-                FROM timeprovince 
-                WHERE province_name='$region' AND date >= '$newFrom' AND date <= '$newTo'
-            ";
+            $query = "";
+            if ($newFrom === "" && $newTo === ""){
+                return $this->getDataOverall();
+            } else if ($newFrom === ""){
+                $query = "
+                    SELECT date, confirmed, released, deceased 
+                    FROM timeprovince 
+                    WHERE province_name='$region' AND date <= '$newTo' 
+                ";
+            } else if ($newTo === ""){
+                $query = "
+                    SELECT date, confirmed, released, deceased 
+                    FROM timeprovince 
+                    WHERE province_name='$region' AND date >= '$newFrom' 
+                ";
+            } else { //lengkap
+                $query = "
+                    SELECT date, confirmed, released, deceased 
+                    FROM timeprovince 
+                    WHERE province_name='$region' AND date >= '$newFrom' AND date <= '$newTo' 
+                ";
+            }
             $query_result = $this->db->executeSelectQuery($query);
 
             $result = [];
@@ -164,4 +199,3 @@
             return $result[0];
         }
     }
-?>
