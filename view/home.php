@@ -29,25 +29,25 @@
         <div class="row">
             <div class="col stat-content">
                 <div class="stat-title">Confirmed</div>
-                <div class="stat-value">10752</div>
+                <div class="stat-value"><?php echo $result->getConfirmed()?></div>
             </div>
         </div>
         <div class="row">
             <div class="col stat-content">
                 <div class="stat-title">Tested</div>
-                <div class="stat-value">608514</div>
+                <div class="stat-value"><?php echo $result->getTested()?></div>
             </div>
             <div class="col stat-content">
                 <div class="stat-title">Negative</div>
-                <div class="stat-value">588559</div>
+                <div class="stat-value"><?php echo $result->getNegative()?></div>
             </div>
             <div class="col stat-content">
                 <div class="stat-title">Released</div>
-                <div class="stat-value">8854</div>
+                <div class="stat-value"><?php echo $result->getReleased()?></div>
             </div>
             <div class="col stat-content">
                 <div class="stat-title">Deceased</div>
-                <div class="stat-value">244</div>
+                <div class="stat-value"><?php echo $result->getDeceased()?></div>
             </div>
         </div>
     </div>
