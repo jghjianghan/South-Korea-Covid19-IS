@@ -2,12 +2,14 @@
     require_once "controller/services/mysqlDB.php";
     require_once "controller/services/view.php";
     require_once "controller/controller.php";
+    require_once "model/dataChart.php";
 
     class MainController extends Controller{
         
         public function getTimeProvince($datefilterfrom,$datefilterto,$provincefilter){
             $this->db->openConnection();
-            $query = "SELECT * FROM `timeprovince`";
+            $query = "SELECT date, confirmed 
+                        FROM `timeprovince`";
             $sum = 0;
             if($datefilterfrom!=NULL or $provincefilter!=""){
                 $query.=" WHERE ";
@@ -25,18 +27,29 @@
             }
             
             $hasil=$this->db->executeSelectQuery($query);
-            echo var_dump($hasil);
+            // echo var_dump($hasil);
 
         }
 
         public function getTime($datefilterfrom,$datefilterto){
             $this->db->openConnection();
-            $query = "SELECT * FROM `time`";
+            $query = "SELECT date, confirmed
+                        FROM `time`";
             if($datefilterfrom!=NULL){
                 $query.=" WHERE date between '".$datefilterfrom."' and '".$datefilterto."'";
             }
-            $hasil=$this->db->executeSelectQuery($query);
-            echo var_dump($hasil);
+            $query_result =$this->db->executeSelectQuery($query);
+
+            $result = [];
+            $currentCase = 0;
+
+            foreach($query_result as $key => $value){
+                $result [] = new DataChart($value['date'],$value['confirmed']-$currentCase);
+                $currentCase = $value['confirmed'];
+            }
+            // echo var_dump($hasil);
+
+            return $result;
         }
 
 
@@ -53,6 +66,7 @@
             return View::createView("dataOverall.php",[
                 'title' => "Corea - Overall Data",
                 'page' => "data",
+                'scriptSrcList' => ['caseChart.js', 'chartEntry.js']
             ]);
         }
 
@@ -65,6 +79,7 @@
             return View::createView("dataRegional.php",[
                 'title' => "Corea - Regional Data",
                 'page' => "data",
+                'scriptSrcList' => ['caseChart.js', 'chartEntry.js']
             ]);
             
         }

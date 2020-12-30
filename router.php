@@ -48,6 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			echo $ctrl->viewAbout();
 			break;
 
+		case $baseURL . '/chart/overall':
+			require_once "controller/mainController.php";
+			$ctrl = new MainController();
+			echo json_encode($ctrl->getTime(NULL, NULL));
+			break;
+
 		default:
 			echo '404 Not Found';
 			break;
@@ -59,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new MainController();
 			// do something
 			break;
+		
 		default:
 			echo '404 Not Found';
 			break;
