@@ -32,14 +32,11 @@ class CaseTable {
      */
     initializeTable() {
         //fetch data
-        fetch('data/overall').then(response => response.json()) //contoh
+        fetch('data/overall').then(response => response.json())
             .then(json => {
                 for (let i of json) {
                     this.entries.push(new TableEntry(i.date, i.newCase, i.confirmed, i.released, i.deceased));
                 }
-                // let i = json[0];
-                // console.log(i);
-                // this.entries.push(new TableEntry(i.date, i.newCase, i.confirmed, i.released, i.deceased));
 
                 this.populateTable();
             });
@@ -47,7 +44,6 @@ class CaseTable {
 
     populateTable() {
         for (let i of this.entries) {
-            // console.log(i);
             this.tableBody.appendChild(i.renderRow());
         }
     }
