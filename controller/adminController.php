@@ -26,7 +26,7 @@
                 'scriptSrcList' => ["adminScript.js"],
                 'uplevel' => 1,
                 "message" => $message,
-                'role' => 'admin-in'
+                'role' => 'admin'
             ]);
         }
 
@@ -38,7 +38,7 @@
                 'scriptSrcList' => ["adminScript.js"],
                 'uplevel' => 1,
                 "message" => $message,
-                'role' => 'admin-in'
+                'role' => 'admin'
             ]);
         }
 
@@ -50,7 +50,7 @@
                 'scriptSrcList' => ["adminScript.js"],
                 'uplevel' => 2,
                 "message" => $message,
-                'role' => 'admin-in'
+                'role' => 'admin'
             ]);
         }
 
@@ -62,7 +62,7 @@
                 'scriptSrcList' => ["adminScript.js"],
                 'uplevel' => 1,
                 "message" => $message,
-                'role' => 'admin-in'
+                'role' => 'admin'
             ]);
         }
 
@@ -74,7 +74,7 @@
                 'scriptSrcList' => ["adminScript.js"],
                 'uplevel' => 1,
                 "message" => $message,
-                'role' => 'admin-in'
+                'role' => 'admin'
             ]);
         }
 
