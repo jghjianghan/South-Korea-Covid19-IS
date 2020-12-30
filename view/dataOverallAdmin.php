@@ -20,7 +20,7 @@
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-row ">
                 <div class="dropdown px-3">
-                    <button class="btn btn-outline-secondary" type="button" id="SortOverall" data-bs-toggle="dropdown">Sort <i class="fas fa-sort-amount-down"></i></button>
+                    <button class="btn btn-outline-secondary btn-hover-darkgrey" type="button" id="SortOverall" data-bs-toggle="dropdown">Sort <i class="fas fa-sort-amount-down"></i></button>
                     <ul class="dropdown-menu multi-level">
 
                         <li class="dropdown-submenu">
