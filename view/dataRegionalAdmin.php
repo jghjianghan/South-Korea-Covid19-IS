@@ -14,7 +14,7 @@
 
 <div class="container mt-3 tabs" id="regional">
     <div class="d-flex flex-column">
-        <div class="d-flex flex-column align-self-center col-sm-2 mb-5">
+        <div class="d-flex flex-column align-self-center col-sm-3 mb-5">
             <p class="d-flex justify-content-center">Choose a Province</p>
             <form method="POST" action="<?php echo $upPrefix; ?>admin/dataRegional">
                 <select class="col-sm-12 form-select" id="region" name="region" onchange='this.form.submit()'>
