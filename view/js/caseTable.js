@@ -11,11 +11,17 @@ class CaseTable {
         this.populateTable = this.populateTable.bind(this);
 
         //add event listener to all dropdown option
-        let links = document.querySelectorAll("li.dropdown-item");
+        let links = document.querySelectorAll(".sortLink");
         for (let i of links) {
             i.addEventListener("click", this.sortEntry);
-            // console.log(i.id);
         }
+        //disable event on submenu
+        let submenus = document.querySelectorAll("p.dropdown-item");
+        for (let i of submenus) {
+            i.addEventListener("click", (event) => event.stopPropagation());
+        }
+
+        //Array to store the table data
         this.entries = [];
 
         this.initializeTable();
@@ -90,68 +96,76 @@ class CaseTable {
      * @param {Event} event
      */
     sortEntry(event) {
-
         //Sorting
-        let sortId = event.target.id;
+        let column = event.target.dataset.column;
+        let order = event.target.dataset.order;
+        console.log(event.target);
+        console.log(column)
+        console.log(order)
+        let sortFunc;
 
-        console.log(this);
-
-        switch (sortId) {
-            case "dateA":
-                this.entries.sort((a, b) => {
-                    return a.date - b.date;
-                });
+        switch (column) {
+            case "date":
+                console.log('tanggal');
+                console.log(order);
+                if (order === "asc") {
+                    console.log('naik');
+                    sortFunc = (a, b) => {
+                        return a.date.localeCompare(b.date);
+                    };
+                } else if (order === "desc") {
+                    console.log('turun');
+                    sortFunc = (a, b) => {
+                        return b.date.localeCompare(a.date);
+                    };
+                }
                 break;
-            case "dateD":
-                this.entries.sort((a, b) => {
-                    return b.date - a.date;
-                });
+            case "newCase":
+                if (order === "asc") {
+                    sortFunc = (a, b) => {
+                        return a.newCase - b.newCase;
+                    };
+                } else if (order === "desc") {
+                    sortFunc = (a, b) => {
+                        return b.newCase - a.newCase;
+                    };
+                }
                 break;
-            case "newA":
-                this.entries.sort((a, b) => {
-                    return a.newCase - b.newCase;
-                });
+            case "confirmed":
+                if (order === "asc") {
+                    sortFunc = (a, b) => {
+                        return a.confirmed - b.confirmed;
+                    };
+                } else if (order === "desc") {
+                    sortFunc = (a, b) => {
+                        return b.confirmed - a.confirmed;
+                    };
+                }
                 break;
-            case "newD":
-                this.entries.sort((a, b) => {
-                    return b.newCase - a.newCase;
-                });
+            case "released":
+                if (order === "asc") {
+                    sortFunc = (a, b) => {
+                        return a.released - b.released;
+                    };
+                } else if (order === "desc") {
+                    sortFunc = (a, b) => {
+                        return b.released - a.released;
+                    };
+                }
                 break;
-            case "conA":
-                this.entries.sort((a, b) => {
-                    return a.confirmed - b.confirmed;
-                });
+            case "deceased":
+                if (order === "asc") {
+                    sortFunc = (a, b) => {
+                        return a.deceased - b.deceased;
+                    };
+                } else if (order === "desc") {
+                    sortFunc = (a, b) => {
+                        return b.deceased - a.deceased;
+                    };
+                }
                 break;
-            case "conD":
-                this.entries.sort((a, b) => {
-                    return b.confirmed - a.confirmed;
-                });
-                break;
-            case "relA":
-                this.entries.sort((a, b) => {
-                    return a.released - b.released;
-                });
-                break;
-            case "relD":
-                this.entries.sort((a, b) => {
-                    return b.released - a.released;
-                });
-                break;
-            case "decA":
-                this.entries.sort((a, b) => {
-                    return a.deceased - b.deceased;
-                });
-                break;
-            case "decD":
-                this.entries.sort((a, b) => {
-                    return b.deceased - a.deceased;
-                });
-                break;
-            default:
-                this.entries.sort((a, b) => {
-                    return a.date - b.date;
-                });
         }
+        this.entries.sort(sortFunc);
 
         //show entries on table
         this.clearTable();

@@ -17,7 +17,7 @@ class TableEntry {
 
     /**
      * Memformat data entry ke dalam baris tabel yang bisa ditampilkan
-     * @return object tr yang merupakan tampilan dari entri
+     * @return object <tr> yang merupakan tampilan dari entri
      */
     renderRow() {
         let row = document.createElement("tr");

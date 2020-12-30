@@ -3,7 +3,7 @@
     <div class="data-head-wrapper mx-auto">
         <div class="sub-title">Covid-19 Cases</div>
         <div class="my-3">
-            
+
             <div class="d-inline-block category-title current-category">
                 <a href="<?php echo $upPrefix; ?>dataOverall">Overall</a>
             </div>
@@ -23,7 +23,7 @@
     <div class="table">
         <canvas id="bar-chart" width="800" height="200"></canvas>
     </div>
-    
+
     <div class="row">
         <div class="col stat-content">
             <div class="stat-title">CONFIRMED</div>
@@ -40,58 +40,56 @@
     </div>
 
     <div class="my-5">
-    <div class="float-left">
-        <div class="dropdown">
-            <button class="btn btn-outline-secondary btn-hover-darkgrey dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                Sort
-            </button>
-            <ul class="dropdown-menu multi-level">
+        <div class="float-left">
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary btn-hover-darkgrey dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                    Sort
+                </button>
+                <ul class="dropdown-menu multi-level">
+                    <li class="dropdown-submenu">
+                        <p class="dropdown-item" tabindex="-1">Date</p>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item sortLink" data-column="date" data-order="asc">Ascending<i class="fas fa-arrow-up"></i></li>
+                            <li class="dropdown-item sortLink" data-column="date" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                    </li>
 
-                <li class="dropdown-submenu">
-                  <p  class="dropdown-item" tabindex="-1">Date</p>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" id="dateA">Ascending<i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item" id="dateD">Descending <i class="fas fa-arrow-down"></i></li>
-                  </ul>
-                </li>
+                    <li class="dropdown-submenu">
+                        <p class="dropdown-item" tabindex="-1">New Cases</p>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item sortLink" data-column="newCase" data-order="asc">Ascending <i class="fas fa-arrow-up"></i></li>
+                            <li class="dropdown-item sortLink" data-column="newCase" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                    </li>
 
-                <li class="dropdown-submenu">
-                  <p  class="dropdown-item" tabindex="-1">New Cases</p>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" id="newA">Ascending <i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item" id="newD">Descending <i class="fas fa-arrow-down"></i></li>
-                  </ul>
-                </li>
+                    <li class="dropdown-submenu">
+                        <p class="dropdown-item" tabindex="-1">Confirmed</p>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item sortLink" data-column="confirmed" data-order="asc">Ascending <i class="fas fa-arrow-up"></i></li>
+                            <li class="dropdown-item sortLink" data-column="confirmed" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                    </li>
 
-                <li class="dropdown-submenu">
-                  <p  class="dropdown-item" tabindex="-1">Confirmed</p>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" id="conA">Ascending <i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item" id="conD">Descending <i class="fas fa-arrow-down"></i></li>
-                  </ul>
-                </li>
+                    <li class="dropdown-submenu">
+                        <p class="dropdown-item" tabindex="-1">Released</p>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item sortLink" data-column="released" data-order="asc">Ascending <i class="fas fa-arrow-up"></i></li>
+                            <li class="dropdown-item sortLink" data-column="released" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                    </li>
 
-                <li class="dropdown-submenu">
-                  <p  class="dropdown-item" tabindex="-1">Released</p>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" id="relA">Ascending <i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item" id="relD">Descending <i class="fas fa-arrow-down"></i></li>
-                  </ul>
-                </li>
-
-                <li class="dropdown-submenu">
-                  <p  class="dropdown-item" tabindex="-1">Deceased</p>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item" id="decA">Ascending <i class="fas fa-arrow-up"></i></li>
-                        <li class="dropdown-item" id="decD">Descending <i class="fas fa-arrow-down"></i></li>
-                  </ul>
-                </li>
-
-            </ul>
+                    <li class="dropdown-submenu">
+                        <p class="dropdown-item" tabindex="-1">Deceased</p>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item sortLink" data-column="deceased" data-order="asc">Ascending <i class="fas fa-arrow-up"></i></li>
+                            <li class="dropdown-item sortLink" data-column="deceased" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-        </div>
-     </div>
-    
+    </div>
+
 
     <br><br>
 
