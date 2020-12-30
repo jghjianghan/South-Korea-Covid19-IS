@@ -1,23 +1,19 @@
 class TableEntry {
     /**
      * 
-     * @param {object} entryData Data JSON dari server
+     * @param {string} date Tanggal Pencatatan
+     * @param {int} newCase jumlah pertambahan kasus positif pada tanggal tersebut
+     * @param {int} confirmed jumlah kasus positif kumulatif sampai dengan tanggal tersebut
+     * @param {int} released jumlah pasien sembuh kumulatif sampai dengan tanggal tersebut
+     * @param {int} deceased jumlah pasien meninggal dunia kumulatif sampai dengan tanggal tersebut
      */
-    constructor(entryData) {
-        this.date = entryData.date;
-        this.newCase = entryData.newCase;
-        this.confirmed = entryData.confirmed;
-        this.released = entryData.released;
-        this.deceased = entryData.deceased;
+    constructor(date, newCase, confirmed, released, deceased) {
+        this.date = date;
+        this.newCase = newCase;
+        this.confirmed = confirmed;
+        this.released = released;
+        this.deceased = deceased;
     }
-
-    // constructor(date, newCase, confirmed, released, deceased) {
-    //     this.date = date;
-    //     this.newCase = newCase;
-    //     this.confirmed = confirmed;
-    //     this.released = released;
-    //     this.deceased = deceased;
-    // }
 
     /**
      * Memformat data entry ke dalam baris tabel yang bisa ditampilkan

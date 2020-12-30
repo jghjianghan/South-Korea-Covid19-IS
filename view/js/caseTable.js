@@ -69,11 +69,11 @@ class CaseTable {
             deceased: "3",
         };
         // let entry = new TableEntry(data);
-        this.entries.push(new TableEntry(data1));
-        this.entries.push(new TableEntry(data2));
-        this.entries.push(new TableEntry(data3));
-        this.entries.push(new TableEntry(data4));
-        this.entries.push(new TableEntry(data5));
+        this.entries.push(new TableEntry(data1.date, data1.newCase, data1.confirmed, data1.released, data1.deceased));
+        this.entries.push(new TableEntry(data2.date, data2.newCase, data2.confirmed, data2.released, data2.deceased));
+        this.entries.push(new TableEntry(data3.date, data3.newCase, data3.confirmed, data3.released, data3.deceased));
+        this.entries.push(new TableEntry(data4.date, data4.newCase, data4.confirmed, data4.released, data4.deceased));
+        this.entries.push(new TableEntry(data5.date, data5.newCase, data5.confirmed, data5.released, data5.deceased));
 
         this.populateTable();
     }
@@ -153,11 +153,8 @@ class CaseTable {
                 });
         }
 
-
         //show entries on table
-        //cleartable?
         this.clearTable();
-
         this.populateTable();
     }
 
