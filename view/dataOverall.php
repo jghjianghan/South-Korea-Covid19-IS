@@ -41,72 +41,18 @@
 
     <div class="my-5">
         <div class="float-left">
-            <div class="dropdown">
-                <button class="btn btn-outline-secondary btn-hover-darkgrey dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                    Sort
-                </button>
-                <ul class="dropdown-menu multi-level">
-                    <li class="dropdown-submenu">
-                        <p class="dropdown-item" tabindex="-1">Date</p>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item sortLink" data-column="date" data-order="asc">Ascending<i class="fas fa-arrow-up"></i></li>
-                            <li class="dropdown-item sortLink" data-column="date" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown-submenu">
-                        <p class="dropdown-item" tabindex="-1">New Cases</p>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item sortLink" data-column="newCase" data-order="asc">Ascending <i class="fas fa-arrow-up"></i></li>
-                            <li class="dropdown-item sortLink" data-column="newCase" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown-submenu">
-                        <p class="dropdown-item" tabindex="-1">Confirmed</p>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item sortLink" data-column="confirmed" data-order="asc">Ascending <i class="fas fa-arrow-up"></i></li>
-                            <li class="dropdown-item sortLink" data-column="confirmed" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown-submenu">
-                        <p class="dropdown-item" tabindex="-1">Released</p>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item sortLink" data-column="released" data-order="asc">Ascending <i class="fas fa-arrow-up"></i></li>
-                            <li class="dropdown-item sortLink" data-column="released" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown-submenu">
-                        <p class="dropdown-item" tabindex="-1">Deceased</p>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item sortLink" data-column="deceased" data-order="asc">Ascending <i class="fas fa-arrow-up"></i></li>
-                            <li class="dropdown-item sortLink" data-column="deceased" data-order="desc">Descending <i class="fas fa-arrow-down"></i></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <?php
+                include $upPrefix."view/component/casetableSortDropdown.php";
+            ?>
         </div>
     </div>
 
 
     <br><br>
-
-    <table class="table table-striped text-center" id="case-table">
-        <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">New Cases</th>
-                <th scope="col">Confirmed</th>
-                <th scope="col">Released</th>
-                <th scope="col">Deceased</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
+    <?php
+        include $upPrefix."view/component/casetable.php";
+    ?>
+    
 </div>
 
 <script>
