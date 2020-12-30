@@ -4,7 +4,7 @@
     require_once "controller/controller.php";
     require_once "model/tabel.php";
 
-    class tabelController extends Controller{
+    class TabelController extends Controller{
         /**
          * Method untuk mengambil data overall dari database
          * @return array data overall

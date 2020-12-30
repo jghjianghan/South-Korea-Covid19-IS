@@ -8,7 +8,7 @@ class TableEntry {
      * @param {int} deceased jumlah pasien meninggal dunia kumulatif sampai dengan tanggal tersebut
      */
     constructor(date, newCase, confirmed, released, deceased) {
-        this.date = date;
+        this.date = new Date(date);
         this.newCase = newCase;
         this.confirmed = confirmed;
         this.released = released;
@@ -24,7 +24,7 @@ class TableEntry {
 
         //date
         let col = document.createElement("td");
-        col.textContent = this.date;
+        col.textContent = this.date.getDate() + "/" + (this.date.getMonth() + 1) + "/" + this.date.getFullYear();
         row.appendChild(col);
 
         //new case

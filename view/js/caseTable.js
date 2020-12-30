@@ -32,56 +32,17 @@ class CaseTable {
      */
     initializeTable() {
         //fetch data
-        fetch('data/overall').then(response => response.text()) //contoh
-            .then(text => {
-                // this.entries.push(text);
-                console.log(this.entries);
+        fetch('data/overall').then(response => response.json()) //contoh
+            .then(json => {
+                for (let i of json) {
+                    this.entries.push(new TableEntry(i.date, i.newCase, i.confirmed, i.released, i.deceased));
+                }
+                // let i = json[0];
+                // console.log(i);
+                // this.entries.push(new TableEntry(i.date, i.newCase, i.confirmed, i.released, i.deceased));
+
+                this.populateTable();
             });
-
-        //data dummy
-        let data1 = {
-            date: "date",
-            newCase: "20",
-            confirmed: "2",
-            released: "3",
-            deceased: "4",
-        };
-        let data2 = {
-            date: "datf0",
-            newCase: "35",
-            confirmed: "25",
-            released: "2",
-            deceased: "4",
-        };
-        let data3 = {
-            date: "datf1",
-            newCase: "14",
-            confirmed: "10",
-            released: "7",
-            deceased: "9",
-        };
-        let data4 = {
-            date: "datf2",
-            newCase: "6",
-            confirmed: "9",
-            released: "5",
-            deceased: "4",
-        };
-        let data5 = {
-            date: "datf3",
-            newCase: "8",
-            confirmed: "22",
-            released: "9",
-            deceased: "3",
-        };
-        // let entry = new TableEntry(data);
-        this.entries.push(new TableEntry(data1.date, data1.newCase, data1.confirmed, data1.released, data1.deceased));
-        this.entries.push(new TableEntry(data2.date, data2.newCase, data2.confirmed, data2.released, data2.deceased));
-        this.entries.push(new TableEntry(data3.date, data3.newCase, data3.confirmed, data3.released, data3.deceased));
-        this.entries.push(new TableEntry(data4.date, data4.newCase, data4.confirmed, data4.released, data4.deceased));
-        this.entries.push(new TableEntry(data5.date, data5.newCase, data5.confirmed, data5.released, data5.deceased));
-
-        this.populateTable();
     }
 
     populateTable() {
@@ -111,12 +72,12 @@ class CaseTable {
                 if (order === "asc") {
                     console.log('naik');
                     sortFunc = (a, b) => {
-                        return a.date.localeCompare(b.date);
+                        return a.date - b.date;
                     };
                 } else if (order === "desc") {
                     console.log('turun');
                     sortFunc = (a, b) => {
-                        return b.date.localeCompare(a.date);
+                        return b.date - a.date;
                     };
                 }
                 break;
