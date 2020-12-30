@@ -13,21 +13,69 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			break;
 
 		case $baseURL . '/admin/login':
-			require_once "controller/adminController.php";
-			$ctrl = new AdminController();
-			echo $ctrl->viewLogin();
+			if (isset($_SESSION['username'])) {
+				header('location: dataOverall');
+			} else {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewLogin();
+			}
 			break;
 
-		case $baseURL . '/admin/data':
+		case $baseURL . '/admin/logout':
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
-			echo $ctrl->viewData();
+			echo $ctrl->logout();
 			break;
 			
+		case $baseURL . '/admin/dataOverall':
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewDataOverall($ctrl->getDataOverall());
+			} else {
+				header('location: login');
+			}
+			break;
+
+		case $baseURL . '/admin/dataRegional':
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewDataRegional($ctrl->getDataRegional());
+			} else {
+				header('location: login');
+			}
+			break;
+
 		case $baseURL . '/admin/data/add':
-			require_once "controller/adminController.php";
-			$ctrl = new AdminController();
-			echo $ctrl->viewAddData();
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewAddData();
+			} else {
+				header('location: ../login');
+			}
+			break;
+
+		case $baseURL . '/admin/addAccount':
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewAddAccount();
+			} else {
+				header('location: login');
+			}
+			break;
+
+		case $baseURL . '/admin/changePassword':
+			if (isset($_SESSION['username'])) {
+				require_once "controller/adminController.php";
+				$ctrl = new AdminController();
+				echo $ctrl->viewChangePassword();
+			} else {
+				header('location: login');
+			}
 			break;
 
 		case $baseURL . '/dataOverall':
@@ -54,11 +102,36 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	}
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	switch ($url) {
-		case $baseURL . '/login':
-			require_once "controller/mainController.php";
-			$ctrl = new MainController();
-			// do something
+		case $baseURL . '/admin/login':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->validateLogin();
 			break;
+
+		case $baseURL . '/admin/addAccount':
+            require_once "controller/adminController.php";
+            $ctrl = new AdminController();
+            echo $ctrl->addAccount();
+			break;
+			
+		case $baseURL . '/admin/changePassword':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->changePassword();
+			break;
+
+		case $baseURL . '/admin/data/add':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->addCases();
+			break;
+
+		case $baseURL . '/admin/dataRegional':
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->viewDataRegional($ctrl->getDataRegional());
+			break;
+	
 		default:
 			echo '404 Not Found';
 			break;
