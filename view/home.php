@@ -95,7 +95,7 @@
                         Keeping hands clean is one of the most important steps we can take to 
                         avoid getting sick and spreading germs to others. Washing and sanitizing 
                         hands regularly can keep you healthy and prevent the spread of respiratory and 
-                        diarrheal infections from one person to the next.
+                        diarrheal infections (including Coronavirus) from one person to the next.
                     </p>
                 </div>
             </div>

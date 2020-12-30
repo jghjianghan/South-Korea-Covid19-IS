@@ -1,17 +1,13 @@
-<div class="container justify-content-center mt-5">
-    <div class="d-flex flex-column">
-        <div class="d-flex justify-content-center">
-            <h2><strong>Covid-19 Cases</strong></h2>
-        </div>
-        <div class="d-flex flex-row justify-content-center">
-            <div class="m-3 d-inline-block category-title">
-                <a href="<?php echo $upPrefix; ?>admin/dataOverall" class="tablink border-bottom border-primary border-5"><strong>Overall</strong></a>
+<div class="data-head-wrapper mx-auto">
+        <div class="sub-title">Covid-19 Cases</div>
+        <div class="my-3">
+            <div class="d-inline-block category-title current-category">
+                <a href="<?php echo $upPrefix; ?>admin/dataOverall">Overall</a>
             </div>
-            <div class="m-3 d-inline-block category-title">
-                <a href="<?php echo $upPrefix; ?>admin/dataRegional" class="tablink"><strong>Regional</strong></a>
+            <div class="d-inline-block category-title">
+                <a href="<?php echo $upPrefix; ?>admin/dataRegional">Regional</a>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -20,7 +16,7 @@
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-row ">
                 <div class="dropdown px-3">
-                    <button class="btn btn-outline-secondary" type="button" id="SortOverall" data-bs-toggle="dropdown">Sort <i class="fas fa-sort-amount-down"></i></button>
+                    <button class="btn btn-outline-secondary btn-hover-darkgrey" type="button" id="SortOverall" data-bs-toggle="dropdown">Sort <i class="fas fa-sort-amount-down"></i></button>
                     <ul class="dropdown-menu multi-level">
 
                         <li class="dropdown-submenu">
@@ -68,7 +64,7 @@
             </div>
             <div>
                 <form method="GET" action="<?php echo $upPrefix; ?>admin/data/add">
-                    <input type="submit" name="" value="Add Data" class="btn btn-md bg-dark text-white">
+                    <input type="submit" name="" value="+ Add Data" class="btn btn-md bg-dark text-white">
                 </form>
             </div>
         </div>
