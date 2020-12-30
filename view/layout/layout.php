@@ -32,7 +32,15 @@
 
 <body>
 	<header class="navbar">
-		<a class="nav-logo" href="<?php echo $upPrefix; ?>index">COREA</a>
+		<?php
+			if ($role === 'visitor') { 
+				echo '<a class="nav-logo" href="'. $upPrefix .' index">COREA</a>';
+			}elseif ($role === 'admin') {
+				echo '<a class="nav-logo" href="'. $upPrefix .'admin/dataOverall">COREA</a>';
+			}elseif ($role === 'admin-out') {
+				echo '<a class="nav-logo" href="#">COREA</a>';
+			}
+		?>
 		
 		<nav>
 			<ul>
