@@ -1,4 +1,3 @@
-<div class="container justify-content-center mt-5">
 <div class="data-head-wrapper mx-auto">
         <div class="sub-title">Covid-19 Cases</div>
         <div class="my-3">
