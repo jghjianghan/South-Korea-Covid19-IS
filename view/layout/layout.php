@@ -34,6 +34,8 @@
 	<header class="navbar">
 		<a class="nav-logo" href="<?php echo $upPrefix; ?>index">COREA</a>
 		<nav>
+			
+
 			<ul>
 				<!-- <li>
 					<a class="nav-link <?php if ($page === 'home') echo "current-nav"; ?>" href="<?php echo $upPrefix; ?>index">Home</a>
@@ -45,16 +47,9 @@
 					<a class="nav-link <?php if ($page === 'about') echo "current-nav"; ?>" href="<?php echo $upPrefix; ?>about">About Us</a>
 				</li> -->
 				
-				<?php if (isset($_SESSION['username'])) { ?>
-				<li class="dropdown ">
-					<a class="nav-link dropdown-toggle" id="navbarAdminDropdown" role="button" data-toggle="dropdown" ><i class="fas fa-user-circle fa-lg mr-1"></i> <?php echo $_SESSION['username']; ?></a>
-					<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/addAccount">Add Account</a>
-						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/changePassword">Change Password</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/logout">Log Out <i class="fas fa-sign-out-alt"></i></a>
-					</div>
-				</li>
+				<?php
+					if($role === 'admin-out'){ ?>
+					
 				<?php } ?>
 			</ul>
 		</nav>
