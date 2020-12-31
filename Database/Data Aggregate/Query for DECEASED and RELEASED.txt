@@ -1,0 +1,5 @@
+SELECT MAX(deceased) as 'total deceased'
+FROM time
+
+SELECT MAX(released) as 'total released'
+FROM time

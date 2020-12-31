@@ -13,7 +13,7 @@
     </div>
 
 
-    <div class="data-head-wrapper mx-auto my-5">
+    <div class="data-head-wrapper mx-auto">
         <div>Choose a Province</div>
         <button type="button" class="btn btn-outline-secondary btn-hover-darkgrey my-3">
             Seoul
