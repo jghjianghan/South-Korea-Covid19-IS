@@ -2,10 +2,58 @@
     require_once "controller/services/mysqlDB.php";
     require_once "controller/services/view.php";
     require_once "controller/controller.php";
+    require_once "model/dataChart.php";
     require_once "model/dataAggregate.php";
 
     class MainController extends Controller{
         
+        public function getTimeProvince($datefilterfrom,$datefilterto,$provincefilter){
+            $this->db->openConnection();
+            $query = "SELECT date, confirmed 
+                        FROM `timeprovince`";
+            $sum = 0;
+            if($datefilterfrom!=NULL or $provincefilter!=""){
+                $query.=" WHERE ";
+
+                if($provincefilter!=""){
+                    $query.=" province_name = '".$provincefilter."'";
+                    $sum+=1;
+                }
+                if($datefilterfrom){
+                    if($sum>0){
+                        $query.=" and ";
+                    }
+                    $query.=" date between '".$datefilterfrom."' and '".$datefilterto."'"; 
+                }
+            }
+            
+            $hasil=$this->db->executeSelectQuery($query);
+            // echo var_dump($hasil);
+
+        }
+
+        public function getTime($datefilterfrom,$datefilterto){
+            $this->db->openConnection();
+            $query = "SELECT date, confirmed
+                        FROM `time`";
+            if($datefilterfrom!=NULL){
+                $query.=" WHERE date between '".$datefilterfrom."' and '".$datefilterto."'";
+            }
+            $query_result =$this->db->executeSelectQuery($query);
+
+            $result = [];
+            $currentCase = 0;
+
+            foreach($query_result as $key => $value){
+                $result [] = new DataChart($value['date'],$value['confirmed']-$currentCase);
+                $currentCase = $value['confirmed'];
+            }
+            // echo var_dump($hasil);
+
+            return $result;
+        }
+
+
         public function viewHome()
         {
             $result = $this->getAggregateOverall();
@@ -24,17 +72,24 @@
                 'result' => $result,
                 'title' => "Corea - Overall Data",
                 'page' => "data",
+                'scriptSrcList' => ['caseChart.js', 'chartEntry.js'],
                 'role' => "visitor"
             ]);
         }
 
+        
+
         public function viewDataRegional()
         {
+            //$this->getTime("2020-01-20","2020-02-20");
+            $this->getTimeProvince("2020-06-30","2020-08-20","Busan");
             return View::createView("dataRegional.php",[
                 'title' => "Corea - Regional Data",
                 'page' => "data",
+                'scriptSrcList' => ['caseChart.js', 'chartEntry.js'],
                 'role' => "visitor"
             ]);
+            
         }
 
         public function viewAbout()
