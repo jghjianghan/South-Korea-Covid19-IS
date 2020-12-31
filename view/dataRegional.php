@@ -13,7 +13,7 @@
     </div>
 
 
-    <div class="data-head-wrapper mx-auto my-5">
+    <div class="data-head-wrapper mx-auto">
         <div>Choose a Province</div>
         <button type="button" class="btn btn-outline-secondary btn-hover-darkgrey my-3">
             Seoul
@@ -23,9 +23,9 @@
 
     <div>
         <span class="mx-3">From</span>
-        <input type="date">
+        <input type="date" id='dateFrom'>
         <span class="mx-3">To</span>
-        <input type="date">
+        <input type="date" id='dateTo'>
     </div>
 
     
@@ -63,7 +63,7 @@
     ?>
 </div>
 
-<script>
+<!-- <script>
     new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
     data: {
@@ -78,4 +78,4 @@
         ]
     }
     });
-</script>
+</script> -->

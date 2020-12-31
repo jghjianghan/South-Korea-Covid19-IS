@@ -3,7 +3,7 @@
 
 <head>
 	<title><?php echo $title; ?></title>
-	
+
 	<!-- taro link library di sini -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -33,24 +33,47 @@
 
 <body>
 	<header class="navbar">
-		<a class="nav-logo" href="<?php echo $upPrefix; ?>index">COREA</a>
+		<?php
+			if ($role === 'visitor') { 
+				echo '<a class="nav-logo" href="'. $upPrefix .' index">COREA</a>';
+			}elseif ($role === 'admin') {
+				echo '<a class="nav-logo" href="'. $upPrefix .'admin/dataOverall">COREA</a>';
+			}elseif ($role === 'admin-out') {
+				echo '<a class="nav-logo" href="#">COREA</a>';
+			}
+		?>
+		
 		<nav>
 			<ul>
-				<li>
-					<a class="nav-link <?php if($page === 'home') echo "current-nav";?>" href="<?php echo $upPrefix; ?>index">Home</a>
-				</li>
-				<li>
-					<a class="nav-link <?php if($page === 'data') echo "current-nav";?>" href="<?php echo $upPrefix; ?>dataOverall">Data</a>
-				</li>
-				<li>
-					<a class="nav-link <?php if($page === 'about') echo "current-nav";?>" href="<?php echo $upPrefix; ?>about">About Us</a>
-				</li>
+				<?php if($role === 'admin') { ?>
+					<?php if (isset($_SESSION['username'])) { ?>
+					<li class="dropdown ">
+						<a class="nav-link dropdown-toggle" id="navbarAdminDropdown" role="button" data-toggle="dropdown" ><i class="fas fa-user-circle fa-lg mr-1"></i> <?php echo $_SESSION['username']; ?></a>
+						<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/addAccount">Add Account</a>
+							<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/changePassword">Change Password</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="<?php echo $upPrefix; ?>admin/logout">Log Out <i class="fas fa-sign-out-alt"></i></a>
+						</div>
+					</li>
+					<?php } ?>
+				<?php } else if($role === 'visitor') { ?>
+					<li>
+						<a class="nav-link <?php if ($page === 'home') echo "current-nav"; ?>" href="<?php echo $upPrefix; ?>index">Home</a>
+					</li>
+					<li>
+						<a class="nav-link <?php if ($page === 'data') echo "current-nav"; ?>" href="<?php echo $upPrefix; ?>dataOverall">Data</a>
+					</li>
+					<li>
+						<a class="nav-link <?php if ($page === 'about') echo "current-nav"; ?>" href="<?php echo $upPrefix; ?>about">About Us</a>
+					</li>
+				<?php } ?>
 			</ul>
 		</nav>
 	</header>
 
 	<div id="wrapper">
-		<?php echo $content;?>
+		<?php echo $content; ?>
 	</div>
 </body>
 

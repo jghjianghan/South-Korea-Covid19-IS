@@ -7,7 +7,7 @@
             <div class="paragraph">
                 <p>
                     Corea was founded by Jegeuh Co. in March 2020, the leading company in technology, originated in South Korea. 
-                    Our main focus is to share the latest updates of Covid-19 in South Korea.
+                    Our main focus is to share the latest informations of Covid-19 in South Korea.
                     With daily data inputs by reliable sources such as hospitals and clinics from across the country, 
                     we are able to provide the newest and most accurate information right to you.
                 </p>
@@ -21,7 +21,7 @@
                 </p>
             </div>
 
-            <img id="about-us-image" src="<?php echo $upPrefix; ?>view/img/call.png" alt="">
+            <img src="<?php echo $upPrefix; ?>view/img/call.png" alt="">
         </div>
     </div>
 

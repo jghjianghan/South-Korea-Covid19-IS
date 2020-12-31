@@ -15,9 +15,9 @@
 
     <div>
         <span class="mx-3">From</span>
-        <input type="date">
+        <input type="date" id='dateFrom'>
         <span class="mx-3">To</span>
-        <input type="date">
+        <input type="date" id='dateTo'>
     </div>
 
     <div class="table">
@@ -27,15 +27,15 @@
     <div class="row">
         <div class="col stat-content">
             <div class="stat-title">CONFIRMED</div>
-            <div class="stat-value">608514</div>
+            <div class="stat-value"><?php echo $result->getConfirmed()?></div>
         </div>
         <div class="col stat-content">
             <div class="stat-title">RELEASED</div>
-            <div class="stat-value">588559</div>
+            <div class="stat-value"><?php echo $result->getReleased()?></div>
         </div>
         <div class="col stat-content">
             <div class="stat-title">DECEASED</div>
-            <div class="stat-value">8854</div>
+            <div class="stat-value"><?php echo $result->getDeceased()?></div>
         </div>
     </div>
 
@@ -55,7 +55,7 @@
     
 </div>
 
-<script>
+<!-- <script>
     new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
     data: {
@@ -70,4 +70,4 @@
         ]
     }
     });
-</script>
+</script> -->
