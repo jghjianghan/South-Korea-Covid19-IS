@@ -3,7 +3,7 @@
     <div class="data-head-wrapper mx-auto">
         <div class="sub-title">Covid-19 Cases</div>
         <div class="my-3">
-            
+
             <div class="d-inline-block category-title current-category">
                 <a href="<?php echo $upPrefix; ?>dataOverall">Overall</a>
             </div>
@@ -23,7 +23,7 @@
     <div class="table">
         <canvas id="bar-chart" width="800" height="200"></canvas>
     </div>
-    
+
     <div class="row">
         <div class="col stat-content">
             <div class="stat-title">CONFIRMED</div>
@@ -40,30 +40,19 @@
     </div>
 
     <div class="my-5">
-        <div class="float-right">
-            <button type="button" class="btn btn-outline-secondary btn-hover-darkgrey">
-                Sort
-                <i class="fa fa-caret-down"></i>
-            </button>
+        <div class="float-left">
+            <?php
+                include $upPrefix."view/component/casetableSortDropdown.php";
+            ?>
         </div>
     </div>
 
+
     <br><br>
-
-    <table class="table table-striped text-center">
-        <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">New Cases</th>
-                <th scope="col">Confirmed</th>
-                <th scope="col">Released</th>
-                <th scope="col">Deceased</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
+    <?php
+        include $upPrefix."view/component/casetable.php";
+    ?>
+    
 </div>
 
 <!-- <script>

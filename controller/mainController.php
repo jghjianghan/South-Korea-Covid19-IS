@@ -72,7 +72,7 @@
                 'result' => $result,
                 'title' => "Corea - Overall Data",
                 'page' => "data",
-                'scriptSrcList' => ['caseChart.js', 'chartEntry.js'],
+                'scriptSrcList' => ['caseChart.js', 'chartEntry.js','tableEntry.js', 'caseTableOverall.js'],
                 'role' => "visitor"
             ]);
         }
@@ -86,7 +86,7 @@
             return View::createView("dataRegional.php",[
                 'title' => "Corea - Regional Data",
                 'page' => "data",
-                'scriptSrcList' => ['caseChart.js', 'chartEntry.js'],
+                'scriptSrcList' => ['caseChart.js', 'chartEntry.js', 'tableEntry.js', 'caseTableRegional.js'],
                 'role' => "visitor"
             ]);
             

@@ -49,30 +49,18 @@
     </div>
 
     <div class="my-5">
-        <div class="float-right">
-            <button type="button" class="btn btn-outline-secondary btn-hover-darkgrey">
-                Sort
-                <i class="fa fa-caret-down"></i>
-            </button>
+        <div class="float-left">
+            <?php
+                include $upPrefix."view/component/casetableSortDropdown.php";
+            ?>
         </div>
-    </div>
+     </div>
 
     <br><br>
 
-    <table class="table table-striped text-center">
-        <thead>
-            <tr>
-                <th scope="col">Date</th>
-                <th scope="col">New Cases</th>
-                <th scope="col">Confirmed</th>
-                <th scope="col">Released</th>
-                <th scope="col">Deceased</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
+    <?php
+        include $upPrefix."view/component/casetable.php";
+    ?>
 </div>
 
 <!-- <script>
