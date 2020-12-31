@@ -150,7 +150,7 @@
 
         public function addAccount() 
         {
-            if (isset($_POST['username']) && $_POST['username']!="" && isset($_POST['password']) && $_POST['password']!=""){
+            if (isset($_POST['username']) && $_POST['username']!="" && isset($_POST['password']) && $_POST['password']!="" && isset($_POST['confirmPassword']) && $_POST['confirmPassword']!=""){
                 $username = $this->db->escapeString($_POST['username']);
                 $password = $_POST['password'];
 
@@ -164,14 +164,18 @@
                 $count = $row[0];
 
                 if($count == 0) {
-                    $this->db->executeSelectQuery("INSERT INTO admin(username, password) VALUES ('$username', '$password')");
-                    header("location: dataOverall");
-                    return;
+                    if($_POST['password'] == $_POST['confirmPassword']) {
+                        $this->db->executeSelectQuery("INSERT INTO admin(username, password) VALUES ('$username', '$password')");
+                        header("location: dataOverall");
+                        return;
+                    } else {
+                        return $this->viewAddAccount("Password and Confirm Password are not identical");
+                    }
                 } else {
                     return $this->viewAddAccount("Username already taken");
                 }
             } else {
-                return $this->viewAddAccount("Please fill both username and password");
+                return $this->viewAddAccount("Please fill all field");
             }
         }
 
