@@ -57,7 +57,7 @@
         public function getAggregateOverall()
         {
             $query = "
-                SELECT MAX(confirmed) as 'totalConfirm'
+                SELECT MAX(confirmed) as 'tC', MAX(test) as 'tT', MAX(negative) as 'tN', MAX(released) as'tR',MAX(deceased)as'tD'
                 FROM time
             ";
             $query_result = $this->db->executeSelectQuery($query);
@@ -65,50 +65,10 @@
             $result = [];
             
             foreach($query_result as $key => $value){
-                $result [] = $value['totalConfirm'];
+                $result [] = new DataAggregate($value['tC'],$value['tT'],$value['tN'],$value['tR'],$value['tD']);
             }
 
-            $query = "
-                SELECT MAX(test) as 'totalTest'
-                FROM time
-            ";
-            $query_result = $this->db->executeSelectQuery($query);
-            
-            foreach($query_result as $key => $value){
-                $result [] = $value['totalTest'];
-            }
-
-            $query = "
-                SELECT MAX(negative) as 'totalNegative'
-                FROM time
-            ";
-            $query_result = $this->db->executeSelectQuery($query);
-            
-            foreach($query_result as $key => $value){
-                $result [] = $value['totalNegative'];
-            }
-
-            $query = "
-                SELECT MAX(released) as 'totalReleased'
-                FROM time
-            ";
-            $query_result = $this->db->executeSelectQuery($query);
-            
-            foreach($query_result as $key => $value){
-                $result [] = $value['totalReleased'];
-            }
-
-            $query = "
-                SELECT MAX(deceased) as 'totalDeceased'
-                FROM time
-            ";
-            $query_result = $this->db->executeSelectQuery($query);
-            
-            foreach($query_result as $key => $value){
-                $result [] = $value['totalDeceased'];
-            }
-
-            return new DataAggregate($result[0],$result[1],$result[2],$result[3],$result[4]);
+            return $result; 
         }
 
         public function getAggregateRegional($region)
