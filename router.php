@@ -127,15 +127,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new DataController();
 			if(isset($_GET['province'])) {
 				if (isset($_GET['start']) && isset($_GET['end'])){
-					echo json_encode($ctrl->getAggregateRegional($_GET['province'],""));
-				}else{
 					echo json_encode($ctrl->getAggregateRegional($_GET['province'],$_GET['end']));
+				}else{
+					echo json_encode($ctrl->getAggregateRegional($_GET['province'],""));
 				}
 			}else{
 				if (isset($_GET['start']) && isset($_GET['end'])){
-					echo json_encode($ctrl->getAggregateOverall(""));
-				}else{
 					echo json_encode($ctrl->getAggregateOverall($_GET['end']));
+				}else{
+					echo json_encode($ctrl->getAggregateOverall(""));
 				}
 			}
 			break;
