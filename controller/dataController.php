@@ -9,9 +9,8 @@
     {
         public function viewHome()
         {
-            $result = $this->getAggregateOverall();
+
             return View::createView("home.php",[
-                'result'=> $result,
                 'title' => "Corea",
                 'page' => "home",
                 'role' => "visitor"
@@ -20,9 +19,8 @@
 
         public function viewDataOverall()
         {
-            $result = $this->getAggregateOverall();
+            //$result = $this->getAggregateOverall();
             return View::createView("dataOverall.php",[
-                'result' => $result,
                 'title' => "Corea - Overall Data",
                 'page' => "data",
                 'scriptSrcList' => ['caseChart.js', 'chartEntry.js','tableEntry.js', 'caseTableOverall.js'],
@@ -54,12 +52,15 @@
             ]);
         }
 
-        public function getAggregateOverall()
+        public function getAggregateOverall($to)
         {
             $query = "
                 SELECT MAX(confirmed) as 'tC', MAX(test) as 'tT', MAX(negative) as 'tN', MAX(released) as'tR',MAX(deceased)as'tD'
                 FROM time
             ";
+            if($to!=""){
+                $query.=", date <=".$to;
+            }
             $query_result = $this->db->executeSelectQuery($query);
 
             $result = [];
@@ -71,13 +72,16 @@
             return $result[0]; 
         }
 
-        public function getAggregateRegional($region)
+        public function getAggregateRegional($region,$to)
         {
             $query = "
                 SELECT MAX(confirmed) as 'tC', MAX(released) as'tR',MAX(deceased)as'tD'
                 FROM timeprovince
                 WHERE province_name = '$region'
             ";
+            if($to!=""){
+                $query.=", date <=".$to;
+            }
             $query_result = $this->db->executeSelectQuery($query);
 
             $result = [];
@@ -88,6 +92,9 @@
 
             return $result[0];
         }
+
+        
+
         /**
          * Method untuk mengambil data overall dari database
          * @return array data overall

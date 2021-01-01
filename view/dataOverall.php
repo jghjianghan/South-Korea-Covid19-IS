@@ -27,15 +27,15 @@
     <div class="row">
         <div class="col stat-content">
             <div class="stat-title">CONFIRMED</div>
-            <div class="stat-value"><?php echo $result->getConfirmed()?></div>
+            <div class="stat-value"></div>
         </div>
         <div class="col stat-content">
             <div class="stat-title">RELEASED</div>
-            <div class="stat-value"><?php echo $result->getReleased()?></div>
+            <div class="stat-value"></div>
         </div>
         <div class="col stat-content">
             <div class="stat-title">DECEASED</div>
-            <div class="stat-value"><?php echo $result->getDeceased()?></div>
+            <div class="stat-value"></div>
         </div>
     </div>
 
