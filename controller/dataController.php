@@ -68,13 +68,13 @@
                 $result [] = new DataAggregate($value['tC'],$value['tT'],$value['tN'],$value['tR'],$value['tD']);
             }
 
-            return $result; 
+            return $result[0]; 
         }
 
         public function getAggregateRegional($region)
         {
             $query = "
-                SELECT MAX(confirmed) as 'totalConfirmed'
+                SELECT MAX(confirmed) as 'tC', MAX(released) as'tR',MAX(deceased)as'tD'
                 FROM timeprovince
                 WHERE province_name = '$region'
             ";
@@ -83,32 +83,10 @@
             $result = [];
             
             foreach($query_result as $key => $value){
-                $result [] = $value['totalConfirm'];
+                $result [] = new DataAggregate($value['tC'],null,null,$value['tR'],$value['tD']);
             }
 
-            $query = "
-                SELECT MAX(released) as 'totalReleased'
-                FROM timeprovince
-                WHERE province_name = '$region'
-            ";
-            $query_result = $this->db->executeSelectQuery($query);
-
-            foreach($query_result as $key => $value){
-                $result [] = $value['totalReleased'];
-            }
-
-            $query = "
-                SELECT MAX(deceased) as 'totalDeceased'
-                FROM timeprovince
-                WHERE province_name = '$region'
-            ";
-            $query_result = $this->db->executeSelectQuery($query);
-            
-            foreach($query_result as $key => $value){
-                $result [] = $value['totalDeceased'];
-            }
-
-            return new DataAggregate($result[0],null,null,$result[1],$result[3]);
+            return $result[0];
         }
         /**
          * Method untuk mengambil data overall dari database
