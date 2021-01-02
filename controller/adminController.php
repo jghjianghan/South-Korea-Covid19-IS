@@ -12,8 +12,14 @@
                         FROM `timeprovince`";
             
             $hasil=$this->db->executeSelectQuery($query);
+            
+            $result = [];
+
+            foreach($hasil as $key => $value){
+                $result [] = $value['province_name'];
+            }
             // echo var_dump($hasil);
-            return $hasil;
+            return $result;
         }
 
         public function viewLogin($message = "")

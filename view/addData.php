@@ -17,24 +17,11 @@
                     <label class="col-sm-5 col-form-label fs-5">Choose a Province</label>
                     <div class="col-sm-5 d-flex flex-row-reverse">
                         <select class="form-select" id="region" name="region">
-                            <option value="Busan">Busan</option>
-                            <option value="Chungcheongbuk-do">Chungcheongbuk-do</option>
-                            <option value="Chungcheongnam-do">Chungcheongnam-do</option>
-                            <option value="Daegu">Daegu</option>
-                            <option value="Daejeon">Daejeon</option>
-                            <option value="Gangwon-do">Gangwon-do</option>
-                            <option value="Gwangju">Gwangju</option>
-                            <option value="Gyeonggi-do">Gyeonggi-do</option>
-                            <option value="Gyeongsangbuk-do">Gyeongsangbuk-do</option>
-                            <option value="Gyeongsangnam-do">Gyeongsangnam-do</option>
-                            <option value="Incheon">Incheon</option>
-                            <option value="Jeju-do">Jeju-do</option>
-                            <option value="Jeollabuk-do">Jeollabuk-do</option>
-                            <option value="Jeollanam-do">Jeollanam-do</option>
-                            <option value="Sejong">Sejong</option>
-                            <option value="Seoul">Seoul</option>
-                            <option value="Ulsan">Ulsan</option>
-
+                            <?php
+                                foreach($arr as $name){
+                                    echo "<option value='" . $name . "'>" . $name . "</option>";
+                                }
+                            ?>
                 
                         </select>
                     </div>
