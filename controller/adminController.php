@@ -5,23 +5,6 @@
     require_once "model/AdminTable.php";
 
     class AdminController extends Controller{
-
-        public function getProvince(){
-            $this->db->openConnection();
-            $query = "SELECT DISTINCT province_name 
-                        FROM `timeprovince`";
-            
-            $hasil=$this->db->executeSelectQuery($query);
-            
-            $result = [];
-
-            foreach($hasil as $key => $value){
-                $result [] = $value['province_name'];
-            }
-            // echo var_dump($hasil);
-            return $result;
-        }
-
         public function viewLogin($message = "")
         {
             return View::createView("login.php",[
@@ -48,13 +31,15 @@
 
         public function viewDataRegional($message)
         {
+            $arrProv = $this->getProvince();
             return View::createView("dataRegionalAdmin.php",[
                 'title' => "Data",
                 'styleSrcList' => ["adminStyle.css"],
                 'scriptSrcList' => ["adminScript.js"],
                 'uplevel' => 1,
                 "message" => $message,
-                'role' => 'admin'
+                'role' => 'admin',
+                'provinces' => $arrProv
             ]);
         }
 
@@ -126,6 +111,22 @@
             session_unset();
             session_destroy();
             header("location: login");
+        }
+
+        public function getProvince(){
+            $this->db->openConnection();
+            $query = "SELECT DISTINCT province_name 
+                        FROM `timeprovince`";
+            
+            $hasil=$this->db->executeSelectQuery($query);
+            
+            $result = [];
+
+            foreach($hasil as $key => $value){
+                $result [] = $value['province_name'];
+            }
+            
+            return $result;
         }
 
         public function getDataOverall()
