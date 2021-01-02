@@ -5,7 +5,6 @@
     require_once "model/AdminTable.php";
 
     class AdminController extends Controller{
-        var $arrProv;
 
         public function getProvince(){
             $this->db->openConnection();
@@ -14,6 +13,7 @@
             
             $hasil=$this->db->executeSelectQuery($query);
             // echo var_dump($hasil);
+            return $hasil;
         }
 
         public function viewLogin($message = "")
@@ -55,7 +55,6 @@
         public function viewAddData($message = "")
         {
             $arrProv = $this->getProvince();
-            echo var_dump($arrProv);
             return View::createView("addData.php",[
                 'title' => "Add Data",
                 'styleSrcList' => ["adminStyle.css"],
@@ -63,7 +62,7 @@
                 'uplevel' => 2,
                 "message" => $message,
                 'role' => 'admin',
-                'arrProv' => $arrProv
+                'arr' => $arrProv
             ]);
         }
 
@@ -227,8 +226,8 @@
 
         public function addCases() 
         {
-            if (isset($_POST['date']) && $_POST['date']!="" && isset($_POST['region']) && $_POST['region']!="" && isset($_POST['confirmedCases']) && $_POST['confirmedCases']!="" && isset($_POST['releasedCases']) && $_POST['releasedCases']!="" && isset($_POST['deceasedCases']) && $_POST['deceasedCases']!=""){
-                $date = $_POST['date'];
+            if (isset($_POST['region']) && $_POST['region']!="" && isset($_POST['confirmedCases']) && $_POST['confirmedCases']!="" && isset($_POST['releasedCases']) && $_POST['releasedCases']!="" && isset($_POST['deceasedCases']) && $_POST['deceasedCases']!=""){
+                $date = date("Y-m-d");
                 $region = $_POST['region'];
                 $testedCases = $_POST['testedCases'];
                 $negativeCases = $_POST['negativeCases'];
