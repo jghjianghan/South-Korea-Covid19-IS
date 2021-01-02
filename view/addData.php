@@ -3,17 +3,11 @@
         <h2 class="text-center mt-3">Input Data</h2>
         <div class="card-body mx-5 px-3">
             <form method="POST" action="<?php echo $upPrefix; ?>admin/data/add">
-                <div class="form-group row my-3 d-flex justify-content-between">
-                    <label for="example-date-input" class="col-5 col-form-label fs-5">Date</label>
-                    <div class="col-sm-5">
-                        <input class="form-control" type="date" style="border: none; border-bottom: 1px solid black; border-radius: 0" id="date" name="date">
-                    </div>
-                </div>
                 <div class="form-group row mt-3 mb-4 d-flex justify-content-between">
                     <label class="col-sm-5 col-form-label fs-5">Choose a Province</label>
                     <div class="col-sm-5 d-flex flex-row-reverse">
                         <select class="form-select" id="region" name="region">
-                            <option value="Busan">Busan</option>
+                            <!-- <option value="Busan">Busan</option>
                             <option value="Chungcheongbuk-do">Chungcheongbuk-do</option>
                             <option value="Chungcheongnam-do">Chungcheongnam-do</option>
                             <option value="Daegu">Daegu</option>
@@ -29,7 +23,14 @@
                             <option value="Jeollanam-do">Jeollanam-do</option>
                             <option value="Sejong">Sejong</option>
                             <option value="Seoul">Seoul</option>
-                            <option value="Ulsan">Ulsan</option>
+                            <option value="Ulsan">Ulsan</option> -->
+                            <?php
+                                echo var_dump($arrProv);
+                                foreach($arrProv as $name){
+                                    echo "<option value=".$name.">".$name."</option>";
+                                }
+                            ?>
+
                         </select>
                     </div>
                 </div>

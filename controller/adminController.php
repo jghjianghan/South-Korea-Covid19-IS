@@ -5,7 +5,17 @@
     require_once "model/AdminTable.php";
 
     class AdminController extends Controller{
-        
+        var $arrProv;
+
+        public function getProvince(){
+            $this->db->openConnection();
+            $query = "SELECT DISTINCT province_name 
+                        FROM `timeprovince`";
+            
+            $hasil=$this->db->executeSelectQuery($query);
+            // echo var_dump($hasil);
+        }
+
         public function viewLogin($message = "")
         {
             return View::createView("login.php",[
@@ -44,13 +54,16 @@
 
         public function viewAddData($message = "")
         {
+            $arrProv = $this->getProvince();
+            echo var_dump($arrProv);
             return View::createView("addData.php",[
                 'title' => "Add Data",
                 'styleSrcList' => ["adminStyle.css"],
                 'scriptSrcList' => ["adminScript.js"],
                 'uplevel' => 2,
                 "message" => $message,
-                'role' => 'admin'
+                'role' => 'admin',
+                'arrProv' => $arrProv
             ]);
         }
 
