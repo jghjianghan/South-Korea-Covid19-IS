@@ -15,7 +15,7 @@
                 <div class="form-floating input-group-append mb-5">
                     <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="Confirm Password">
                     <label for="floatingPassword">Confirm Password</label>
-                    <span class="mt-3 border-bottom border-dark" id="mybutton" onclick="change('confirmPassword')"><i class="far fa-eye"></i></span>
+                    <span class="mt-3 border-bottom border-dark" id="mybutton2" onclick="change2('confirmPassword')"><i class="far fa-eye"></i></span>
                 </div>
                 <div class="form-group mb-3 text-danger">
                     <?php echo $message; ?>

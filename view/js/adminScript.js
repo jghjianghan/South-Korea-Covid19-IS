@@ -16,11 +16,9 @@ function change2(confirmPassword) {
     var y = document.getElementById(confirmPassword).type;
 
     if (y == 'password') {
-        console.log("anjing");
         document.getElementById(confirmPassword).type = 'text';
         document.getElementById('mybutton2').innerHTML = '<i class="far fa-eye-slash"></i>';
     } else {
-        console.log("kucing");
         document.getElementById(confirmPassword).type = 'password';
         document.getElementById('mybutton2').innerHTML = '<i class="far fa-eye"></i>';
     }
