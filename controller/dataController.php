@@ -41,9 +41,7 @@
 
         public function viewDataOverall()
         {
-            $result = $this->getAggregateOverall();
             return View::createView("dataOverall.php",[
-                'result' => $result,
                 'title' => "Corea - Overall Data",
                 'page' => "data",
                 'scriptSrcList' => ['DailyData.js', 'caseChart.js', 'caseTable.js','caseAggregate.js', 'dataOverallManager.js'],

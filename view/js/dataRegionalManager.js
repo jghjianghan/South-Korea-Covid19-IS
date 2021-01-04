@@ -25,8 +25,6 @@ class dataRegionalManager{
         let url = 'data/overall';
         let urlAggregate = 'data/aggregate'
 
-        let hasDate = false
-
         // set date param
         if (this.startDate.value !== "" && this.endDate.value !== "") {
             let ds = new Date(this.startDate.value);
@@ -35,25 +33,16 @@ class dataRegionalManager{
                 //input error handling
                 console.log("start date must not be later than end date");
                 return;
-            } else {
-                hasDate = true
-                url += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
-                urlAggregate += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
-            }
+            } 
         }
 
+        url += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
+        urlAggregate += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
+        
         // set province param
         if(this.provinceDropdown.value !== "") {
-            if(hasDate) {
-                url += '&'
-                urlAggregate += '&'
-            }
-            else {
-                url += '?'
-                urlAggregate += '?'
-            }
-            url += 'province=' + this.provinceDropdown.value
-            urlAggregate += 'province=' + this.provinceDropdown.value
+            url += '&province=' + this.provinceDropdown.value
+            urlAggregate += '&province=' + this.provinceDropdown.value
         }
 
         fetch(url).then(response => response.json())

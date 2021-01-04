@@ -32,11 +32,11 @@ class dataOverallManager {
                 //input error handling
                 console.log("start date must not be later than end date");
                 return;
-            } else {
-                url += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
-                urlAggregate += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
-            }
+            } 
         }
+        
+        url += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
+        urlAggregate += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
 
         fetch(url).then(response => response.json())
             .then(json => {
