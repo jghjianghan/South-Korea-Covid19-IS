@@ -21,7 +21,7 @@ class dataOverallManager {
     fetchData() {
 
         let entries = [];
-        
+
         let url = 'data/overall';
         let urlAggregate = 'data/aggregate'
 
@@ -32,9 +32,9 @@ class dataOverallManager {
                 //input error handling
                 console.log("start date must not be later than end date");
                 return;
-            } 
+            }
         }
-        
+
         url += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
         urlAggregate += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
 
@@ -43,7 +43,7 @@ class dataOverallManager {
                 for (let i of json) {
                     entries.push(new DailyData(i.date, i.newCase, i.confirmed, i.released, i.deceased));
                 }
-                
+
                 this.chartManager.showData(entries);
                 this.tableManager.showData(entries);
             });
@@ -52,7 +52,7 @@ class dataOverallManager {
             .then(json => {
                 this.agregateManager.showData(json.confirmed, json.released, json.deceased);
             });
-        
+
     }
 }
 

@@ -14,6 +14,8 @@ class CaseTable {
 
     showData(entries) {
         this.entries = entries
+        this.sortTable();
+        this.populate();
     }
 
     populate() {
@@ -22,7 +24,7 @@ class CaseTable {
 
             //date
             let col = document.createElement("td");
-            let tempDate = Date(i.date)
+            let tempDate = new Date(i.date);
             col.textContent = tempDate.getDate() + "/" + (tempDate.getMonth() + 1) + "/" + tempDate.getFullYear();
             row.appendChild(col);
 
@@ -58,7 +60,7 @@ class CaseTable {
                     sortFunc = (a, b) => {
                         return a.date - b.date;
                     };
-                } else if (this.order === "desc") {
+                } else if (this.chosenOrder === "desc") {
                     sortFunc = (a, b) => {
                         return b.date - a.date;
                     };
@@ -80,7 +82,7 @@ class CaseTable {
                     sortFunc = (a, b) => {
                         return a.confirmed - b.confirmed;
                     };
-                } else if (this.order === "desc") {
+                } else if (this.chosenOrder === "desc") {
                     sortFunc = (a, b) => {
                         return b.confirmed - a.confirmed;
                     };
