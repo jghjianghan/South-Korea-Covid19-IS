@@ -13,12 +13,30 @@
     </div>
 
 
-    <div class="data-head-wrapper mx-auto">
+    <!-- <div class="data-head-wrapper mx-auto">
         <div>Choose a Province</div>
         <button type="button" class="btn btn-outline-secondary btn-hover-darkgrey my-3">
             Seoul
             <i class="fa fa-caret-down" style="margin-left:200px"></i>
         </button>
+    </div> -->
+
+    <div class="d-flex flex-column align-self-center col-sm-3 mb-5">
+        <p class="d-flex justify-content-center">Choose a Province</p>
+        <form method="POST" action="<?php echo $upPrefix; ?>admin/dataRegional">
+            <select class="col-sm-12 form-select" id="region" name="region" onchange='this.form.submit()'>
+                <?php
+                    foreach($provinces as $province){
+                        if(isset($_POST['region']) && $_POST['region'] == $province){
+                            echo "<option value='" . $province . "' selected>" . $province . "</option>";
+                        }else{
+                            echo "<option value='" . $province . "'>" . $province . "</option>";
+                        }
+                        
+                    }
+                ?>
+            </select>
+        </form>
     </div>
 
     <div>
