@@ -55,9 +55,6 @@
 
         public function viewDataRegional()
         {
-            //$this->getTime("2020-01-20","2020-02-20");
-            // $this->getTimeProvince("2020-06-30","2020-08-20","Busan");
-            
             $arrProv = $this->getProvince();
             return View::createView("dataRegional.php",[
                 'title' => "Corea - Regional Data",
@@ -191,8 +188,6 @@
          */
         public function getDataOverallRange($from, $to)
         {
-            // $f1 = str_replace('/','-',$from);
-            // $t1 = str_replace('/','-',$to);
             $newFrom = ($from!=="")?date("Y-m-d",strtotime($from)):"";
             $newTo = ($to!=="")?date("Y-m-d",strtotime($to)):"";
             $currentCase = ($newFrom!=="")?$this->getPrefCurrentCaseOverall($newFrom):0;
@@ -238,8 +233,6 @@
          */
         public function getDataRegionRange($region,$from,$to)
         {
-            // $f1 = str_replace('/','-',$from);
-            // $t1 = str_replace('/','-',$to);
             $newFrom = ($from!=="")?date("Y-m-d",strtotime($from)):"";
             $newTo = ($to!=="")?date("Y-m-d",strtotime($to)):"";            
             $currentCase = ($newFrom!=="")?$this->getPrefCurrentCaseRegion($region,$newFrom):0;
