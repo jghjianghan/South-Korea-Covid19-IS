@@ -2,7 +2,7 @@ class dataOverallManager {
     constructor() {
         this.startDate = document.getElementById("dateFrom");
         this.endDate = document.getElementById("dateTo");
-        
+
         this.chartManager = new CaseChart();
         this.agregateManager = new CaseAggregate();
         this.tableManager = new CaseTable();
@@ -55,3 +55,5 @@ class dataOverallManager {
         
     }
 }
+
+new dataOverallManager();

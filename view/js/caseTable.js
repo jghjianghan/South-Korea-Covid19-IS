@@ -1,6 +1,6 @@
 class CaseTable {
     constructor() {
-        this.tableBody = this.table.querySelector("tbody");
+        this.tableBody = document.querySelector("tbody");
         this.chosenColumn = "date";
         this.chosenOrder = "desc";
         this.entries = entries;
