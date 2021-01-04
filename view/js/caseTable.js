@@ -1,24 +1,56 @@
-class CaseTable{
-    constructor(chosenColumn, chosenOrder, entries) {
+class CaseTable {
+    constructor() {
         this.tableBody = this.table.querySelector("tbody");
-        this.chosenColumn = chosenColumn;
-        this.chosenOrder = chosenOrder;
+        this.chosenColumn = "date";
+        this.chosenOrder = "desc";
         this.entries = entries;
 
         //method binding
-        this.showData = this.showData.bind(this);
+        this.populate = this.populate.bind(this);
         this.clearTable = this.clearTable.bind(this);
         this.sortTable = this.sortTable.bind(this);
-
+        this.showData = this.showData.bind(this);
     }
 
-    showData(entries){
-        for (let i of entries) {
-            this.tableBody.appendChild(i.renderRow());
+    showData(entries) {
+        this.entries = entries
+    }
+
+    populate() {
+        for (let i of this.entries) {
+            let row = document.createElement("tr");
+
+            //date
+            let col = document.createElement("td");
+            let tempDate = Date(i.date)
+            col.textContent = tempDate.getDate() + "/" + (tempDate.getMonth() + 1) + "/" + tempDate.getFullYear();
+            row.appendChild(col);
+
+            //new case
+            col = document.createElement("td");
+            col.textContent = i.newCase;
+            row.appendChild(col);
+
+            //confirmed
+            col = document.createElement("td");
+            col.textContent = i.confirmed;
+            row.appendChild(col);
+
+            //released
+            col = document.createElement("td");
+            col.textContent = i.released;
+            row.appendChild(col);
+
+            //deceased
+            col = document.createElement("td");
+            col.textContent = i.deceased;
+            row.appendChild(col);
+
+            this.tableBody.appendChild(row);
         }
     }
 
-    sortTable(){
+    sortTable() {
         let sortFunc;
         switch (this.chosenColumn) {
             case "date":
@@ -78,9 +110,11 @@ class CaseTable{
                 break;
         }
         this.entries.sort(sortFunc);
+        this.clearTable();
+        this.populate();
     }
 
-    clearTable(){
+    clearTable() {
         while (this.tableBody.firstChild) {
             this.tableBody.removeChild(this.tableBody.firstChild);
         }
