@@ -72,7 +72,7 @@
                 'result' => $result,
                 'title' => "Corea - Overall Data",
                 'page' => "data",
-                'scriptSrcList' => ['caseChart.js', 'chartEntry.js','tableEntry.js', 'caseTableOverall.js'],
+                'scriptSrcList' => ['DailyData.js', 'caseChart.js', 'caseTable.js','caseAggregate.js', 'dataOverallManager.js'],
                 'role' => "visitor"
             ]);
         }
@@ -82,11 +82,11 @@
         public function viewDataRegional()
         {
             //$this->getTime("2020-01-20","2020-02-20");
-            $this->getTimeProvince("2020-06-30","2020-08-20","Busan");
+            // $this->getTimeProvince("2020-06-30","2020-08-20","Busan");
             return View::createView("dataRegional.php",[
                 'title' => "Corea - Regional Data",
                 'page' => "data",
-                'scriptSrcList' => ['caseChart.js', 'chartEntry.js', 'tableEntry.js', 'caseTableRegional.js'],
+                'scriptSrcList' => ['DailyData.js', 'caseChart.js', 'caseTable.js','caseAggregate.js', 'dataRegionalManager.js'],
                 'role' => "visitor"
             ]);
             
