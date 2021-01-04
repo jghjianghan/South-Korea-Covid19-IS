@@ -3,7 +3,7 @@ class CaseTable {
         this.tableBody = document.querySelector("tbody");
         this.chosenColumn = "date";
         this.chosenOrder = "desc";
-        this.entries = entries;
+        this.entries = [];
 
         //method binding
         this.populate = this.populate.bind(this);
