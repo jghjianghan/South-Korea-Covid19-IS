@@ -27,15 +27,15 @@
     <div class="row">
         <div class="col stat-content">
             <div class="stat-title">CONFIRMED</div>
-            <div class="stat-value"></div>
+            <div class="stat-value" id="confirmed-value"></div>
         </div>
         <div class="col stat-content">
             <div class="stat-title">RELEASED</div>
-            <div class="stat-value"></div>
+            <div class="stat-value" id="released-value"></div>
         </div>
         <div class="col stat-content">
             <div class="stat-title">DECEASED</div>
-            <div class="stat-value"></div>
+            <div class="stat-value" id="deceased-value"></div>
         </div>
     </div>
 

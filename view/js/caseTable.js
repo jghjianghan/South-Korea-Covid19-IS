@@ -10,11 +10,12 @@ class CaseTable{
         this.clearTable = this.clearTable.bind(this);
         this.sortTable = this.sortTable.bind(this);
 
-        this.initializeTable();
     }
 
-    showData(){
-        
+    showData(entries){
+        for (let i of entries) {
+            this.tableBody.appendChild(i.renderRow());
+        }
     }
 
     sortTable(){
