@@ -9,16 +9,30 @@ class CaseTable {
         this.populate = this.populate.bind(this);
         this.clearTable = this.clearTable.bind(this);
         this.sortTable = this.sortTable.bind(this);
+        this.sortEvent = this.sortEvent.bind(this);
         this.showData = this.showData.bind(this);
+
+        //add event listener to all dropdown option
+        let links = document.querySelectorAll(".sortLink");
+        for (let i of links) {
+            i.addEventListener("click", this.sortEvent);
+        }
+        //disable event on submenu
+        let submenus = document.querySelectorAll("p.dropdown-item");
+        for (let i of submenus) {
+            i.addEventListener("click", (event) => event.stopPropagation());
+        }
     }
 
     showData(entries) {
-        this.entries = entries
-        this.sortTable();
+        this.entries = entries;
+        this.chosenColumn =
+            this.sortTable();
         this.populate();
     }
 
     populate() {
+        this.clearTable();
         for (let i of this.entries) {
             let row = document.createElement("tr");
 
@@ -52,17 +66,28 @@ class CaseTable {
         }
     }
 
+    sortEvent(event) {
+        this.chosenColumn = event.target.dataset.column;
+        this.chosenOrder = event.target.dataset.order;
+        this.sortTable();
+        this.populate();
+    }
+
     sortTable() {
         let sortFunc;
         switch (this.chosenColumn) {
             case "date":
                 if (this.chosenOrder === "asc") {
                     sortFunc = (a, b) => {
-                        return a.date - b.date;
+                        let da = new Date(a.date);
+                        let db = new Date(b.date);
+                        return da - db;
                     };
                 } else if (this.chosenOrder === "desc") {
                     sortFunc = (a, b) => {
-                        return b.date - a.date;
+                        let da = new Date(a.date);
+                        let db = new Date(b.date);
+                        return db - da;
                     };
                 }
                 break;
@@ -112,8 +137,6 @@ class CaseTable {
                 break;
         }
         this.entries.sort(sortFunc);
-        this.clearTable();
-        this.populate();
     }
 
     clearTable() {
