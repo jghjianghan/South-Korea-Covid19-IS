@@ -49,6 +49,9 @@
                 <div class="stat-title">Deceased</div>
                 <div class="stat-value"><?php echo $result->getDeceased()?></div>
             </div>
+            <div>
+                <p align="right"><?php echo "Last updated: " . date ("d F Y", getlastmod());?></p>
+            </div>
         </div>
     </div>
 
