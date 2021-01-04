@@ -4,11 +4,16 @@ require_once "controller/services/view.php";
 require_once "controller/controller.php";
 require_once "model/AdminTable.php";
 
-class AdminController extends Controller{
-
+class AdminController extends Controller
+{
+    /**
+     * Method untuk merender halaman login
+     * @param string $message
+     * @return view halaman login
+     */
     public function viewLogin($message = "")
     {
-        return View::createView("login.php",[
+        return View::createView("login.php", [
             'title' => "Login",
             'styleSrcList' => ["adminStyle.css"],
             'scriptSrcList' => ["adminScript.js"],
@@ -18,10 +23,15 @@ class AdminController extends Controller{
         ]);
     }
 
+    /**
+     * Method untuk merender halaman data regional admin
+     * @param array $message
+     * @return view halaman data regional admin
+     */
     public function viewDataRegional($message)
     {
         $arrProv = $this->getProvince();
-        return View::createView("dataRegionalAdmin.php",[
+        return View::createView("dataRegionalAdmin.php", [
             'title' => "Data",
             'styleSrcList' => ["adminStyle.css"],
             'scriptSrcList' => ["adminScript.js"],
@@ -32,6 +42,11 @@ class AdminController extends Controller{
         ]);
     }
 
+    /**
+     * Method untuk merender halaman data overall admin
+     * @param array $message
+     * @return view halaman data overall admin
+     */
     public function viewDataOverall($message)
     {
         return View::createView("dataOverallAdmin.php", [
@@ -44,6 +59,11 @@ class AdminController extends Controller{
         ]);
     }
 
+    /**
+     * Method untuk merender halaman add data
+     * @param string $message
+     * @return view halaman add data
+     */
     public function viewAddData($message = "")
     {
         $arrProv = $this->getProvince();
@@ -58,6 +78,11 @@ class AdminController extends Controller{
         ]);
     }
 
+    /**
+     * Method untuk merender halaman add account
+     * @param string $message
+     * @return view halaman add account
+     */
     public function viewAddAccount($message = "")
     {
         return View::createView("addAccount.php", [
@@ -70,6 +95,11 @@ class AdminController extends Controller{
         ]);
     }
 
+    /**
+     * Method untuk merender halaman change password
+     * @param string $message
+     * @return view halaman change password
+     */
     public function viewChangePassword($message = "")
     {
         return View::createView("changePassword.php", [
@@ -82,6 +112,10 @@ class AdminController extends Controller{
         ]);
     }
 
+    /**
+     * Method untuk login
+     * @return void jika sukses, string message jika gagal
+     */
     public function validateLogin()
     {
         if (isset($_POST['username']) && $_POST['username'] != "" && isset($_POST['password']) && $_POST['password'] != "") {
@@ -107,6 +141,10 @@ class AdminController extends Controller{
         }
     }
 
+    /**
+     * Method untuk logout
+     * @return void
+     */
     public function logout()
     {
         session_unset();
@@ -114,26 +152,35 @@ class AdminController extends Controller{
         header("location: login");
     }
 
-        public function getProvince(){
-            $this->db->openConnection();
-            $query = "SELECT DISTINCT province_name 
+    /**
+     * Method untuk mengambil data nama province
+     * @return array data nama provincce
+     */
+    public function getProvince()
+    {
+        $this->db->openConnection();
+        $query = "SELECT DISTINCT province_name 
                         FROM `timeprovince`";
-            
-            $hasil=$this->db->executeSelectQuery($query);
-            
-            $result = [];
 
-            foreach($hasil as $key => $value){
-                $result [] = $value['province_name'];
-            }
-            
-            return $result;
+        $hasil = $this->db->executeSelectQuery($query);
+
+        $result = [];
+
+        foreach ($hasil as $key => $value) {
+            $result[] = $value['province_name'];
         }
 
-        public function getDataOverall()
-        {
-            $currentCase = 0;
-            $query_result = $this->db->executeSelectQuery("SELECT date, confirmed, released, deceased FROM time");
+        return $result;
+    }
+
+    /**
+     * Method untuk mengambil data overall dari database
+     * @return array data overall
+     */
+    public function getDataOverall()
+    {
+        $currentCase = 0;
+        $query_result = $this->db->executeSelectQuery("SELECT date, confirmed, released, deceased FROM time");
 
         $result = [];
         foreach ($query_result as $key => $value) {
@@ -143,6 +190,10 @@ class AdminController extends Controller{
         return $result;
     }
 
+    /**
+     * Method untuk mengambil data region dari database
+     * @return array data region
+     */
     public function getDataRegional()
     {
         if (isset($_POST['region']) && $_POST['region'] != "") {
@@ -168,6 +219,10 @@ class AdminController extends Controller{
         return $result;
     }
 
+    /**
+     * Method untuk menambahkan akun admin
+     * @return void jika sukses, string message jika gagal
+     */
     public function addAccount()
     {
         if (isset($_POST['username']) && $_POST['username'] != "" && isset($_POST['password']) && $_POST['password'] != "" && isset($_POST['confirmPassword']) && $_POST['confirmPassword'] != "") {
@@ -199,6 +254,10 @@ class AdminController extends Controller{
         }
     }
 
+    /**
+     * Method untuk mengubah password pengguna (admin)
+     * @return void jika sukses, string message jika gagal
+     */
     public function changePassword()
     {
         if (isset($_POST['oldPassword']) && $_POST['oldPassword'] != "" && isset($_POST['newPassword']) && $_POST['newPassword'] != "" && isset($_POST['confirmPassword']) && $_POST['confirmPassword'] != "") {
@@ -232,6 +291,10 @@ class AdminController extends Controller{
         }
     }
 
+    /**
+     * Method untuk menambahkan kasus baru ke dalam database
+     * @return void jika sukses, string message jika gagal
+     */
     public function addCases()
     {
         if (isset($_POST['region']) && $_POST['region'] != "" && isset($_POST['confirmedCases']) && $_POST['confirmedCases'] != "" && isset($_POST['releasedCases']) && $_POST['releasedCases'] != "" && isset($_POST['deceasedCases']) && $_POST['deceasedCases'] != "") {
