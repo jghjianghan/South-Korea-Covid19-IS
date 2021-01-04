@@ -13,6 +13,8 @@ class dataRegionalManager{
 
         // set event listener
         this.provinceDropdown.addEventListener("change", this.fetchData);
+        this.startDate.addEventListener("change", this.fetchData);
+        this.endDate.addEventListener("change", this.fetchData);
 
         // initialize data
         this.fetchData();
