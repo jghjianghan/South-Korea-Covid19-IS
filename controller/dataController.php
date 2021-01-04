@@ -7,6 +7,28 @@
 
     class DataController extends Controller
     {
+
+        /**
+         * Method untuk mengambil data nama province
+         * @return array data nama provincce
+         */
+        public function getProvince()
+        {
+            $this->db->openConnection();
+            $query = "SELECT DISTINCT province_name 
+                            FROM `timeprovince`";
+
+            $hasil = $this->db->executeSelectQuery($query);
+
+            $result = [];
+
+            foreach ($hasil as $key => $value) {
+                $result[] = $value['province_name'];
+            }
+
+            return $result;
+        }
+
         public function viewHome()
         {
 
@@ -19,11 +41,12 @@
 
         public function viewDataOverall()
         {
-            //$result = $this->getAggregateOverall();
+            $result = $this->getAggregateOverall();
             return View::createView("dataOverall.php",[
+                'result' => $result,
                 'title' => "Corea - Overall Data",
                 'page' => "data",
-                'scriptSrcList' => ['caseChart.js', 'chartEntry.js','tableEntry.js', 'caseTableOverall.js'],
+                'scriptSrcList' => ['DailyData.js', 'caseChart.js', 'caseTable.js','caseAggregate.js', 'dataOverallManager.js'],
                 'role' => "visitor"
             ]);
         }
@@ -34,11 +57,14 @@
         {
             //$this->getTime("2020-01-20","2020-02-20");
             // $this->getTimeProvince("2020-06-30","2020-08-20","Busan");
+            
+            $arrProv = $this->getProvince();
             return View::createView("dataRegional.php",[
                 'title' => "Corea - Regional Data",
                 'page' => "data",
-                'scriptSrcList' => ['caseChart.js', 'chartEntry.js', 'tableEntry.js', 'caseTableRegional.js'],
-                'role' => "visitor"
+                'scriptSrcList' => ['DailyData.js', 'caseChart.js', 'caseTable.js','caseAggregate.js', 'dataRegionalManager.js'],
+                'role' => "visitor",
+                'provinces' => $arrProv
             ]);
             
         }
