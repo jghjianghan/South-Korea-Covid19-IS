@@ -1,239 +1,356 @@
 <?php
-    require_once "controller/services/mysqlDB.php";
-    require_once "controller/services/view.php";
-    require_once "controller/controller.php";
-    require_once "model/AdminTable.php";
+require_once "controller/services/mysqlDB.php";
+require_once "controller/services/view.php";
+require_once "controller/controller.php";
+require_once "model/AdminTable.php";
 
-    class AdminController extends Controller{
-        
-        public function viewLogin($message = "")
-        {
-            return View::createView("login.php",[
-                'title' => "Login",
-                'styleSrcList' => ["adminStyle.css"],
-                'scriptSrcList' => ["adminScript.js"],
-                'uplevel' => 1,
-                "message" => $message,
-                'role' => 'admin-out'
-            ]);
-        }
+class AdminController extends Controller
+{
+    /**
+     * Method untuk merender halaman login
+     * @param string $message
+     * @return view halaman login
+     */
+    public function viewLogin($message = "")
+    {
+        return View::createView("login.php", [
+            'title' => "Login",
+            'styleSrcList' => ["adminStyle.css"],
+            'scriptSrcList' => ["adminScript.js"],
+            'uplevel' => 1,
+            "message" => $message,
+            'role' => 'admin-out'
+        ]);
+    }
 
-        public function viewDataOverall($message)
-        {
-            return View::createView("dataOverallAdmin.php",[
-                'title' => "Data",
-                'styleSrcList' => ["adminStyle.css"],
-                'scriptSrcList' => ["adminScript.js"],
-                'uplevel' => 1,
-                "message" => $message,
-                'role' => 'admin'
-            ]);
-        }
+    /**
+     * Method untuk merender halaman data regional admin
+     * @param array $message
+     * @return view halaman data regional admin
+     */
+    public function viewDataRegional($message)
+    {
+        $arrProv = $this->getProvince();
+        return View::createView("dataRegionalAdmin.php", [
+            'title' => "Data",
+            'styleSrcList' => ["adminStyle.css"],
+            'scriptSrcList' => ["adminScript.js"],
+            'uplevel' => 1,
+            "message" => $message,
+            'role' => 'admin',
+            'provinces' => $arrProv
+        ]);
+    }
 
-        public function viewDataRegional($message)
-        {
-            return View::createView("dataRegionalAdmin.php",[
-                'title' => "Data",
-                'styleSrcList' => ["adminStyle.css"],
-                'scriptSrcList' => ["adminScript.js"],
-                'uplevel' => 1,
-                "message" => $message,
-                'role' => 'admin'
-            ]);
-        }
+    /**
+     * Method untuk merender halaman data overall admin
+     * @param array $message
+     * @return view halaman data overall admin
+     */
+    public function viewDataOverall($message)
+    {
+        return View::createView("dataOverallAdmin.php", [
+            'title' => "Data",
+            'styleSrcList' => ["adminStyle.css"],
+            'scriptSrcList' => ["adminScript.js"],
+            'uplevel' => 1,
+            "message" => $message,
+            'role' => 'admin'
+        ]);
+    }
 
-        public function viewAddData($message = "")
-        {
-            return View::createView("addData.php",[
-                'title' => "Add Data",
-                'styleSrcList' => ["adminStyle.css"],
-                'scriptSrcList' => ["adminScript.js"],
-                'uplevel' => 2,
-                "message" => $message,
-                'role' => 'admin'
-            ]);
-        }
+    /**
+     * Method untuk merender halaman add data
+     * @param string $message
+     * @return view halaman add data
+     */
+    public function viewAddData($message = "")
+    {
+        $arrProv = $this->getProvince();
+        return View::createView("addData.php", [
+            'title' => "Add Data",
+            'styleSrcList' => ["adminStyle.css"],
+            'scriptSrcList' => ["adminScript.js"],
+            'uplevel' => 2,
+            "message" => $message,
+            'role' => 'admin',
+            'arr' => $arrProv
+        ]);
+    }
 
-        public function viewAddAccount($message = "")
-        {
-            return View::createView("addAccount.php",[
-                'title' => "Add Account",
-                'styleSrcList' => ["adminStyle.css"],
-                'scriptSrcList' => ["adminScript.js"],
-                'uplevel' => 1,
-                "message" => $message,
-                'role' => 'admin'
-            ]);
-        }
+    /**
+     * Method untuk merender halaman add account
+     * @param string $message
+     * @return view halaman add account
+     */
+    public function viewAddAccount($message = "")
+    {
+        return View::createView("addAccount.php", [
+            'title' => "Add Account",
+            'styleSrcList' => ["adminStyle.css"],
+            'scriptSrcList' => ["adminScript.js"],
+            'uplevel' => 1,
+            "message" => $message,
+            'role' => 'admin'
+        ]);
+    }
 
-        public function viewChangePassword($message = "")
-        {
-            return View::createView("changePassword.php",[
-                'title' => "Change Password",
-                'styleSrcList' => ["adminStyle.css"],
-                'scriptSrcList' => ["adminScript.js"],
-                'uplevel' => 1,
-                "message" => $message,
-                'role' => 'admin'
-            ]);
-        }
+    /**
+     * Method untuk merender halaman change password
+     * @param string $message
+     * @return view halaman change password
+     */
+    public function viewChangePassword($message = "")
+    {
+        return View::createView("changePassword.php", [
+            'title' => "Change Password",
+            'styleSrcList' => ["adminStyle.css"],
+            'scriptSrcList' => ["adminScript.js"],
+            'uplevel' => 1,
+            "message" => $message,
+            'role' => 'admin'
+        ]);
+    }
 
-        public function validateLogin()
-        {
-            if (isset($_POST['username']) && $_POST['username']!="" && isset($_POST['password']) && $_POST['password']!=""){
-                $username = $this->db->escapeString($_POST['username']);
-                $password = $_POST['password'];
+    /**
+     * Method untuk login
+     * @return void jika sukses, string message jika gagal
+     */
+    public function validateLogin()
+    {
+        if (isset($_POST['username']) && $_POST['username'] != "" && isset($_POST['password']) && $_POST['password'] != "") {
+            $username = $this->db->escapeString($_POST['username']);
+            $password = $_POST['password'];
 
-                $result = $this->db->executeSelectQuery("SELECT idAdmin, username FROM admin WHERE username = '$username'");
-                
-                if ($result != null){
-                    $idUser = $result[0]['idAdmin'];
-                    if ($password == $this->db->executeSelectQuery("SELECT password FROM admin WHERE idAdmin = $idUser")[0]['password']){
-                        $_SESSION['idAdmin'] = $idUser;
-                        $_SESSION['username'] = $result[0]['username'];
-                        header("location: dataOverall");
-                        return;
-                    } else {
-                        return $this->viewLogin("Wrong password");
-                    }
+            $result = $this->db->executeSelectQuery("SELECT idAdmin, username FROM admin WHERE username = '$username'");
+
+            if ($result != null) {
+                $idUser = $result[0]['idAdmin'];
+                if ($password == $this->db->executeSelectQuery("SELECT password FROM admin WHERE idAdmin = $idUser")[0]['password']) {
+                    $_SESSION['idAdmin'] = $idUser;
+                    $_SESSION['username'] = $result[0]['username'];
+                    header("location: dataOverall");
+                    return;
+                } else {
+                    return $this->viewLogin("Wrong password");
                 }
-                return $this->viewLogin("User not found");
-            } else {
-                return $this->viewLogin("Please fill both username and password");
             }
+            return $this->viewLogin("User not found");
+        } else {
+            return $this->viewLogin("Please fill both username and password");
+        }
+    }
+
+    /**
+     * Method untuk logout
+     * @return void
+     */
+    public function logout()
+    {
+        session_unset();
+        session_destroy();
+        header("location: login");
+    }
+
+    /**
+     * Method untuk mengambil data nama province
+     * @return array data nama provincce
+     */
+    public function getProvince()
+    {
+        $this->db->openConnection();
+        $query = "SELECT DISTINCT province_name 
+                        FROM `timeprovince`";
+
+        $hasil = $this->db->executeSelectQuery($query);
+
+        $result = [];
+
+        foreach ($hasil as $key => $value) {
+            $result[] = $value['province_name'];
         }
 
-        public function logout()
-        {
-            session_unset();
-            session_destroy();
-            header("location: login");
+        return $result;
+    }
+
+    /**
+     * Method untuk mengambil data overall dari database
+     * @return array data overall
+     */
+    public function getDataOverall()
+    {
+        $currentCase = 0;
+        $query_result = $this->db->executeSelectQuery("SELECT date, confirmed, released, deceased FROM time");
+
+        $result = [];
+        foreach ($query_result as $key => $value) {
+            $result[] = new AdminTable($value['date'], $value['confirmed'] - $currentCase, $value['confirmed'], $value['released'], $value['deceased']);
+            $currentCase = $value['confirmed'];
         }
+        return $result;
+    }
 
-        public function getDataOverall()
-        {
-            $currentCase = 0;
-            $query_result = $this->db->executeSelectQuery("SELECT date, confirmed, released, deceased FROM time");
-
-            $result = [];
-            foreach($query_result as $key => $value){
-                $result [] = new AdminTable($value['date'],$value['confirmed']-$currentCase,$value['confirmed'],$value['released'],$value['deceased']);
-                $currentCase = $value['confirmed'];
-            }
-            return $result;
+    /**
+     * Method untuk mengambil data region dari database
+     * @return array data region
+     */
+    public function getDataRegional()
+    {
+        if (isset($_POST['region']) && $_POST['region'] != "") {
+            $region = $_POST['region'];
+        } else {
+            $region = "Busan";
         }
-        
-        public function getDataRegional()
-        {
-            if (isset($_POST['region']) && $_POST['region']!="") {
-                $region = $_POST['region'];
-            } else {
-                $region = "Busan";
-            }
-            $currentCase = 0;
+        $currentCase = 0;
 
-            $query = "
+        $query = "
                 SELECT date, confirmed, released, deceased 
                 FROM timeprovince 
                 WHERE province_name = '$region'
             ";
 
-            $query_result = $this->db->executeSelectQuery($query);
+        $query_result = $this->db->executeSelectQuery($query);
 
-            $result = [];
-            foreach ($query_result as $key => $value) {
-                $result [] = new AdminTable($value['date'],$value['confirmed']-$currentCase,$value['confirmed'],$value['released'],$value['deceased']);
-                $currentCase = $value['confirmed'];
-            }
-            return $result;
+        $result = [];
+        foreach ($query_result as $key => $value) {
+            $result[] = new AdminTable($value['date'], $value['confirmed'] - $currentCase, $value['confirmed'], $value['released'], $value['deceased']);
+            $currentCase = $value['confirmed'];
         }
+        return $result;
+    }
 
-        public function addAccount() 
-        {
-            if (isset($_POST['username']) && $_POST['username']!="" && isset($_POST['password']) && $_POST['password']!=""){
-                $username = $this->db->escapeString($_POST['username']);
-                $password = $_POST['password'];
+    /**
+     * Method untuk menambahkan akun admin
+     * @return void jika sukses, string message jika gagal
+     */
+    public function addAccount()
+    {
+        if (isset($_POST['username']) && $_POST['username'] != "" && isset($_POST['password']) && $_POST['password'] != "" && isset($_POST['confirmPassword']) && $_POST['confirmPassword'] != "") {
+            $username = $this->db->escapeString($_POST['username']);
+            $password = $_POST['password'];
 
-                $temp = "
+            $temp = "
                     SELECT COUNT(1)
                     FROM admin
                     WHERE username = '$username';
                 ";
-                $temp_res = $this->db->executeNonSelectQuery($temp);
-                $row = mysqli_fetch_row($temp_res);
-                $count = $row[0];
+            $temp_res = $this->db->executeNonSelectQuery($temp);
+            $row = mysqli_fetch_row($temp_res);
+            $count = $row[0];
 
-                if($count == 0) {
+            if ($count == 0) {
+                if ($_POST['password'] == $_POST['confirmPassword']) {
                     $this->db->executeSelectQuery("INSERT INTO admin(username, password) VALUES ('$username', '$password')");
                     header("location: dataOverall");
                     return;
                 } else {
-                    return $this->viewAddAccount("Username already taken");
+                    return $this->viewAddAccount("Password and Confirm Password are not identical");
                 }
             } else {
-                return $this->viewAddAccount("Please fill both username and password");
+                return $this->viewAddAccount("Username already taken");
             }
+        } else {
+            return $this->viewAddAccount("Please fill all field");
         }
+    }
 
-        public function changePassword() 
-        {
-            if (isset($_POST['oldPassword']) && $_POST['oldPassword']!="" && isset($_POST['newPassword']) && $_POST['newPassword']!="" && isset($_POST['confirmPassword']) && $_POST['confirmPassword']!=""){
-                $idAdmin = $_SESSION['idAdmin'];
-                $temp = "SELECT password FROM admin WHERE idAdmin = '$idAdmin'";
-                $temp_res = $this->db->executeNonSelectQuery($temp);
-                $row = mysqli_fetch_row($temp_res);
-                $oldPassword = $row[0];
+    /**
+     * Method untuk mengubah password pengguna (admin)
+     * @return void jika sukses, string message jika gagal
+     */
+    public function changePassword()
+    {
+        if (isset($_POST['oldPassword']) && $_POST['oldPassword'] != "" && isset($_POST['newPassword']) && $_POST['newPassword'] != "" && isset($_POST['confirmPassword']) && $_POST['confirmPassword'] != "") {
+            $idAdmin = $_SESSION['idAdmin'];
+            $temp = "SELECT password FROM admin WHERE idAdmin = '$idAdmin'";
+            $temp_res = $this->db->executeNonSelectQuery($temp);
+            $row = mysqli_fetch_row($temp_res);
+            $oldPassword = $row[0];
 
-                if($oldPassword == $_POST['oldPassword']) {
-                    if($_POST['newPassword'] == $_POST['confirmPassword']) {
-                        $password = $_POST['confirmPassword'];
-                        
-                        $query = "
+            if ($oldPassword == $_POST['oldPassword']) {
+                if ($_POST['newPassword'] == $_POST['confirmPassword']) {
+                    $password = $_POST['confirmPassword'];
+
+                    $query = "
                             UPDATE admin
                             SET password = '$password'
                             WHERE idAdmin = '$idAdmin'
                         ";
-        
-                        $this->db->executeSelectQuery($query);
-                        header("location: dataOverall");
-                        return;
-                    } else {
-                        return $this->viewChangePassword("New Password and Confirm Password are not identical");
-                    }
+
+                    $this->db->executeSelectQuery($query);
+                    header("location: dataOverall");
+                    return;
                 } else {
-                    return $this->viewChangePassword("Incorrect Old Password");
+                    return $this->viewChangePassword("New Password and Confirm Password are not identical");
                 }
             } else {
-                return $this->viewChangePassword("Please fill all field");
+                return $this->viewChangePassword("Incorrect Old Password");
             }
+        } else {
+            return $this->viewChangePassword("Please fill all field");
         }
+    }
 
-        public function addCases() 
-        {
-            if (isset($_POST['date']) && $_POST['date']!="" && isset($_POST['region']) && $_POST['region']!="" && isset($_POST['confirmedCases']) && $_POST['confirmedCases']!="" && isset($_POST['releasedCases']) && $_POST['releasedCases']!="" && isset($_POST['deceasedCases']) && $_POST['deceasedCases']!=""){
-                $date = $_POST['date'];
-                $region = $_POST['region'];
-                $testedCases = $_POST['testedCases'];
-                $negativeCases = $_POST['negativeCases'];
-                $confirmedCases = $_POST['confirmedCases'];
-                $releasedCases = $_POST['releasedCases'];
-                $deceasedCases = $_POST['deceasedCases'];
+    /**
+     * Method untuk menambahkan kasus baru ke dalam database
+     * @return void jika sukses, string message jika gagal
+     */
+    public function addCases()
+    {
+        if (isset($_POST['region']) && $_POST['region'] != "" && isset($_POST['confirmedCases']) && $_POST['confirmedCases'] != "" && isset($_POST['releasedCases']) && $_POST['releasedCases'] != "" && isset($_POST['deceasedCases']) && $_POST['deceasedCases'] != "") {
+            $date = date("Y-m-d");
+            $region = $_POST['region'];
+            $testedCases = $_POST['testedCases'];
+            $negativeCases = $_POST['negativeCases'];
+            $confirmedCases = $_POST['confirmedCases'];
+            $releasedCases = $_POST['releasedCases'];
+            $deceasedCases = $_POST['deceasedCases'];
 
-                $this->db->executeSelectQuery("INSERT INTO timeprovince(date, province_name, confirmed, released, deceased) VALUES ('$date', '$region', '$confirmedCases', '$releasedCases', '$deceasedCases')");
-                
-                $temp = "
-                    SELECT COUNT(1)
-                    FROM time
-                    WHERE date = '$date';
-                ";
-                $temp_res = $this->db->executeNonSelectQuery($temp);
-                $row = mysqli_fetch_row($temp_res);
-                $count = $row[0];
+            $terakhir = $this->db->executeSelectQuery("SELECT * FROM time ORDER BY date DESC LIMIT 1");
 
-                if ($count == 0){
-                    $this->db->executeSelectQuery("INSERT INTO time(date, test, negative, confirmed, released, deceased) VALUES ('$date', '$testedCases', '$negativeCases', '$confirmedCases', '$releasedCases', '$deceasedCases')");
-                } else {
-                    $query = "
+            $tglAkhir = $terakhir[0]['date'];
+            $testAkhir = $terakhir[0]['test'];
+            $negativeAkhir = $terakhir[0]['negative'];
+            $confirmAkhir = $terakhir[0]['confirmed'];
+            $releasedAkhir = $terakhir[0]['released'];
+            $deceasedAkhir = $terakhir[0]['deceased'];
+
+            $todayFormatted = date_create($date);
+            $lastFormatted = date_create($tglAkhir);
+            $diff = date_diff($todayFormatted, $lastFormatted)->days;
+
+            if ($diff > 0) {
+                $query = "INSERT INTO time 
+                        VALUES";
+                $queryProv = "INSERT INTO timeprovince 
+                        VALUES";
+                $provLastCase = $this->db->executeSelectQuery("SELECT * FROM timeprovince WHERE date='" . $tglAkhir . "'");;
+                $lengthProvLC = count($provLastCase);
+                date_add($lastFormatted, date_interval_create_from_date_string("1 day"));
+                for ($i = 0; $i < $diff; $i++) {
+                    $tgl = $lastFormatted->format("Y-m-d");
+                    if ($diff - 1 == $i) {
+                        $query .= "('$tgl','$testAkhir','$negativeAkhir','$confirmAkhir','$releasedAkhir', '$deceasedAkhir')";
+                        foreach ($provLastCase as $idx => $row) {
+                            if ($lengthProvLC - 1 == $idx) {
+                                $queryProv .= "('$tgl','" . $row['province_name'] . "','" . $row['confirmed'] . "','" . $row['released'] . "','" . $row['deceased'] . "')";
+                            } else {
+                                $queryProv .= "('$tgl','" . $row['province_name'] . "','" . $row['confirmed'] . "','" . $row['released'] . "','" . $row['deceased'] . "'),";
+                            }
+                        }
+                    } else {
+                        date_add($lastFormatted, date_interval_create_from_date_string("1 day"));
+                        $query .= "('$tgl','$testAkhir','$negativeAkhir','$confirmAkhir','$releasedAkhir', '$deceasedAkhir'),";
+                        foreach ($provLastCase as $row) {
+                            $queryProv .= "('$tgl','" . $row['province_name'] . "','" . $row['confirmed'] . "','" . $row['released'] . "','" . $row['deceased'] . "'),";
+                        }
+                    }
+                }
+                $this->db->executeNonSelectQuery($query);
+                $this->db->executeNonSelectQuery($queryProv);
+            }
+
+            $query = "
                         UPDATE time
                         SET 
                             test = test + $testedCases,
@@ -243,13 +360,22 @@
                             deceased = deceased + $deceasedCases
                         WHERE date = '$date'
                     ";
-                    $this->db->executeSelectQuery($query);
-                }
-                
-                header("location: ../dataOverall");
-                return;
-            } else {
-                return $this->viewAddData("Please fill all field");
-            }
+            $this->db->executeNonSelectQuery($query);
+
+            $queryProv = "
+                        UPDATE timeprovince
+                        SET 
+                            confirmed = confirmed + $confirmedCases,
+                            released = released + $releasedCases,
+                            deceased = deceased + $deceasedCases
+                        WHERE province_name = '$region' AND date = '$date'
+                    ";
+            $this->db->executeNonSelectQuery($queryProv);
+
+            header("location: ../dataOverall");
+            return;
+        } else {
+            return $this->viewAddData("Please fill all field");
         }
     }
+}

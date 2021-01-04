@@ -80,6 +80,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 
+		case $baseURL . '/admin':
+			if (isset($_SESSION['username'])) {
+				header('location: admin/login');
+			} else {
+				header('location: admin/dataOverall');
+			}
+			break;
+
 		case $baseURL . '/dataOverall':
 			require_once "controller/mainController.php";
 			$ctrl = new MainController();
