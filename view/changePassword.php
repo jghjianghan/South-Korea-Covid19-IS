@@ -3,20 +3,17 @@
         <div class="card p-3">
             <h2>Change Password</h2>
             <form class="px-5" method="POST" action="<?php echo $upPrefix; ?>admin/changePassword">
-                <div class="form-floating input-group-append my-3">
+                <div class="form-floating my-3">
                     <input type="password" class="form-control" name="oldPassword" id="oldPassword" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="Old Password">
                     <label for="floatingPassword">Old Password</label>
-                    <span class="mt-3 border-bottom border-dark" id="mybutton" onclick="change('oldPassword', 'mybutton')"><i class="far fa-eye"></i></span>
                 </div>
-                <div class="form-floating input-group-append my-3">
+                <div class="form-floating my-3">
                     <input type="password" class="form-control" name="newPassword" id="newPassword" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="New Password">
                     <label for="floatingPassword">New Password</label>
-                    <span class="mt-3 border-bottom border-dark" id="mybutton2" onclick="change('newPassword', 'mybutton2')"><i class="far fa-eye"></i></span>
                 </div>
-                <div class="form-floating input-group-append mb-5">
+                <div class="form-floating mb-5">
                     <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="Confirm Password">
                     <label for="floatingPassword">Confirm Password</label>
-                    <span class="mt-3 border-bottom border-dark" id="mybutton3" onclick="change('confirmPassword', 'mybutton3')"><i class="far fa-eye"></i></span>
                 </div>
                 <div class="form-group mb-3 text-danger">
                     <?php echo $message; ?>

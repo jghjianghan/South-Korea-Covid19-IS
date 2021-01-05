@@ -49,6 +49,9 @@
                 <div class="stat-title">Deceased</div>
                 <div class="stat-value"><?php echo $aggregate->deceased; ?></div>
             </div>
+            <div>
+                <p align="right">Last updated: <?php echo $date;?></p>
+            </div>
         </div>
     </div>
 
