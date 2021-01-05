@@ -50,7 +50,7 @@
                 <div class="stat-value"><?php echo $result->getDeceased()?></div>
             </div>
             <div>
-                <p align="right"><?php echo "Last updated: " . date ("d F Y", getlastmod());?></p>
+                <p align="right">Last updated: <?php echo $date;?></p>
             </div>
         </div>
     </div>
