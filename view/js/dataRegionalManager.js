@@ -1,4 +1,4 @@
-class dataRegionalManager{
+class dataRegionalManager {
     constructor() {
         this.startDate = document.getElementById("dateFrom");
         this.endDate = document.getElementById("dateTo");
@@ -23,7 +23,7 @@ class dataRegionalManager{
     fetchData() {
 
         let entries = [];
-        
+
         let url = 'data/overall';
         let urlAggregate = 'data/aggregate'
 
@@ -35,14 +35,14 @@ class dataRegionalManager{
                 //input error handling
                 console.log("start date must not be later than end date");
                 return;
-            } 
+            }
         }
 
         url += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
         urlAggregate += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
-        
+
         // set province param
-        if(this.provinceDropdown.value !== "") {
+        if (this.provinceDropdown.value !== "") {
             url += '&province=' + this.provinceDropdown.value
             urlAggregate += '&province=' + this.provinceDropdown.value
         }
@@ -52,7 +52,7 @@ class dataRegionalManager{
                 for (let i of json) {
                     entries.push(new DailyData(i.date, i.newCase, i.confirmed, i.released, i.deceased));
                 }
-                
+
                 this.chartManager.showData(entries);
                 this.tableManager.showData(entries);
             });
@@ -61,7 +61,7 @@ class dataRegionalManager{
             .then(json => {
                 this.agregateManager.showData(json.confirmed, json.released, json.deceased);
             });
-        
+
     }
 }
 

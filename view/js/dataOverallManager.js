@@ -47,9 +47,10 @@ class dataOverallManager {
                 this.chartManager.showData(entries);
                 this.tableManager.showData(entries);
             });
-
+        console.log("urlA = " + urlAggregate);
         fetch(urlAggregate).then(response => response.json())
             .then(json => {
+                console.log(json);
                 this.agregateManager.showData(json.confirmed, json.released, json.deceased);
             });
 
