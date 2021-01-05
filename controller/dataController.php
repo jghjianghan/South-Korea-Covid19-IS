@@ -32,11 +32,13 @@ class DataController extends Controller
     public function viewHome()
     {
         $aggregateData = $this->getAggregateOverall("", "");
-        return View::createView("home.php", [
+        $latest = $this->getLatestDate();
+        return View::createView("home.php",[
+            'aggregate' => $aggregateData,
             'title' => "Corea",
             'page' => "home",
             'role' => "visitor",
-            'aggregate' => $aggregateData
+            'date' => $latest
         ]);
     }
 
@@ -330,5 +332,18 @@ class DataController extends Controller
             return 0;
         }
         return $result[0];
+    }
+
+
+    /**
+     * Method untuk mengambil tanggal dari data terakhir yang di-add di database
+     */
+    public function getLatestDate(){
+        $query = "
+            SELECT MAX(date) as 'Date' FROM time
+        ";
+        $query_result = $this->db->executeSelectQuery($query);
+
+        return $query_result[0]['Date'];
     }
 }
