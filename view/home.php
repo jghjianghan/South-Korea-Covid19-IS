@@ -29,25 +29,25 @@
         <div class="row">
             <div class="col stat-content">
                 <div class="stat-title">Confirmed</div>
-                <div class="stat-value"></div>
+                <div class="stat-value"><?php echo $aggregate->confirmed; ?></div>
             </div>
         </div>
         <div class="row">
             <div class="col stat-content">
                 <div class="stat-title">Tested</div>
-                <div class="stat-value"></div>
+                <div class="stat-value"><?php echo $aggregate->tested; ?></div>
             </div>
             <div class="col stat-content">
                 <div class="stat-title">Negative</div>
-                <div class="stat-value"></div>
+                <div class="stat-value"><?php echo $aggregate->negative; ?></div>
             </div>
             <div class="col stat-content">
                 <div class="stat-title">Released</div>
-                <div class="stat-value"></div>
+                <div class="stat-value"><?php echo $aggregate->released; ?></div>
             </div>
             <div class="col stat-content">
                 <div class="stat-title">Deceased</div>
-                <div class="stat-value"></div>
+                <div class="stat-value"><?php echo $aggregate->deceased; ?></div>
             </div>
         </div>
     </div>

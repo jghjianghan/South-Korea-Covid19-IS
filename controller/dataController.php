@@ -31,11 +31,12 @@ class DataController extends Controller
 
     public function viewHome()
     {
-
+        $aggregateData = $this->getAggregateOverall("", "");
         return View::createView("home.php", [
             'title' => "Corea",
             'page' => "home",
-            'role' => "visitor"
+            'role' => "visitor",
+            'aggregate' => $aggregateData
         ]);
     }
 
