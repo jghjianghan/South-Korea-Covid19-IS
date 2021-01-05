@@ -27,15 +27,15 @@
     <div class="row">
         <div class="col stat-content">
             <div class="stat-title">CONFIRMED</div>
-            <div class="stat-value"><?php echo $result->getConfirmed()?></div>
+            <div class="stat-value" id="confirmed-value"></div>
         </div>
         <div class="col stat-content">
             <div class="stat-title">RELEASED</div>
-            <div class="stat-value"><?php echo $result->getReleased()?></div>
+            <div class="stat-value" id="released-value"></div>
         </div>
         <div class="col stat-content">
             <div class="stat-title">DECEASED</div>
-            <div class="stat-value"><?php echo $result->getDeceased()?></div>
+            <div class="stat-value" id="deceased-value"></div>
         </div>
     </div>
 
@@ -54,20 +54,3 @@
     ?>
     
 </div>
-
-<!-- <script>
-    new Chart(document.getElementById("bar-chart"), {
-    type: 'bar',
-    data: {
-        labels: ["1/1/20","2/1/20","3/1/20","4/1/20","5/1/20","6/1/20","7/1/20","8/1/20","9/1/20","10/1/20",
-        "11/1/20","12/1/20","13/1/20","14/1/20","15/1/20",,"16/1/20","17/1/20","18/1/20","19/1/20","20/1/20"],
-    datasets: [
-        {
-        label: "Number of Cases",
-        backgroundColor: "#0275D8",
-        data: [2478,5267,734,784,433,2478,5267,734,784,433,2478,5267,734,784,433, 2478,5267,734,784,433, 500]
-            }
-        ]
-    }
-    });
-</script> -->
