@@ -57,11 +57,13 @@
         public function viewHome()
         {
             $result = $this->getAggregateOverall();
+            $latest = $this->getLatestDate();
             return View::createView("home.php",[
                 'result'=> $result,
                 'title' => "Corea",
                 'page' => "home",
-                'role' => "visitor"
+                'role' => "visitor",
+                'date' => $latest
             ]);
         }
 
@@ -196,5 +198,14 @@
             }
 
             return new DataAggregate($result[0],null,null,$result[1],$result[3]);
+        }
+        
+        public function getLatestDate(){
+            $query = "
+                SELECT MAX(date) as 'Date' FROM time
+            ";
+            $query_result = $this->db->executeSelectQuery($query);
+
+            return $query_result[0]['Date'];
         }
     }
