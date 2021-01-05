@@ -1,59 +1,33 @@
 class CaseChart {
     constructor() {
-        this.dateFrom = document.getElementById("dateFrom")
-        this.dateTo = document.getElementById("dateTo")
-
+        this.chartObj = new Chart(document.getElementById("bar-chart"), {
+            type: 'bar',
+            data: {
+                labels: [], //put date here
+                datasets: [{
+                    label: "Number of Cases",
+                    backgroundColor: "#0275D8",
+                    data: [] //put case data here
+                }]
+            }
+        });
 
         //method binding
-        this.initializeChart = this.initializeChart.bind(this);
-        this.populateChart = this.populateChart.bind(this);
-
-        //Array to store the table data
-        // this.entries = [];
-        this.dates = [];
-        this.newCases = [];
-
-        this.initializeChart();
+        this.showData = this.showData.bind(this);
     }
 
     /**
-     * Method untuk fetch data dari server, lalu menampilkan semua data dalam tabel
+     * Menampilkan data kasus yang diberikan ke bar chart
+     * @param {DailyData[]} listData Array dari DailyData
      */
-    initializeChart() {
-        //fetch data
-        fetch('chart/overall').then(response => response.json()) //contoh
-            .then(json => {
-                for (let i of json) {
-                    // this.entries.push(new ChartEntry(i.date, i.newCases));
-                    this.dates.push(i.date);
-                    this.newCases.push(i.newCases);
-                }
+    showData(listData) {
+        this.chartObj.data.labels = [];
+        this.chartObj.data.datasets[0].data = [];
 
-                // console.log(this.entries);
-                // let i = json[0];
-                // console.log(i);
-                // this.entries.push(new TableEntry(i.date, i.newCase, i.confirmed, i.released, i.deceased));
-
-                this.populateChart();
-            });
+        for (let i of listData) {
+            this.chartObj.data.labels.push(i.date.getDate() + "-" + (i.date.getMonth() + 1) + "-" + i.date.getFullYear());
+            this.chartObj.data.datasets[0].data.push(i.newCase);
+        }
+        this.chartObj.update();
     }
-
-    populateChart() {
-        new Chart(document.getElementById("bar-chart"), {
-            type: 'bar',
-            data: {
-                labels: this.dates,
-            datasets: [
-                {
-                label: "Number of Cases",
-                backgroundColor: "#0275D8",
-                data: this.newCases
-                    }
-                ]
-            }
-            });
-    }
-
 }
-
-new CaseChart();

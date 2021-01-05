@@ -9,8 +9,8 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	switch ($url) {
 		case $baseURL . '/index':
-			require_once "controller/mainController.php";
-			$ctrl = new MainController();
+			require_once "controller/dataController.php";
+			$ctrl = new DataController();
 			echo $ctrl->viewHome();
 			break;
 
@@ -81,41 +81,64 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			break;
 
 		case $baseURL . '/dataOverall':
-			require_once "controller/mainController.php";
-			$ctrl = new MainController();
+			require_once "controller/dataController.php";
+			$ctrl = new DataController();
 			echo $ctrl->viewDataOverall();
 			break;
 
 		case $baseURL . '/dataRegional':
-			require_once "controller/mainController.php";
-			$ctrl = new MainController();
+			require_once "controller/dataController.php";
+			$ctrl = new DataController();
 			echo $ctrl->viewDataRegional();
 			break;
 
 		case $baseURL . '/about':
-			require_once "controller/mainController.php";
-			$ctrl = new MainController();
+			require_once "controller/dataController.php";
+			$ctrl = new DataController();
 			echo $ctrl->viewAbout();
 			break;
 
+		//dipakai buat data overrall;
 		case $baseURL . '/data/overall':
-			require_once "controller/tabelController.php";
-			$ctrl = new TabelController();
+			require_once "controller/dataController.php";
+			$ctrl = new DataController();
 			if (isset($_GET['start']) && isset($_GET['end'])){
 				echo json_encode($ctrl->getDataOverallRange($_GET['start'], $_GET['end']));
 			} else {
 				echo json_encode($ctrl->getDataOverall());
 			}
 			break;
+
+		//dipakai buat data regional
 		case $baseURL . '/data/regional':
-			echo (isset($_GET["province"])?$_GET["province"]:"regional");
+			require_once "controller/dataController.php";
+			//echo (isset($_GET["province"])?$_GET["province"]:"regional");
+			$ctrl = new DataController();
+			if (isset($_GET['start']) && isset($_GET['end']) && isset($_GET['province'])){
+				echo json_encode($ctrl->getDataOverallRange($_GET['start'], $_GET['end']));
+			} else if(isset($_GET['province'])) {
+				echo json_encode($ctrl->getDataOverall($_GET['province']));
+			}
 			break;
-		case $baseURL . '/chart/overall':
-			require_once "controller/mainController.php";
-			$ctrl = new MainController();
-			echo json_encode($ctrl->getTime(NULL, NULL));
+		// dipakain buat aggregate
+		case $baseURL . '/data/aggregate':
+			require_once "controller/dataController.php";
+			//echo (isset($_GET["province"])?$_GET["province"]:"regional");
+			$ctrl = new DataController();
+			if(isset($_GET['province'])) {
+				if (isset($_GET['start']) && isset($_GET['end'])){
+					echo json_encode($ctrl->getAggregateRegional($_GET['province'], $_GET['start'], $_GET['end']));
+				}else{
+					echo json_encode($ctrl->getAggregateRegional($_GET['province'], "", ""));
+				}
+			}else{
+				if (isset($_GET['start']) && isset($_GET['end'])){
+					echo json_encode($ctrl->getAggregateOverall($_GET['start'], $_GET['end']));
+				}else{
+					echo json_encode($ctrl->getAggregateOverall("", ""));
+				}
+			}
 			break;
-      
 		default:
 			echo '404 Not Found';
 			break;
