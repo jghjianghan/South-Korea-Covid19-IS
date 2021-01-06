@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			if (isset($_SESSION['username'])) {
 				require_once "controller/adminController.php";
 				$ctrl = new AdminController();
-				echo $ctrl->viewDataOverall($ctrl->getDataOverall());
+				echo $ctrl->viewDataOverall();
 			} else {
 				header('location: login');
 			}
@@ -112,12 +112,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		//dipakai buat data regional
 		case $baseURL . '/data/regional':
 			require_once "controller/dataController.php";
-			//echo (isset($_GET["province"])?$_GET["province"]:"regional");
 			$ctrl = new DataController();
 			if (isset($_GET['start']) && isset($_GET['end']) && isset($_GET['province'])){
-				echo json_encode($ctrl->getDataOverallRange($_GET['start'], $_GET['end']));
+				echo json_encode($ctrl->getDataRegionRange($_GET['province'], $_GET['start'], $_GET['end']));
 			} else if(isset($_GET['province'])) {
-				echo json_encode($ctrl->getDataOverall($_GET['province']));
+				echo json_encode($ctrl->getDataRegion($_GET['province']));
 			}
 			break;
 		// dipakain buat aggregate

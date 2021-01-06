@@ -24,7 +24,7 @@ class dataRegionalManager {
 
         let entries = [];
 
-        let url = 'data/overall';
+        let url = 'data/regional';
         let urlAggregate = 'data/aggregate'
 
         // set date param
@@ -47,6 +47,8 @@ class dataRegionalManager {
             urlAggregate += '&province=' + this.provinceDropdown.value
         }
 
+        console.log("url: " + url)
+        console.log("urlA: " + urlAggregate)
         fetch(url).then(response => response.json())
             .then(json => {
                 for (let i of json) {

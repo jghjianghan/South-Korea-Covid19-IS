@@ -14,7 +14,6 @@ class DataController extends Controller
      */
     public function getProvince()
     {
-        $this->db->openConnection();
         $query = "SELECT DISTINCT province_name 
                             FROM `timeprovince`";
 
@@ -56,13 +55,13 @@ class DataController extends Controller
 
     public function viewDataRegional()
     {
-        $arrProv = $this->getProvince();
+        $provinces = $this->getProvince();
         return View::createView("dataRegional.php", [
             'title' => "Corea - Regional Data",
             'page' => "data",
             'scriptSrcList' => ['DailyData.js', 'caseChart.js', 'caseTable.js', 'caseAggregate.js', 'dataRegionalManager.js'],
             'role' => "visitor",
-            'provinces' => $arrProv
+            'provinces' => $provinces
         ]);
     }
 
@@ -265,7 +264,7 @@ class DataController extends Controller
 
         $query = "";
         if ($newFrom === "" && $newTo === "") {
-            return $this->getDataOverall();
+            return $this->getDataRegion($region);
         } else if ($newFrom === "") {
             $query = "
                     SELECT date, confirmed, released, deceased 
