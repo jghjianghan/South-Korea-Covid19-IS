@@ -14,7 +14,6 @@ class DataController extends Controller
      */
     public function getProvince()
     {
-        $this->db->openConnection();
         $query = "SELECT DISTINCT province_name 
                             FROM `timeprovince`";
 
@@ -265,7 +264,7 @@ class DataController extends Controller
 
         $query = "";
         if ($newFrom === "" && $newTo === "") {
-            return $this->getDataOverall();
+            return $this->getDataRegion($region);
         } else if ($newFrom === "") {
             $query = "
                     SELECT date, confirmed, released, deceased 
