@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			if (isset($_SESSION['username'])) {
 				require_once "controller/adminController.php";
 				$ctrl = new AdminController();
-				echo $ctrl->viewDataRegional($ctrl->getDataRegional());
+				echo $ctrl->viewDataRegional();
 			} else {
 				header('location: login');
 			}
