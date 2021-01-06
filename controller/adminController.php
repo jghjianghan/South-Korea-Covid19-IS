@@ -18,27 +18,28 @@
             ]);
         }
 
-        public function viewDataOverall($message)
+        public function viewDataOverall()
         {
             return View::createView("dataOverallAdmin.php",[
                 'title' => "Data",
                 'styleSrcList' => ["adminStyle.css"],
-                'scriptSrcList' => ["adminScript.js"],
+                'scriptSrcList' => ['adminScript.js', 'DailyData.js', 'caseChart.js', 'caseTable.js', 'caseAggregate.js', 'dataOverallAdminManager.js'],
                 'uplevel' => 1,
-                "message" => $message,
                 'role' => 'admin'
             ]);
         }
 
-        public function viewDataRegional($message)
+        public function viewDataRegional()
         {
+            require_once "controller/dataController.php";
+            $provinces = (new DataController())->getProvince();
             return View::createView("dataRegionalAdmin.php",[
                 'title' => "Data",
                 'styleSrcList' => ["adminStyle.css"],
-                'scriptSrcList' => ["adminScript.js"],
+                'scriptSrcList' => ['adminScript.js', 'DailyData.js', 'caseChart.js', 'caseTable.js', 'caseAggregate.js', 'dataRegionalAdminManager.js'],
                 'uplevel' => 1,
-                "message" => $message,
-                'role' => 'admin'
+                "provinces" => $provinces,
+                'role' => 'admin',
             ]);
         }
 

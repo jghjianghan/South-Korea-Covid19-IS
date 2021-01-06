@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			if (isset($_SESSION['username'])) {
 				require_once "controller/adminController.php";
 				$ctrl = new AdminController();
-				echo $ctrl->viewDataOverall($ctrl->getDataOverall());
+				echo $ctrl->viewDataOverall();
 			} else {
 				header('location: login');
 			}

@@ -55,13 +55,13 @@ class DataController extends Controller
 
     public function viewDataRegional()
     {
-        $arrProv = $this->getProvince();
+        $provinces = $this->getProvince();
         return View::createView("dataRegional.php", [
             'title' => "Corea - Regional Data",
             'page' => "data",
             'scriptSrcList' => ['DailyData.js', 'caseChart.js', 'caseTable.js', 'caseAggregate.js', 'dataRegionalManager.js'],
             'role' => "visitor",
-            'provinces' => $arrProv
+            'provinces' => $provinces
         ]);
     }
 

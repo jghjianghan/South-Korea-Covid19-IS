@@ -47,7 +47,7 @@
     <div class="my-5">
         <div class="float-left">
             <?php
-                include $upPrefix."view/component/casetableSortDropdown.php";
+                include "view/component/caseTableSortDropdown.php";
             ?>
         </div>
      </div>
@@ -55,6 +55,6 @@
     <br><br>
 
     <?php
-        include $upPrefix."view/component/casetable.php";
+        include "view/component/caseTable.php";
     ?>
 </div>
