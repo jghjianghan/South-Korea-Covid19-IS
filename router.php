@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new AdminController();
 			echo $ctrl->logout();
 			break;
-			
+
 		case $baseURL . '/admin/dataOverall':
 			if (isset($_SESSION['username'])) {
 				require_once "controller/adminController.php";
@@ -80,6 +80,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			}
 			break;
 
+		case $baseURL . '/admin':
+			if (isset($_SESSION['username'])) {
+				header('location: admin/login');
+			} else {
+				header('location: admin/dataOverall');
+			}
+			break;
+
 		case $baseURL . '/dataOverall':
 			require_once "controller/dataController.php";
 			$ctrl = new DataController();
@@ -98,42 +106,42 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			echo $ctrl->viewAbout();
 			break;
 
-		//dipakai buat data overrall;
+			//dipakai buat data overrall;
 		case $baseURL . '/data/overall':
 			require_once "controller/dataController.php";
 			$ctrl = new DataController();
-			if (isset($_GET['start']) && isset($_GET['end'])){
+			if (isset($_GET['start']) && isset($_GET['end'])) {
 				echo json_encode($ctrl->getDataOverallRange($_GET['start'], $_GET['end']));
 			} else {
 				echo json_encode($ctrl->getDataOverall());
 			}
 			break;
 
-		//dipakai buat data regional
+			//dipakai buat data regional
 		case $baseURL . '/data/regional':
 			require_once "controller/dataController.php";
 			$ctrl = new DataController();
-			if (isset($_GET['start']) && isset($_GET['end']) && isset($_GET['province'])){
+			if (isset($_GET['start']) && isset($_GET['end']) && isset($_GET['province'])) {
 				echo json_encode($ctrl->getDataRegionRange($_GET['province'], $_GET['start'], $_GET['end']));
-			} else if(isset($_GET['province'])) {
+			} else if (isset($_GET['province'])) {
 				echo json_encode($ctrl->getDataRegion($_GET['province']));
 			}
 			break;
-		// dipakain buat aggregate
+			// dipakain buat aggregate
 		case $baseURL . '/data/aggregate':
 			require_once "controller/dataController.php";
 			//echo (isset($_GET["province"])?$_GET["province"]:"regional");
 			$ctrl = new DataController();
-			if(isset($_GET['province'])) {
-				if (isset($_GET['start']) && isset($_GET['end'])){
+			if (isset($_GET['province'])) {
+				if (isset($_GET['start']) && isset($_GET['end'])) {
 					echo json_encode($ctrl->getAggregateRegional($_GET['province'], $_GET['start'], $_GET['end']));
-				}else{
+				} else {
 					echo json_encode($ctrl->getAggregateRegional($_GET['province'], "", ""));
 				}
-			}else{
-				if (isset($_GET['start']) && isset($_GET['end'])){
+			} else {
+				if (isset($_GET['start']) && isset($_GET['end'])) {
 					echo json_encode($ctrl->getAggregateOverall($_GET['start'], $_GET['end']));
-				}else{
+				} else {
 					echo json_encode($ctrl->getAggregateOverall("", ""));
 				}
 			}
@@ -151,11 +159,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			break;
 
 		case $baseURL . '/admin/addAccount':
-            require_once "controller/adminController.php";
-            $ctrl = new AdminController();
-            echo $ctrl->addAccount();
+			require_once "controller/adminController.php";
+			$ctrl = new AdminController();
+			echo $ctrl->addAccount();
 			break;
-			
+
 		case $baseURL . '/admin/changePassword':
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
@@ -173,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 			$ctrl = new AdminController();
 			echo $ctrl->viewDataRegional($ctrl->getDataRegional());
 			break;
-	
+
 		default:
 			echo '404 Not Found';
 			break;

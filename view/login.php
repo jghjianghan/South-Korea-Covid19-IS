@@ -9,9 +9,10 @@
                     <input type="text" class="form-control" name="username" id="username" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="Username">
                     <label for="floatingInput">Username</label>
                 </div>
-                <div class="form-floating mx-2 mb-5">
+                <div class="form-floating input-group-append mx-2 mb-5">
                     <input type="password" class="form-control" name="password" id="password" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="Password">
                     <label for="floatingPassword">Password</label>
+                    <span class="mt-3 border-bottom border-dark" id="mybutton" onclick="change('password', 'mybutton')"><i class="far fa-eye"></i></span>
                 </div>
                 <div class="form-group mb-3 text-danger">
                     <?php echo $message; ?>
