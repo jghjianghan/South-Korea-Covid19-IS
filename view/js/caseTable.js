@@ -42,6 +42,10 @@ class CaseTable {
             let confirmed = i.confirmed;
             let released = i.released;
             let deceased = i.deceased;
+            newCase = this.thousandSeparator(newCase);
+            confirmed = this.thousandSeparator(confirmed);
+            released = this.thousandSeparator(released);
+            deceased = this.thousandSeparator(deceased);
 
             //date
             let col = document.createElement("td");
@@ -71,6 +75,12 @@ class CaseTable {
 
             this.tableBody.appendChild(row);
         }
+    }
+
+    thousandSeparator(num) {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
     }
 
     sortEvent(event) {
