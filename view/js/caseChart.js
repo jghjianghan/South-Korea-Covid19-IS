@@ -5,7 +5,7 @@ class CaseChart {
             data: {
                 labels: [], //put date here
                 datasets: [{
-                    label: "Number of Cases",
+                    label: "Number of New Cases",
                     backgroundColor: "#0275D8",
                     data: [] //put case data here
                 }]

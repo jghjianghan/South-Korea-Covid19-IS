@@ -29,25 +29,25 @@
         <div class="row">
             <div class="col stat-content">
                 <div class="stat-title">Confirmed</div>
-                <div class="stat-value"><?php echo $aggregate->confirmed; ?></div>
+                <div class="stat-value"><?php echo number_format($aggregate->confirmed, 0, '', '.'); ?></div>
             </div>
         </div>
         <div class="row">
             <div class="col stat-content">
                 <div class="stat-title">Tested</div>
-                <div class="stat-value"><?php echo $aggregate->tested; ?></div>
+                <div class="stat-value"><?php echo number_format($aggregate->tested, 0, '', '.'); ?></div>
             </div>
             <div class="col stat-content">
                 <div class="stat-title">Negative</div>
-                <div class="stat-value"><?php echo $aggregate->negative; ?></div>
+                <div class="stat-value"><?php echo number_format($aggregate->negative, 0, '', '.'); ?></div>
             </div>
             <div class="col stat-content">
                 <div class="stat-title">Released</div>
-                <div class="stat-value"><?php echo $aggregate->released; ?></div>
+                <div class="stat-value"><?php echo number_format($aggregate->released, 0, '', '.'); ?></div>
             </div>
             <div class="col stat-content">
                 <div class="stat-title">Deceased</div>
-                <div class="stat-value"><?php echo $aggregate->deceased; ?></div>
+                <div class="stat-value"><?php echo number_format($aggregate->deceased, 0, '', '.'); ?></div>
             </div>
             <div>
                 <p align="right">Last updated: <?php echo $date;?></p>

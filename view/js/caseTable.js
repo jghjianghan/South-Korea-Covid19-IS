@@ -36,6 +36,15 @@ class CaseTable {
         for (let i of this.entries) {
             let row = document.createElement("tr");
 
+            let newCase = i.newCase;
+            let confirmed = i.confirmed;
+            let released = i.released;
+            let deceased = i.deceased;
+            newCase = this.thousandSeparator(newCase);
+            confirmed = this.thousandSeparator(confirmed);
+            released = this.thousandSeparator(released);
+            deceased = this.thousandSeparator(deceased);
+
             //date
             let col = document.createElement("td");
             let tempDate = new Date(i.date);
@@ -44,26 +53,32 @@ class CaseTable {
 
             //new case
             col = document.createElement("td");
-            col.textContent = i.newCase;
+            col.textContent = newCase;
             row.appendChild(col);
 
             //confirmed
             col = document.createElement("td");
-            col.textContent = i.confirmed;
+            col.textContent = confirmed;
             row.appendChild(col);
 
             //released
             col = document.createElement("td");
-            col.textContent = i.released;
+            col.textContent = released;
             row.appendChild(col);
 
             //deceased
             col = document.createElement("td");
-            col.textContent = i.deceased;
+            col.textContent = deceased;
             row.appendChild(col);
 
             this.tableBody.appendChild(row);
         }
+    }
+
+    thousandSeparator(num) {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        return num_parts.join(".");
     }
 
     sortEvent(event) {
