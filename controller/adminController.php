@@ -227,14 +227,34 @@ class AdminController extends Controller
      */
     public function addCases()
     {
-        if (isset($_POST['region']) && $_POST['region'] != "" && isset($_POST['confirmedCases']) && $_POST['confirmedCases'] != "" && isset($_POST['releasedCases']) && $_POST['releasedCases'] != "" && isset($_POST['deceasedCases']) && $_POST['deceasedCases'] != "") {
-            $date = date("Y-m-d");
-            $region = $_POST['region'];
+        if (
+            isset($_POST['region']) && $_POST['region'] != "" && 
+            isset($_POST['confirmedCases']) && $_POST['confirmedCases'] != "" && 
+            isset($_POST['releasedCases']) && $_POST['releasedCases'] != "" && 
+            isset($_POST['deceasedCases']) && $_POST['deceasedCases'] != "" &&
+            isset($_POST['date']) && $_POST['date'] != ""
+            ) {
             $testedCases = $_POST['testedCases'];
             $negativeCases = $_POST['negativeCases'];
             $confirmedCases = $_POST['confirmedCases'];
             $releasedCases = $_POST['releasedCases'];
             $deceasedCases = $_POST['deceasedCases'];
+
+            if (!is_int($testedCases) || !is_int($negativeCases) || !is_int($confirmedCases) || !is_int($releasedCases) || !is_int($deceasedCases)){
+                return $this->viewAddData("Values must be integer");
+            }
+            if ($testedCases < 0 || $negativeCases<0 || $confirmedCases<0 || $releasedCases<0 || $deceasedCases<0){
+                return $this->viewAddData("Values must not be negative");
+            }
+            
+            $date = $_POST['date'];
+            $today = date("Y-m-d");
+
+            if ($date > $today){
+                return $this->viewAddData("The date cannot be later than today");
+            }
+
+            $region = $_POST['region'];
 
             $terakhir = $this->db->executeSelectQuery("SELECT * FROM time ORDER BY date DESC LIMIT 1");
 
@@ -245,11 +265,14 @@ class AdminController extends Controller
             $releasedAkhir = $terakhir[0]['released'];
             $deceasedAkhir = $terakhir[0]['deceased'];
 
-            $todayFormatted = date_create($date);
+            $targetFormatted = date_create($date);
+            $hariiniFormatted = date_create($today);
             $lastFormatted = date_create($tglAkhir);
-            $diff = date_diff($todayFormatted, $lastFormatted)->days;
+            $diff = date_diff($targetFormatted, $lastFormatted)->days;
 
-            if ($diff > 0) {
+            // return $this->viewAddData($diff);
+
+            if ($date > $tglAkhir) {
                 $query = "INSERT INTO time 
                         VALUES";
                 $queryProv = "INSERT INTO timeprovince 
@@ -288,7 +311,7 @@ class AdminController extends Controller
                             confirmed = confirmed + $confirmedCases,
                             released = released + $releasedCases,
                             deceased = deceased + $deceasedCases
-                        WHERE date = '$date'
+                        WHERE date >= '$date'
                     ";
             $this->db->executeNonSelectQuery($query);
 
@@ -298,7 +321,7 @@ class AdminController extends Controller
                             confirmed = confirmed + $confirmedCases,
                             released = released + $releasedCases,
                             deceased = deceased + $deceasedCases
-                        WHERE province_name = '$region' AND date = '$date'
+                        WHERE province_name = '$region' AND date >= '$date'
                     ";
             $this->db->executeNonSelectQuery($queryProv);
 
