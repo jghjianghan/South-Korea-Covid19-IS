@@ -7,10 +7,11 @@
                     <label for="example-date-input" class="col-5 col-form-label fs-5">Date</label>
                     <div class="col-sm-5 mt-1" style="font-size: 20px;">
                         <?php
-                        date_default_timezone_set("Asia/Seoul");
-                        $date = date("j  F  Y");
-                        echo $date;
+                        // date_default_timezone_set("Asia/Seoul");
+                        // $date = date("j  F  Y");
+                        // echo $date;
                         ?>
+                         <input class="form-control" type="date" style="border: none; border-bottom: 1px solid black; border-radius: 0" id="date" name="date" required>
                     </div>
                 </div>
                 <div class="form-group row mt-3 mb-4 d-flex justify-content-between">

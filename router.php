@@ -179,7 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		case $baseURL . '/admin/dataRegional':
 			require_once "controller/adminController.php";
 			$ctrl = new AdminController();
-			echo $ctrl->viewDataRegional($ctrl->getDataRegional());
+			echo $ctrl->viewDataRegional();
 			break;
 
 		default:
