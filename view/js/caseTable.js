@@ -36,6 +36,13 @@ class CaseTable {
         for (let i of this.entries) {
             let row = document.createElement("tr");
 
+            //Untuk Ariq
+            //tolong data2 ini diformat dulu sebelum dimasukin ke variabel.
+            let newCase = i.newCase;
+            let confirmed = i.confirmed;
+            let released = i.released;
+            let deceased = i.deceased;
+
             //date
             let col = document.createElement("td");
             let tempDate = new Date(i.date);
@@ -44,22 +51,22 @@ class CaseTable {
 
             //new case
             col = document.createElement("td");
-            col.textContent = i.newCase;
+            col.textContent = newCase;
             row.appendChild(col);
 
             //confirmed
             col = document.createElement("td");
-            col.textContent = i.confirmed;
+            col.textContent = confirmed;
             row.appendChild(col);
 
             //released
             col = document.createElement("td");
-            col.textContent = i.released;
+            col.textContent = released;
             row.appendChild(col);
 
             //deceased
             col = document.createElement("td");
-            col.textContent = i.deceased;
+            col.textContent = deceased;
             row.appendChild(col);
 
             this.tableBody.appendChild(row);
