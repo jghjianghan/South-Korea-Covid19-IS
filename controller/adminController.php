@@ -240,7 +240,7 @@ class AdminController extends Controller
             $releasedCases = $_POST['releasedCases'];
             $deceasedCases = $_POST['deceasedCases'];
 
-            if (!is_int($testedCases) || !is_int($negativeCases) || !is_int($confirmedCases) || !is_int($releasedCases) || !is_int($deceasedCases)){
+            if (!is_numeric($testedCases) || !is_numeric($negativeCases) || !is_numeric($confirmedCases) || !is_numeric($releasedCases) || !is_numeric($deceasedCases)){
                 return $this->viewAddData("Values must be integer");
             }
             if ($testedCases < 0 || $negativeCases<0 || $confirmedCases<0 || $releasedCases<0 || $deceasedCases<0){
