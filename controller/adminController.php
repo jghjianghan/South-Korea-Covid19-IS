@@ -2,7 +2,6 @@
 require_once "controller/services/mysqlDB.php";
 require_once "controller/services/view.php";
 require_once "controller/controller.php";
-require_once "controller/dataController.php";
 
 class AdminController extends Controller
 {
@@ -44,6 +43,7 @@ class AdminController extends Controller
      */
     public function viewDataRegional()
     {
+        require_once "controller/dataController.php";
         $provinces = (new DataController())->getProvince();
         return View::createView("dataRegionalAdmin.php", [
             'title' => "Data",
@@ -62,6 +62,7 @@ class AdminController extends Controller
      */
     public function viewAddData($message = "")
     {
+        require_once "controller/dataController.php";
         $provinces = (new DataController())->getProvince();
         return View::createView("addData.php", [
             'title' => "Add Data",
