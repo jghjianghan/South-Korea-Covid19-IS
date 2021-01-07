@@ -36,8 +36,6 @@ class CaseTable {
         for (let i of this.entries) {
             let row = document.createElement("tr");
 
-            //Untuk Ariq
-            //tolong data2 ini diformat dulu sebelum dimasukin ke variabel.
             let newCase = i.newCase;
             let confirmed = i.confirmed;
             let released = i.released;
@@ -79,7 +77,7 @@ class CaseTable {
 
     thousandSeparator(num) {
         var num_parts = num.toString().split(".");
-        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         return num_parts.join(".");
     }
 
