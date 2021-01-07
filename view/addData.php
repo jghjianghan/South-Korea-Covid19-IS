@@ -5,31 +5,23 @@
             <form method="POST" action="<?php echo $upPrefix; ?>admin/data/add">
                 <div class="form-group row my-3 d-flex justify-content-between">
                     <label for="example-date-input" class="col-5 col-form-label fs-5">Date</label>
-                    <div class="col-sm-5">
-                        <input class="form-control" type="date" style="border: none; border-bottom: 1px solid black; border-radius: 0" id="date" name="date">
+                    <div class="col-sm-5 mt-1" style="font-size: 20px;">
+                        <?php
+                        date_default_timezone_set("Asia/Seoul");
+                        $date = date("j  F  Y");
+                        echo $date;
+                        ?>
                     </div>
                 </div>
                 <div class="form-group row mt-3 mb-4 d-flex justify-content-between">
                     <label class="col-sm-5 col-form-label fs-5">Choose a Province</label>
                     <div class="col-sm-5 d-flex flex-row-reverse">
                         <select class="form-select" id="region" name="region">
-                            <option value="Busan">Busan</option>
-                            <option value="Chungcheongbuk-do">Chungcheongbuk-do</option>
-                            <option value="Chungcheongnam-do">Chungcheongnam-do</option>
-                            <option value="Daegu">Daegu</option>
-                            <option value="Daejeon">Daejeon</option>
-                            <option value="Gangwon-do">Gangwon-do</option>
-                            <option value="Gwangju">Gwangju</option>
-                            <option value="Gyeonggi-do">Gyeonggi-do</option>
-                            <option value="Gyeongsangbuk-do">Gyeongsangbuk-do</option>
-                            <option value="Gyeongsangnam-do">Gyeongsangnam-do</option>
-                            <option value="Incheon">Incheon</option>
-                            <option value="Jeju-do">Jeju-do</option>
-                            <option value="Jeollabuk-do">Jeollabuk-do</option>
-                            <option value="Jeollanam-do">Jeollanam-do</option>
-                            <option value="Sejong">Sejong</option>
-                            <option value="Seoul">Seoul</option>
-                            <option value="Ulsan">Ulsan</option>
+                            <?php
+                            foreach ($provinces as $name) {
+                                echo "<option value='" . $name . "'>" . $name . "</option>";
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>

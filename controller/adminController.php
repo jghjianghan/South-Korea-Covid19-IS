@@ -70,7 +70,8 @@ class AdminController extends Controller
             'scriptSrcList' => ["adminScript.js"],
             'uplevel' => 2,
             "message" => $message,
-            'role' => 'admin'
+            'role' => 'admin',
+            'provinces' => $provinces
         ]);
     }
 
