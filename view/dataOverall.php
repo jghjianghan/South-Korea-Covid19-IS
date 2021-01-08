@@ -18,6 +18,10 @@
         <input type="date" id='dateFrom'>
         <span class="mx-3">To</span>
         <input type="date" id='dateTo'>
+        <span class='text-danger ml-3' id='invalid-message' style='visibility:hidden'>
+            <i class='fa fa-exclamation-triangle'></i>
+             Invalid date. Starting date must be earlier than ending date.
+        </span>
     </div>
 
     <div class="table">
