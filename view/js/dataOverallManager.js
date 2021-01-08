@@ -2,6 +2,7 @@ class dataOverallManager {
     constructor() {
         this.startDate = document.getElementById("dateFrom");
         this.endDate = document.getElementById("dateTo");
+        this.invalidMessage = document.getElementById("invalid-message")
 
         this.chartManager = new CaseChart();
         this.agregateManager = new CaseAggregate();
@@ -30,9 +31,14 @@ class dataOverallManager {
             let de = new Date(this.endDate.value);
             if (ds > de) {
                 //input error handling
+                this.invalidMessage.style.visibility = 'visible'
                 console.log("start date must not be later than end date");
                 return;
+            } else{
+                this.invalidMessage.style.visibility = 'hidden'
             }
+        }else {
+            this.invalidMessage.style.visibility = 'hidden'
         }
 
         url += '?start=' + this.startDate.value + '&end=' + this.endDate.value;
