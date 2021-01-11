@@ -3,7 +3,7 @@ class dataOverallManager {
         this.startDate = document.getElementById("dateFrom");
         this.endDate = document.getElementById("dateTo");
         this.invalidMessage = document.getElementById("invalid-message");
-        this.resetDate = document.getElementById("dateReset");
+        this.resetDateBtn = document.getElementById("dateReset");
 
         this.chartManager = new CaseChart();
         this.agregateManager = new CaseAggregate();
@@ -11,12 +11,12 @@ class dataOverallManager {
 
         // method binding
         this.fetchData = this.fetchData.bind(this);
-        this.reset = this.reset.bind(this);
+        this.resetDate = this.resetDate.bind(this);
 
         // set event listener
         this.startDate.addEventListener("change", this.fetchData);
         this.endDate.addEventListener("change", this.fetchData);
-        this.resetDate.addEventListener("click", this.reset);
+        this.resetDateBtn.addEventListener("click", this.resetDate);
 
         // initialize data
         this.fetchData();
@@ -37,10 +37,10 @@ class dataOverallManager {
                 this.invalidMessage.style.visibility = 'visible'
                 console.log("start date must not be later than end date");
                 return;
-            } else{
+            } else {
                 this.invalidMessage.style.visibility = 'hidden'
             }
-        }else {
+        } else {
             this.invalidMessage.style.visibility = 'hidden'
         }
 
@@ -64,12 +64,12 @@ class dataOverallManager {
             });
 
     }
-    
-    reset() {
-		this.startDate.value = "";
-		this.endDate.value = "";
-		this.fetchData();
-	}
+
+    resetDate() {
+        this.startDate.value = "";
+        this.endDate.value = "";
+        this.fetchData();
+    }
 }
 
 new dataOverallManager();
