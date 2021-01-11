@@ -18,6 +18,7 @@
         <input type="date" id='dateFrom'>
         <span class="mx-3">To</span>
         <input type="date" id='dateTo'>
+        <button class="btn btn-md bg-dark text-white" type="button" id='dateReset'><i class="fa fa-refresh"></i></button>
         <span class='text-danger ml-3' id='invalid-message' style='visibility:hidden'>
             <i class='fa fa-exclamation-triangle'></i>
              Invalid date. Starting date must be earlier than ending date.

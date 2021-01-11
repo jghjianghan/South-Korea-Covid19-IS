@@ -3,7 +3,8 @@ class dataRegionalManager {
         this.startDate = document.getElementById("dateFrom");
         this.endDate = document.getElementById("dateTo");
         this.provinceDropdown = document.getElementById("region");
-        this.invalidMessage = document.getElementById("invalid-message")
+        this.invalidMessage = document.getElementById("invalid-message");
+        this.resetDateBtn = document.getElementById("dateReset");
 
         this.chartManager = new CaseChart();
         this.agregateManager = new CaseAggregate();
@@ -11,11 +12,13 @@ class dataRegionalManager {
 
         // method binding
         this.fetchData = this.fetchData.bind(this);
+        this.resetDate = this.resetDate.bind(this);
 
         // set event listener
         this.provinceDropdown.addEventListener("change", this.fetchData);
         this.startDate.addEventListener("change", this.fetchData);
         this.endDate.addEventListener("change", this.fetchData);
+        this.resetDateBtn.addEventListener("click", this.resetDate);
 
         // initialize data
         this.fetchData();
@@ -70,6 +73,12 @@ class dataRegionalManager {
                 this.agregateManager.showData(json.confirmed, json.released, json.deceased);
             });
 
+    }
+
+    resetDate() {
+        this.startDate.value = "";
+        this.endDate.value = "";
+        this.fetchData();
     }
 }
 
