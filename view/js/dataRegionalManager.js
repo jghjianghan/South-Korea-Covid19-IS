@@ -78,6 +78,7 @@ class dataRegionalManager {
     reset() {
 		this.startDate.value = "";
 		this.endDate.value = "";
+	        this.fetchData();
 	}
 }
 
