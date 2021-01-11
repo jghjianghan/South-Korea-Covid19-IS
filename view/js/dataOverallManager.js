@@ -2,7 +2,8 @@ class dataOverallManager {
     constructor() {
         this.startDate = document.getElementById("dateFrom");
         this.endDate = document.getElementById("dateTo");
-        this.invalidMessage = document.getElementById("invalid-message")
+        this.invalidMessage = document.getElementById("invalid-message");
+        this.resetDate = document.getElementById("dateReset");
 
         this.chartManager = new CaseChart();
         this.agregateManager = new CaseAggregate();
@@ -10,10 +11,12 @@ class dataOverallManager {
 
         // method binding
         this.fetchData = this.fetchData.bind(this);
+        this.reset = this.reset.bind(this);
 
         // set event listener
         this.startDate.addEventListener("change", this.fetchData);
         this.endDate.addEventListener("change", this.fetchData);
+        this.resetDate.addEventListener("click", this.reset);
 
         // initialize data
         this.fetchData();
@@ -61,6 +64,11 @@ class dataOverallManager {
             });
 
     }
+    
+    reset() {
+		this.startDate.value = "";
+		this.endDate.value = "";
+	}
 }
 
 new dataOverallManager();
