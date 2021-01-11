@@ -68,6 +68,7 @@ class dataOverallManager {
     reset() {
 		this.startDate.value = "";
 		this.endDate.value = "";
+		this.fetchData();
 	}
 }
 
