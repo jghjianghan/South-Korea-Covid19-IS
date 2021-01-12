@@ -4,8 +4,8 @@
         <div class="card-body mx-5 px-3">
             <form method="POST" action="<?php echo $upPrefix; ?>admin/data/add">
                 <div class="form-group row my-3 d-flex justify-content-between">
-                    <label for="example-date-input" class="col-5 col-form-label fs-5">Date</label>
-                    <div class="col-sm-5 mt-1" style="font-size: 20px;">
+                    <label for="example-date-input" class="col-sm col-form-label fs-5">Date</label>
+                    <div class="col-sm mt-1" style="font-size: 20px;">
                         <?php
                         // date_default_timezone_set("Asia/Seoul");
                         // $date = date("j  F  Y");
