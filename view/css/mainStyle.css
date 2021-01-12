@@ -19,7 +19,7 @@
     padding: 8px 20px;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 10000;
     transition: background-color 300ms linear;
 }
 

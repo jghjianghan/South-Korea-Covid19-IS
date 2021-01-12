@@ -3,7 +3,7 @@
         <h1><strong>Welcome!</strong></h1>
         <p>Please login to access your account.</p>
         <div class="card p-3">
-            <h2>Log In</h2>
+            <h2>Login</h2>
             <form class="px-5" method="POST" action="<?php echo $upPrefix; ?>admin/login">
                 <div class="form-floating mx-2 mt-5 mb-2">
                     <input type="text" class="form-control" name="username" id="username" style="border: none; border-bottom: 1px solid black; border-radius: 0" placeholder="Username">

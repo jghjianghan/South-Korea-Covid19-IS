@@ -4,8 +4,8 @@
         <div class="card-body mx-5 px-3">
             <form method="POST" action="<?php echo $upPrefix; ?>admin/data/add">
                 <div class="form-group row my-3 d-flex justify-content-between">
-                    <label for="example-date-input" class="col-5 col-form-label fs-5">Date</label>
-                    <div class="col-sm-5 mt-1" style="font-size: 20px;">
+                    <label for="example-date-input" class="col-sm col-form-label fs-5">Date</label>
+                    <div class="col-sm mt-1" style="font-size: 20px;">
                         <?php
                         // date_default_timezone_set("Asia/Seoul");
                         // $date = date("j  F  Y");
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="form-group row mt-3 mb-4 d-flex justify-content-between">
-                    <label class="col-sm-5 col-form-label fs-5">Choose a Province</label>
+                    <label class="col-sm col-form-label fs-5">Choose a Province</label>
                     <div class="col-sm-5 d-flex flex-row-reverse">
                         <select class="form-select" id="region" name="region">
                             <?php
@@ -26,32 +26,32 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group row  d-flex justify-content-between">
-                    <label class="col-sm-5 col-form-label fs-5">Number of Tested Case </label>
+                <div class="form-group row d-flex justify-content-between">
+                    <label class="col-sm col-form-label fs-5">Number of Tested Case </label>
                     <div class="col-sm-3">
                         <input type="number" value="0" min="0" class="form-control text-center" id="testedCases" name="testedCases">
                     </div>
                 </div>
-                <div class="form-group row  d-flex justify-content-between">
-                    <label class="col-sm-5 col-form-label fs-5">Number of Negative Case </label>
+                <div class="form-group row d-flex justify-content-between">
+                    <label class="col-sm col-form-label fs-5">Number of Negative Case </label>
                     <div class="col-sm-3">
                         <input type="number" value="0" min="0" class="form-control text-center" id="negativeCases" name="negativeCases">
                     </div>
                 </div>
-                <div class="form-group row  d-flex justify-content-between">
-                    <label class="col-sm-5 col-form-label fs-5">Number of Confirmed Case </label>
+                <div class="form-group row d-flex justify-content-between">
+                    <label class="col-sm col-form-label fs-5">Number of Confirmed Case </label>
                     <div class="col-sm-3">
                         <input type="number" value="0" min="0" class="form-control text-center" id="confirmedCases" name="confirmedCases">
                     </div>
                 </div>
-                <div class="form-group row  d-flex justify-content-between">
-                    <label class="col-sm-5 col-form-label fs-5">Number of Released Case </label>
+                <div class="form-group row d-flex justify-content-between">
+                    <label class="col-sm col-form-label fs-5">Number of Released Case </label>
                     <div class="col-sm-3">
                         <input type="number" value="0" min="0" class="form-control text-center" id="releasedCases" name="releasedCases">
                     </div>
                 </div>
-                <div class="form-group row  d-flex justify-content-between">
-                    <label class="col-sm-5 col-form-label fs-5">Number of Deceased Case </label>
+                <div class="form-group row d-flex justify-content-between">
+                    <label class="col-sm col-form-label fs-5">Number of Deceased Case </label>
                     <div class="col-sm-3">
                         <input type="number" value="0" min="0" class="form-control text-center" id="deceasedCases" name="deceasedCases">
                     </div>
